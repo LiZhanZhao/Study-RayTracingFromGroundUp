@@ -37,7 +37,7 @@
 
 World::World(void)
 	:  	background_color(black),
-		tracer_ptr(NULL)
+	tracer_ptr(NULL), buffer(NULL)
 		
 {}
 
@@ -51,7 +51,12 @@ World::~World(void) {
 		delete tracer_ptr;
 		tracer_ptr = NULL;
 	}
-	
+	/*if (buffer){
+		for (int i = 0; i < vp.hres * vp.vres; i++){
+			delete &(buffer[i]);
+		}
+		delete buffer;
+	}*/
 	delete_objects();				
 }
 
@@ -135,6 +140,9 @@ World::display_pixel(const int row, const int column, const RGBColor& raw_color)
    //have to start from max y coordinate to convert to screen coordinates
    int x = column;
    int y = vp.vres - row - 1;
+   
+   int index = y * vp.hres + x - 1;
+   buffer[index] = mapped_color;
 
   /* paintArea->setPixel(x, y, (int)(mapped_color.r * 255),
                              (int)(mapped_color.g * 255),
@@ -191,8 +199,21 @@ World::delete_objects(void) {
 	objects.erase (objects.begin(), objects.end());
 }
 
+bool World::outputPPMImage(string filePath)
+{
+	FILE *fp = fopen(filePath.c_str(), "wb");
+	if (!fp) return false;
+	fprintf(fp, "P6\n%d %d\n255\n", vp.hres, vp.vres);
+	int size = vp.hres * vp.vres;
+	// now write out image in binary
+	for (int i = 0; i < size; i++){
+		unsigned char d[3] = { buffer[i].r * 255, buffer[i].g * 255, buffer[i].b * 255 };
+		fwrite(d, 1, 3, fp);
 
-//------------------------------------------------------------------ delete_lights
+	}
+	fclose(fp);
+	return true;
+}
 
 
 

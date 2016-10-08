@@ -74,6 +74,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
+    <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
@@ -81,13 +82,17 @@
     <ClCompile Include="Src\Ray.cpp" />
     <ClCompile Include="Src\RGBColor.cpp" />
     <ClCompile Include="Src\ShadeRec.cpp" />
+    <ClCompile Include="Src\SingleSphere.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
     <ClCompile Include="Src\Tracer.cpp" />
     <ClCompile Include="Src\Vector3D.cpp" />
+    <ClCompile Include="Src\ViewPlane.cpp" />
+    <ClCompile Include="Src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Constants.h" />
     <ClInclude Include="Src\GeometricObject.h" />
+    <ClInclude Include="Src\Maths.h" />
     <ClInclude Include="Src\Matrix.h" />
     <ClInclude Include="Src\Normal.h" />
     <ClInclude Include="Src\Plane.h" />
@@ -95,9 +100,12 @@
     <ClInclude Include="Src\Ray.h" />
     <ClInclude Include="Src\RGBColor.h" />
     <ClInclude Include="Src\ShadeRec.h" />
+    <ClInclude Include="Src\SingleSphere.h" />
     <ClInclude Include="Src\Sphere.h" />
     <ClInclude Include="Src\Tracer.h" />
     <ClInclude Include="Src\Vector3D.h" />
+    <ClInclude Include="Src\ViewPlane.h" />
+    <ClInclude Include="Src\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

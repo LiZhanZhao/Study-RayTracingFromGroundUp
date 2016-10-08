@@ -25,8 +25,6 @@
 
 using namespace std;
 
-class RenderThread; 	//part of skeleton - wxRaytracer.h
-
 
 class World {	
 	public:
@@ -37,6 +35,8 @@ class World {
 			
 		Sphere 						sphere;		// for Chapter 3 only
 		vector<GeometricObject*>	objects;		
+
+		RGBColor*					buffer;
 			
 
 	public:
@@ -66,6 +66,7 @@ class World {
 		ShadeRec
 		hit_objects(const Ray& ray);
 		
+		bool outputPPMImage(string filePath);
 						
 	private:
 		

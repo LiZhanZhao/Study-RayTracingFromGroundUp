@@ -83,14 +83,15 @@ World::render_scene(void) {
 	int n = (int)sqrt(vp.num_samples);
 	
 	for (int r = 0; r < vres; r++)			// up
-		for (int c = 0; c <= hres; c++) {	// across 					
+		for (int c = 0; c <= hres; c++) {	// across 			
+
 			// not Anti-Aliasing
 			//ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
 			//pixel_color = tracer_ptr->trace_ray(ray);
 			//display_pixel(r, c, pixel_color);
 			
 		    //Regular Sampling
-			pixel_color = black;
+			/*pixel_color = black;
 			for (int p = 0; p < n; p++ ){
 				for (int q = 0; q < n; q++){
 					float x = s * (c - hres / 2.0 + (float)p / n);
@@ -100,8 +101,22 @@ World::render_scene(void) {
 				}
 			}
 			pixel_color = pixel_color / vp.num_samples;
+			display_pixel(r, c, pixel_color);*/
 
+			// Random Sampling
+			pixel_color = black;
+			for (int p = 0; p < n; p++){
+				for (int q = 0; q < n; q++){
+					float x = s * (c - hres / 2.0 + rand_float());
+					float y = s * (r - vres / 2.0 + rand_float());
+					ray.o = Point3D(x, y, zw);
+					pixel_color += tracer_ptr->trace_ray(ray);
+				}
+			}
+			pixel_color = pixel_color / vp.num_samples;
 			display_pixel(r, c, pixel_color);
+
+
 		}	
 }  
 

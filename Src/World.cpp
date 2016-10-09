@@ -94,8 +94,8 @@ World::render_scene(void) {
 			/*pixel_color = black;
 			for (int p = 0; p < n; p++ ){
 				for (int q = 0; q < n; q++){
-					float x = s * (c - hres / 2.0 + (float)p / n);
-					float y = s * (r - vres / 2.0 + (float)q / n);
+					float x = s * (c - hres / 2.0 + (float)q / n);
+					float y = s * (r - vres / 2.0 + (float)p / n);
 					ray.o = Point3D(x, y, zw);
 					pixel_color += tracer_ptr->trace_ray(ray);
 				}
@@ -104,6 +104,7 @@ World::render_scene(void) {
 			display_pixel(r, c, pixel_color);*/
 
 			// Random Sampling
+			/*
 			pixel_color = black;
 			for (int p = 0; p < n; p++){
 				for (int q = 0; q < n; q++){
@@ -115,7 +116,21 @@ World::render_scene(void) {
 			}
 			pixel_color = pixel_color / vp.num_samples;
 			display_pixel(r, c, pixel_color);
+			*/
 
+			// Jittered Sampling
+			pixel_color = black;
+			for (int p = 0; p < n; p++){
+				for (int q = 0; q < n; q++){
+					float x = s * (c - hres / 2.0 + (float)(q + rand_float()) / n);
+					float y = s * (r - vres / 2.0 + (float)(p + rand_float()) / n);
+					ray.o = Point3D(x, y, zw);
+					pixel_color += tracer_ptr->trace_ray(ray);
+				}
+			}
+			pixel_color = pixel_color / vp.num_samples;
+			display_pixel(r, c, pixel_color);
+			
 
 		}	
 }  

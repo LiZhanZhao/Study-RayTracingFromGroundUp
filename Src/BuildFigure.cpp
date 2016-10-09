@@ -17,7 +17,7 @@ World::build(void) {
 	sphere.set_center(0.0);
 	sphere.set_radius(85.0);
 
-	buffer = new RGBColor[vp.vres * vp.hres];
+	
 }
 
 

@@ -66,7 +66,7 @@ World::~World(void) {
 // This uses orthographic viewing along the zw axis
 
 void 												
-World::render_scene(void) const {
+World::render_scene(void) {
 
 	RGBColor	pixel_color;	 	
 	Ray			ray;					
@@ -76,6 +76,8 @@ World::render_scene(void) const {
 	float		zw		= 100.0;				// hardwired in
 
 	ray.d = Vector3D(0, 0, -1);
+
+	buffer = new RGBColor[vp.vres * vp.hres];
 	
 	for (int r = 0; r < vres; r++)			// up
 		for (int c = 0; c <= hres; c++) {	// across 					

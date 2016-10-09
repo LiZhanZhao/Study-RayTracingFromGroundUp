@@ -80,11 +80,27 @@ World::render_scene(void) {
 	ray.d = Vector3D(0, 0, -1);
 
 	buffer = new RGBColor[vp.vres * vp.hres];
+	int n = (int)sqrt(vp.num_samples);
 	
 	for (int r = 0; r < vres; r++)			// up
 		for (int c = 0; c <= hres; c++) {	// across 					
-			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
-			pixel_color = tracer_ptr->trace_ray(ray);
+			// not Anti-Aliasing
+			//ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
+			//pixel_color = tracer_ptr->trace_ray(ray);
+			//display_pixel(r, c, pixel_color);
+			
+		    //Regular Sampling
+			pixel_color = black;
+			for (int p = 0; p < n; p++ ){
+				for (int q = 0; q < n; q++){
+					float x = s * (c - hres / 2.0 + (float)p / n);
+					float y = s * (r - vres / 2.0 + (float)q / n);
+					ray.o = Point3D(x, y, zw);
+					pixel_color += tracer_ptr->trace_ray(ray);
+				}
+			}
+			pixel_color = pixel_color / vp.num_samples;
+
 			display_pixel(r, c, pixel_color);
 		}	
 }  

@@ -10,7 +10,8 @@
 
 // tracers
 
-#include "SingleSphere.h"
+//#include "SingleSphere.h"
+#include "MultipleObjects.h"
 
 // cameras
 
@@ -25,6 +26,7 @@
 
 // build functions
 
+//#include "BuildFigure.cpp"
 #include "BuildFigure.cpp"
 
 
@@ -162,6 +164,7 @@ World::hit_objects(const Ray& ray) {
 	Point3D local_hit_point;
 	double		tmin 			= kHugeValue;
 	int 		num_objects 	= objects.size();
+	RGBColor resColor;
 	
 	for (int j = 0; j < num_objects; j++)
 		if (objects[j]->hit(ray, t, sr) && (t < tmin)) {
@@ -171,12 +174,15 @@ World::hit_objects(const Ray& ray) {
 			sr.hit_point 		= ray.o + t * ray.d;
 			normal 				= sr.normal;
 			local_hit_point	 	= sr.local_hit_point;
+
+			resColor = objects[j]->get_color();
 		}
   
 	if(sr.hit_an_object) {
 		sr.t = tmin;
 		sr.normal = normal;
 		sr.local_hit_point = local_hit_point;
+		sr.color = resColor;
 	}
 		
 	return(sr);   

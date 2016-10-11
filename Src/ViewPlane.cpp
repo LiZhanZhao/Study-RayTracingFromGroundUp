@@ -67,6 +67,22 @@ void ViewPlane::set_sampler(Sampler* sp)
 	
 }
 
+void ViewPlane::set_samples(const int n) {
+	//num_samples = n;
+	if (sampler_ptr != NULL){
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
+	if (n > 1){
+		sampler_ptr = new MultiJittered(n);
+		num_samples = n;
+	}
+	else{
+		sampler_ptr = new Regular(1);
+		num_samples = 1;
+	}
+}
+
 
 	
 

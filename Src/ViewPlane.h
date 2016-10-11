@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------- class ViewPlane
 #include"Sampler.h"
 #include"Regular.h"
+#include"MultiJittered.h"
 
 class ViewPlane {
 	public:
@@ -95,9 +96,6 @@ ViewPlane::set_gamut_display(const bool show) {
 
 // ------------------------------------------------------------------------------ set_samples
 
-inline void
-ViewPlane::set_samples(const int n) {
-	num_samples = n;
-}
+
 
 #endif

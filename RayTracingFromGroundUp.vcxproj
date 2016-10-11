@@ -76,6 +76,7 @@
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
+    <ClCompile Include="Src\MultiJittered.cpp" />
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\Maths.h" />
     <ClInclude Include="Src\Matrix.h" />
+    <ClInclude Include="Src\MultiJittered.h" />
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
     <ClInclude Include="Src\Plane.h" />

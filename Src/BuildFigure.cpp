@@ -9,9 +9,12 @@ void
 World::build(void) {
 	vp.set_hres(200);
 	vp.set_vres(200);
-	//vp.set_samples(16);
-	int num_samples = 16;
-	vp.set_sampler(new Regular(num_samples));
+	
+	//int num_samples = 16;
+	//vp.set_sampler(new Regular(num_samples));
+
+	vp.set_samples(256);
+
 
 	background_color = black;
 	tracer_ptr = new MultipleObjects(this);

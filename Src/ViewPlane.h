@@ -2,6 +2,8 @@
 #define __VIEW_PLANE__
 
 //-------------------------------------------------------------------------------------- class ViewPlane
+#include"Sampler.h"
+#include"Regular.h"
 
 class ViewPlane {
 	public:
@@ -14,7 +16,7 @@ class ViewPlane {
 		float			inv_gamma;					// the inverse of the gamma correction factor
 		bool			show_out_of_gamut;			// display red if RGBColor out of gamut
 		
-									
+		Sampler* sampler_ptr;
 	
 	public:
 	
@@ -43,6 +45,8 @@ class ViewPlane {
 		
 		void
 		set_samples(const int n);			
+
+		void set_sampler(Sampler* sp);
 };
 
 

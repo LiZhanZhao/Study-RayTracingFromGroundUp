@@ -90,47 +90,18 @@ World::render_scene(void) {
 			//pixel_color = tracer_ptr->trace_ray(ray);
 			//display_pixel(r, c, pixel_color);
 			
-		    //Regular Sampling
-			/*pixel_color = black;
-			for (int p = 0; p < n; p++ ){
-				for (int q = 0; q < n; q++){
-					float x = s * (c - hres / 2.0 + (float)q / n);
-					float y = s * (r - vres / 2.0 + (float)p / n);
-					ray.o = Point3D(x, y, zw);
-					pixel_color += tracer_ptr->trace_ray(ray);
-				}
-			}
-			pixel_color = pixel_color / vp.num_samples;
-			display_pixel(r, c, pixel_color);*/
 
-			// Random Sampling
-			/*
 			pixel_color = black;
-			for (int p = 0; p < n; p++){
-				for (int q = 0; q < n; q++){
-					float x = s * (c - hres / 2.0 + rand_float());
-					float y = s * (r - vres / 2.0 + rand_float());
-					ray.o = Point3D(x, y, zw);
-					pixel_color += tracer_ptr->trace_ray(ray);
-				}
+			for (int j = 0; j < vp.num_samples; j++){
+				Point2D sp = vp.sampler_ptr->sample_unit_square();
+				float x = s * (c - hres / 2.0 + sp.x);
+				float y = s * (r - vres / 2.0 + sp.y);
+				ray.o = Point3D(x, y, zw);
+				pixel_color += tracer_ptr->trace_ray(ray);
 			}
-			pixel_color = pixel_color / vp.num_samples;
-			display_pixel(r, c, pixel_color);
-			*/
-
-			// Jittered Sampling
-			pixel_color = black;
-			for (int p = 0; p < n; p++){
-				for (int q = 0; q < n; q++){
-					float x = s * (c - hres / 2.0 + (float)(q + rand_float()) / n);
-					float y = s * (r - vres / 2.0 + (float)(p + rand_float()) / n);
-					ray.o = Point3D(x, y, zw);
-					pixel_color += tracer_ptr->trace_ray(ray);
-				}
-			}
-			pixel_color = pixel_color / vp.num_samples;
-			display_pixel(r, c, pixel_color);
 			
+			pixel_color = pixel_color / vp.num_samples;
+			display_pixel(r, c, pixel_color);
 
 		}	
 }  

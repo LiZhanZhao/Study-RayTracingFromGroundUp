@@ -79,9 +79,12 @@
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
+    <ClCompile Include="Src\Point2D.cpp" />
     <ClCompile Include="Src\Point3D.cpp" />
     <ClCompile Include="Src\Ray.cpp" />
+    <ClCompile Include="Src\Regular.cpp" />
     <ClCompile Include="Src\RGBColor.cpp" />
+    <ClCompile Include="Src\Sampler.cpp" />
     <ClCompile Include="Src\ShadeRec.cpp" />
     <ClCompile Include="Src\SingleSphere.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
@@ -98,9 +101,12 @@
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
     <ClInclude Include="Src\Plane.h" />
+    <ClInclude Include="Src\Point2D.h" />
     <ClInclude Include="Src\Point3D.h" />
     <ClInclude Include="Src\Ray.h" />
+    <ClInclude Include="Src\Regular.h" />
     <ClInclude Include="Src\RGBColor.h" />
+    <ClInclude Include="Src\Sampler.h" />
     <ClInclude Include="Src\ShadeRec.h" />
     <ClInclude Include="Src\SingleSphere.h" />
     <ClInclude Include="Src\Sphere.h" />

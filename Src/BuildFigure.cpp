@@ -4,7 +4,6 @@
 //	See the file COPYING.txt for the full license.
 
 // builds the scene for Figure 3.20(a)
-
 void
 World::build(void) {
 	vp.set_hres(200);
@@ -14,6 +13,10 @@ World::build(void) {
 	//vp.set_sampler(new Regular(num_samples));
 
 	vp.set_samples(256);
+
+	// eye look target
+	eye = 80;
+	target = 50;
 
 
 	background_color = black;

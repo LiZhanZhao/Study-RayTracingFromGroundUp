@@ -67,8 +67,7 @@ World::~World(void) {
 
 // This uses orthographic viewing along the zw axis
 
-void 												
-World::render_scene(void) {
+void World::render_scene(void) {
 
 	RGBColor	pixel_color;	 	
 	Ray			ray;					
@@ -106,6 +105,30 @@ World::render_scene(void) {
 		}	
 }  
 
+void World::render_perspective_scene()
+{
+	RGBColor pixel_color;
+	Ray ray;
+
+	buffer = new RGBColor[vp.vres * vp.hres];
+
+	ray.o = Point3D(0, 0, eye);
+	for (int r = 0; r < vp.vres; r++){
+		for (int c = 0; c < vp.hres; c++){
+			float pixel_x = vp.s * (c - vp.hres / 2.0 + 0.5);
+			float pixel_y = vp.s * (r - vp.vres / 2.0 + 0.5);
+			//float pixel_z = eye - vp_dist;
+
+			// ray.d = pixel - ray.o
+			ray.d = Vector3D(pixel_x, pixel_y, target - eye);
+			
+			ray.d.normalize();
+			pixel_color = tracer_ptr->trace_ray(ray);
+			display_pixel(r, c, pixel_color);
+
+		}
+	}
+}
 
 // ------------------------------------------------------------------ clamp
 

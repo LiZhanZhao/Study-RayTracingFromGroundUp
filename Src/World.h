@@ -37,6 +37,9 @@ class World {
 		vector<GeometricObject*>	objects;		
 
 		RGBColor*					buffer;
+
+		float eye;
+		float target;
 			
 
 	public:
@@ -51,8 +54,9 @@ class World {
 		void 					
 		build(void);
 
-		void 												
-		render_scene(void);
+		void render_scene(void);
+
+		void render_perspective_scene();
 						
 		RGBColor
 		max_to_one(const RGBColor& c) const;

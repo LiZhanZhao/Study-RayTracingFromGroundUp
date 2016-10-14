@@ -6,7 +6,8 @@ int main()
 
 	World w;
 	w.build();
-	w.render_scene();
+	//w.render_scene();
+	w.render_perspective_scene();
 	w.outputPPMImage("Image/test.ppm");
 
 	std::cout << " *** Finish *** " << std::endl;

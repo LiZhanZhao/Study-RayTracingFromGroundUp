@@ -32,8 +32,7 @@ class Tracer {
 		virtual RGBColor			// only overridden in the tracers SingleSphere and MultipleObjects
 		trace_ray(const Ray& ray) const;
 
-		virtual RGBColor	
-		trace_ray(const Ray ray, const int depth) const;
+		virtual RGBColor trace_ray(const Ray ray, const int depth) const;
 				
 	protected:
 	

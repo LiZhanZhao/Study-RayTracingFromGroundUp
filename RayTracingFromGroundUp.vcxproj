@@ -73,12 +73,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
     <ClCompile Include="Src\MultiJittered.cpp" />
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
+    <ClCompile Include="Src\Pinhole.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
     <ClCompile Include="Src\Point2D.cpp" />
     <ClCompile Include="Src\Point3D.cpp" />
@@ -95,6 +97,7 @@
     <ClCompile Include="Src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\Constants.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\Maths.h" />
@@ -102,6 +105,7 @@
     <ClInclude Include="Src\MultiJittered.h" />
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
+    <ClInclude Include="Src\Pinhole.h" />
     <ClInclude Include="Src\Plane.h" />
     <ClInclude Include="Src\Point2D.h" />
     <ClInclude Include="Src\Point3D.h" />

@@ -20,8 +20,7 @@ class MultipleObjects: public Tracer {
 		virtual											
 		~MultipleObjects(void);
 						
-		virtual RGBColor	
-		trace_ray(const Ray& ray) const;
+		virtual RGBColor trace_ray(const Ray& ray) const;
 };
 
 #endif

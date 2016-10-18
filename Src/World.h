@@ -21,6 +21,8 @@
 #include "Sphere.h"
 #include "Ray.h"
 #include "SingleSphere.h"
+#include "Camera.h"
+#include "Pinhole.h"
 
 
 using namespace std;
@@ -38,8 +40,9 @@ class World {
 
 		RGBColor*					buffer;
 
-		float eye;
-		float target;
+		//float eye;
+		//float target;
+		Camera* camera_ptr;
 			
 
 	public:
@@ -54,9 +57,9 @@ class World {
 		void 					
 		build(void);
 
-		void render_scene(void);
+		//void render_scene(void);
 
-		void render_perspective_scene();
+		//void render_perspective_scene();
 						
 		RGBColor
 		max_to_one(const RGBColor& c) const;
@@ -71,6 +74,8 @@ class World {
 		hit_objects(const Ray& ray);
 		
 		bool outputPPMImage(string filePath);
+
+		void set_camera(Camera* cam_ptr);
 						
 	private:
 		

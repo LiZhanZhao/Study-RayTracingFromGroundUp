@@ -39,7 +39,7 @@
 
 World::World(void)
 	:  	background_color(black),
-	tracer_ptr(NULL), buffer(NULL)
+	tracer_ptr(NULL), buffer(NULL), camera_ptr(NULL)
 		
 {}
 
@@ -62,7 +62,7 @@ World::~World(void) {
 	delete_objects();				
 }
 
-
+/*
 //------------------------------------------------------------------ render_scene
 
 // This uses orthographic viewing along the zw axis
@@ -129,7 +129,7 @@ void World::render_perspective_scene()
 		}
 	}
 }
-
+*/
 // ------------------------------------------------------------------ clamp
 
 RGBColor
@@ -263,5 +263,11 @@ bool World::outputPPMImage(string filePath)
 	return true;
 }
 
+void World::set_camera(Camera* cam_ptr){
+	if (camera_ptr != NULL){
+		delete camera_ptr;
+	}
+	camera_ptr = cam_ptr;
+}
 
 

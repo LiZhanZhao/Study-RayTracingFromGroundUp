@@ -91,6 +91,7 @@
     <ClCompile Include="Src\ShadeRec.cpp" />
     <ClCompile Include="Src\SingleSphere.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
+    <ClCompile Include="Src\ThinLens.cpp" />
     <ClCompile Include="Src\Tracer.cpp" />
     <ClCompile Include="Src\Vector3D.cpp" />
     <ClCompile Include="Src\ViewPlane.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="Src\ShadeRec.h" />
     <ClInclude Include="Src\SingleSphere.h" />
     <ClInclude Include="Src\Sphere.h" />
+    <ClInclude Include="Src\ThinLens.h" />
     <ClInclude Include="Src\Tracer.h" />
     <ClInclude Include="Src\Vector3D.h" />
     <ClInclude Include="Src\ViewPlane.h" />

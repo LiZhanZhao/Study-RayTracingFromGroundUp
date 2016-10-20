@@ -160,6 +160,11 @@ Sampler::map_samples_to_unit_disk(void) {
 	Point2D sp; 		// sample point on unit disk
 	
 	disk_samples.reserve(size);
+	
+	Point2D zero;
+	for (int i = 0; i < size; i++){
+		disk_samples.push_back(zero);
+	}
 		
 	for (int j = 0; j < size; j++) {
 		 // map sample point to [-1, 1] X [-1,1]

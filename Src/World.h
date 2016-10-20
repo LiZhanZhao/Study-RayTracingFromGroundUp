@@ -22,7 +22,6 @@
 #include "Ray.h"
 #include "SingleSphere.h"
 #include "Camera.h"
-#include "Pinhole.h"
 
 
 using namespace std;

@@ -1,5 +1,5 @@
 #include "Fisheye.h"
-void FishEye::render_scene(World& wr) {
+void FishEye::render_scene(const World& wr) {
 	RGBColor	L;
 	ViewPlane	vp(wr.vp);
 	int 		hres = vp.hres;
@@ -25,7 +25,8 @@ void FishEye::render_scene(World& wr) {
 			ray.d = ray_direction(pp, hres, vres, s, r_squared);
 
 			if (r_squared <= 1.0)
-				L += wr.tracer_ptr->trace_ray(ray, depth);
+				L += wr.tracer_ptr->trace_ray(ray);
+				//L += wr.tracer_ptr->trace_ray(ray, depth);
 		}
 
 		L /= vp.num_samples;
@@ -58,4 +59,17 @@ float& 			r_squared) const {
 	}
 	else
 		return (Vector3D(0.0));
+}
+
+FishEye::FishEye()
+: Camera(), psi_max(90)
+{
+}
+
+FishEye::FishEye(const FishEye& fe)
+: Camera(fe), psi_max(fe.psi_max)
+{}
+
+Camera* FishEye::clone(void) const {
+	return (new FishEye(*this));
 }

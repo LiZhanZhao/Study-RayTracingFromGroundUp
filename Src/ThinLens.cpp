@@ -63,7 +63,7 @@ ThinLens::ThinLens()
 {}
 
 ThinLens::ThinLens(const ThinLens& ph)
-: Camera(), d(ph.d), f(ph.f), lens_radius(ph.lens_radius), zoom(ph.zoom), 
+: Camera(ph), d(ph.d), f(ph.f), lens_radius(ph.lens_radius), zoom(ph.zoom), 
 	sampler_ptr(ph.sampler_ptr)
 {}
 

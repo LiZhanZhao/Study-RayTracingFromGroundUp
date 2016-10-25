@@ -14,11 +14,20 @@ class FishEye: public Camera {
 						const float s, 
 						float& 		r_squared) const;
 
-		virtual void render_scene(World& w);
-		
+		virtual void render_scene(const World& w);
+
+		void set_fov(float fov);
+		virtual Camera* clone(void) const;
+		FishEye();
+		FishEye(const FishEye& fe);
 	private:
 		float psi_max;	// in degrees
 };
+
+
+inline void FishEye::set_fov(float fov){
+	psi_max = fov;
+}
 
 #endif
 

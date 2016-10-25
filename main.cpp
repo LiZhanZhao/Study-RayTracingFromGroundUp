@@ -1,5 +1,5 @@
 #include<iostream>
-#include"Src\World.h"
+#include"World.h"
 int main()
 {
 	//std::cout << "hello ray tracing" << std::endl;

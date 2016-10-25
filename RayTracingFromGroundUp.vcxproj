@@ -74,6 +74,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
+    <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
@@ -100,6 +101,7 @@
   <ItemGroup>
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\Constants.h" />
+    <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\Maths.h" />
     <ClInclude Include="Src\Matrix.h" />

@@ -30,9 +30,10 @@ class Camera {
 		virtual
 		~Camera();   							
 
-		virtual void 																		
-		render_scene(const World& w) = 0;
+		virtual void render_scene(const World& w) = 0;
 		
+		virtual void render_stereo(const World& w, float x, int pixel_offset);
+
 		void
 		set_eye(const Point3D& p);
 
@@ -140,6 +141,7 @@ inline void
 Camera::set_exposure_time(const float exposure) {
 	exposure_time = exposure;
 }
+
 
 
 #endif

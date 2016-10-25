@@ -39,8 +39,9 @@ class Pinhole: public Camera {
 		Vector3D								
 		get_direction(const Point2D& p) const;
 		
-		virtual void 												
-		render_scene(const World& w);
+		virtual void render_scene(const World& w);
+
+		virtual void render_stereo(const World& w, float x, int pixel_offset);
 		
 	private:
 			

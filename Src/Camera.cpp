@@ -91,5 +91,8 @@ Camera::compute_uvw(void) {
 	}
 }
 
+void Camera::render_stereo(const World& w, float x, int pixel_offset){
+
+}
 
 

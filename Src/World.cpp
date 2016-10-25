@@ -39,7 +39,7 @@
 
 World::World(void)
 	:  	background_color(black),
-	tracer_ptr(NULL), buffer(NULL), camera_ptr(NULL)
+	tracer_ptr(NULL), imageBuffer(NULL), camera_ptr(NULL)
 		
 {}
 
@@ -62,74 +62,6 @@ World::~World(void) {
 	delete_objects();				
 }
 
-/*
-//------------------------------------------------------------------ render_scene
-
-// This uses orthographic viewing along the zw axis
-
-void World::render_scene(void) {
-
-	RGBColor	pixel_color;	 	
-	Ray			ray;					
-	int 		hres 	= vp.hres;
-	int 		vres 	= vp.vres;
-	float		s		= vp.s;
-	float		zw		= 100.0;				// hardwired in
-
-	ray.d = Vector3D(0, 0, -1);
-
-	buffer = new RGBColor[vp.vres * vp.hres];
-	int n = (int)sqrt(vp.num_samples);
-	
-	for (int r = 0; r < vres; r++)			// up
-		for (int c = 0; c <= hres; c++) {	// across 			
-
-			// not Anti-Aliasing
-			//ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
-			//pixel_color = tracer_ptr->trace_ray(ray);
-			//display_pixel(r, c, pixel_color);
-			
-
-			pixel_color = black;
-			for (int j = 0; j < vp.num_samples; j++){
-				Point2D sp = vp.sampler_ptr->sample_unit_square();
-				float x = s * (c - hres / 2.0 + sp.x);
-				float y = s * (r - vres / 2.0 + sp.y);
-				ray.o = Point3D(x, y, zw);
-				pixel_color += tracer_ptr->trace_ray(ray);
-			}
-			
-			pixel_color = pixel_color / vp.num_samples;
-			display_pixel(r, c, pixel_color);
-
-		}	
-}  
-
-void World::render_perspective_scene()
-{
-	RGBColor pixel_color;
-	Ray ray;
-
-	buffer = new RGBColor[vp.vres * vp.hres];
-
-	ray.o = Point3D(0, 0, eye);
-	for (int r = 0; r < vp.vres; r++){
-		for (int c = 0; c < vp.hres; c++){
-			float pixel_x = vp.s * (c - vp.hres / 2.0 + 0.5);
-			float pixel_y = vp.s * (r - vp.vres / 2.0 + 0.5);
-			//float pixel_z = eye - vp_dist;
-
-			// ray.d = pixel - ray.o
-			ray.d = Vector3D(pixel_x, pixel_y, target - eye);
-			
-			ray.d.normalize();
-			pixel_color = tracer_ptr->trace_ray(ray);
-			display_pixel(r, c, pixel_color);
-
-		}
-	}
-}
-*/
 // ------------------------------------------------------------------ clamp
 
 RGBColor
@@ -183,14 +115,10 @@ World::display_pixel(const int row, const int column, const RGBColor& raw_color)
 	
    //have to start from max y coordinate to convert to screen coordinates
    int x = column;
-   int y = vp.vres - row - 1;
+   int y = imageHeight - row - 1;
    
-   int index = y * vp.hres + x - 1;
-   buffer[index] = mapped_color;
-
-  /* paintArea->setPixel(x, y, (int)(mapped_color.r * 255),
-                             (int)(mapped_color.g * 255),
-                             (int)(mapped_color.b * 255));*/
+   int index = y * imageWidth + x - 1;
+   imageBuffer[index] = mapped_color;
 }
 
 // ----------------------------------------------------------------------------- hit_objects
@@ -251,11 +179,12 @@ bool World::outputPPMImage(string filePath)
 {
 	FILE *fp = fopen(filePath.c_str(), "wb");
 	if (!fp) return false;
-	fprintf(fp, "P6\n%d %d\n255\n", vp.hres, vp.vres);
-	int size = vp.hres * vp.vres;
+	//fprintf(fp, "P6\n%d %d\n255\n", vp.hres, vp.vres);
+	fprintf(fp, "P6\n%d %d\n255\n", imageWidth, imageHeight);
+	int size = imageWidth * imageHeight;
 	// now write out image in binary
 	for (int i = 0; i < size; i++){
-		unsigned char d[3] = { buffer[i].r * 255, buffer[i].g * 255, buffer[i].b * 255 };
+		unsigned char d[3] = { imageBuffer[i].r * 255, imageBuffer[i].g * 255, imageBuffer[i].b * 255 };
 		fwrite(d, 1, 3, fp);
 
 	}

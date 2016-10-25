@@ -37,11 +37,12 @@ class World {
 		Sphere 						sphere;		// for Chapter 3 only
 		vector<GeometricObject*>	objects;		
 
-		RGBColor*					buffer;
+		RGBColor*					imageBuffer;
 
-		//float eye;
-		//float target;
 		Camera* camera_ptr;
+
+		int imageWidth;
+		int imageHeight;
 			
 
 	public:

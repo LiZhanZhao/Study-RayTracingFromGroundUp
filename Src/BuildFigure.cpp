@@ -7,6 +7,7 @@
 #include "Pinhole.h"
 #include "ThinLens.h"
 #include "Fisheye.h"
+#include "Spherical.h"
 
 void
 World::build(void) {
@@ -17,14 +18,23 @@ World::build(void) {
 	int num_samples = 16;
 	vp.set_sampler(new MultiJittered(num_samples));
 
-	
+
+	Spherical* spherical_ptr = new Spherical;
+	spherical_ptr->set_eye(0, 0, 100);
+	spherical_ptr->set_lookat(0, 0, 0);
+	spherical_ptr->set_horizontal_fov(90);
+	spherical_ptr->set_vertical_fov(180);
+	spherical_ptr->compute_uvw();
+	set_camera(spherical_ptr);
+
+	/*
 	FishEye* fisheye_ptr = new FishEye();
 	fisheye_ptr->set_eye(0, 0, 100);
 	fisheye_ptr->set_lookat(0, 0, 0);
 	fisheye_ptr->set_fov(90);
 	fisheye_ptr->compute_uvw();
 	set_camera(fisheye_ptr);
-	
+	*/
 
 	/*
 	ThinLens* thin_lens_ptr = new ThinLens;
@@ -46,6 +56,8 @@ World::build(void) {
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 	*/
+
+
 	background_color = black;
 	tracer_ptr = new MultipleObjects(this);
 
@@ -56,16 +68,12 @@ World::build(void) {
 	//sphere_ptr->set_radius(20.0);
 	//sphere_ptr->set_color(1, 0, 0);  // red
 	//add_object(sphere_ptr);
-
-	// use a constructor to set center and radius for this sphere
-
 	
 	//sphere_ptr = new Sphere();
 	//sphere_ptr->set_center(0, 0, -80);
 	//sphere_ptr->set_radius(80.0f);
 	//sphere_ptr->set_color(1, 1, 0);	// yellow
 	//add_object(sphere_ptr);
-
 
 	Plane* plane_ptr = new Plane(Point3D(0, 0, -100), Normal(0, 0, 1));
 	plane_ptr->set_color(0.0, 0.25, 0.0);	// dark green 

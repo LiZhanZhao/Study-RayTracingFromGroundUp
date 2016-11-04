@@ -39,7 +39,7 @@
 
 World::World(void)
 	:  	background_color(black),
-	tracer_ptr(NULL), imageBuffer(NULL), camera_ptr(NULL)
+	tracer_ptr(NULL), imageBuffer(NULL), camera_ptr(NULL), ambient_ptr(new Ambient)
 		
 {}
 
@@ -59,7 +59,9 @@ World::~World(void) {
 		}
 		delete buffer;
 	}*/
+
 	delete_objects();				
+	delete_lights();
 }
 
 // ------------------------------------------------------------------ clamp
@@ -173,6 +175,16 @@ World::delete_objects(void) {
 	}	
 	
 	objects.erase (objects.begin(), objects.end());
+}
+
+void World::delete_lights(void){
+	int num_lights = lights.size();
+	for (int j = 0; j < num_lights; j++){
+		delete lights[j];
+		lights[j] = NULL;
+	}
+
+	lights.erase(lights.begin(), lights.end());
 }
 
 bool World::outputPPMImage(string filePath)

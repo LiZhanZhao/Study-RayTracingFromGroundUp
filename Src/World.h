@@ -22,7 +22,8 @@
 #include "Ray.h"
 #include "SingleSphere.h"
 #include "Camera.h"
-
+#include "Light.h"
+#include "Ambient.h"
 
 using namespace std;
 
@@ -43,6 +44,9 @@ class World {
 
 		int imageWidth;
 		int imageHeight;
+
+		Light* ambient_ptr;
+		vector<Light*> lights;
 			
 
 	public:
@@ -54,12 +58,7 @@ class World {
 		void 
 		add_object(GeometricObject* object_ptr);	
 
-		void 					
-		build(void);
-
-		//void render_scene(void);
-
-		//void render_perspective_scene();
+		void build(void);
 						
 		RGBColor
 		max_to_one(const RGBColor& c) const;
@@ -76,11 +75,13 @@ class World {
 		bool outputPPMImage(string filePath);
 
 		void set_camera(Camera* cam_ptr);
+
+		void add_light(Light* light_ptr);
 						
 	private:
 		
-		void 
-		delete_objects(void);
+		void delete_objects(void);
+		void delete_lights(void);
 };
 
 
@@ -89,6 +90,10 @@ class World {
 inline void 
 World::add_object(GeometricObject* object_ptr) {  
 	objects.push_back(object_ptr);	
+}
+
+inline void World::add_light(Light* light_ptr){
+	lights.push_back(light_ptr);
 }
 
 #endif

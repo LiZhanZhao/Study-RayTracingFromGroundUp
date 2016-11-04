@@ -21,6 +21,9 @@ class World;
 #include "Ray.h"
 #include "RGBColor.h"
 
+//do not include
+//#include "Material.h"
+
 class ShadeRec {
 	public:
 	

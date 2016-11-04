@@ -49,8 +49,13 @@ class GeometricObject {
 		RGBColor
 		get_color(void);
 
+		void set_material(Material* mPtr);
+
+		Material* get_material(void);
+
 	protected:
-		RGBColor   			color;				// only used for Bare Bones ray tracing
+		RGBColor color;				// only used for Bare Bones ray tracing
+		Material* material_ptr;
 };
 
 
@@ -76,5 +81,7 @@ inline RGBColor
 GeometricObject::get_color(void) {
 	return (color);
 }
+
+
 
 #endif

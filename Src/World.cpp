@@ -11,10 +11,15 @@
 // tracers
 
 //#include "SingleSphere.h"
-#include "MultipleObjects.h"
+//#include "MultipleObjects.h"
+#include "RayCast.h"
 
 // cameras
-
+#include "Pinhole.h"
+#include "ThinLens.h"
+#include "Fisheye.h"
+#include "Spherical.h"
+#include "StereoCamera.h"
 
 // utilities
 
@@ -23,6 +28,8 @@
 #include "Normal.h"
 #include "ShadeRec.h"
 #include "Maths.h"
+
+
 
 // build functions
 
@@ -39,9 +46,10 @@
 
 World::World(void)
 	:  	background_color(black),
-	tracer_ptr(NULL), imageBuffer(NULL), camera_ptr(NULL), ambient_ptr(new Ambient)
-		
-{}
+	tracer_ptr(NULL), imageBuffer(NULL), camera_ptr(NULL)
+{
+	ambient_ptr = new Ambient();
+}
 
 
 
@@ -124,7 +132,37 @@ World::display_pixel(const int row, const int column, const RGBColor& raw_color)
 }
 
 // ----------------------------------------------------------------------------- hit_objects
+ShadeRec
+World::hit_objects(const Ray& ray) {
 
+	ShadeRec	sr(*this);
+	double		t;
+	Normal normal;
+	Point3D local_hit_point;
+	double		tmin = kHugeValue;
+	int 		num_objects = objects.size();
+
+	for (int j = 0; j < num_objects; j++)
+	if (objects[j]->hit(ray, t, sr) && (t < tmin)) {
+		sr.hit_an_object = true;
+		tmin = t;
+		sr.material_ptr = objects[j]->get_material();
+		sr.hit_point = ray.o + t * ray.d;
+		normal = sr.normal;
+		local_hit_point = sr.local_hit_point;
+	}
+
+	if (sr.hit_an_object) {
+		sr.t = tmin;
+		sr.normal = normal;
+		sr.local_hit_point = local_hit_point;
+		
+	}
+
+	return(sr);
+}
+
+/*
 ShadeRec									
 World::hit_objects(const Ray& ray) {
 
@@ -157,7 +195,7 @@ World::hit_objects(const Ray& ray) {
 		
 	return(sr);   
 }
-
+*/
 
 
 //------------------------------------------------------------------ delete_objects
@@ -211,4 +249,14 @@ void World::set_camera(Camera* cam_ptr){
 	camera_ptr = cam_ptr;
 }
 
+void World::add_object(GeometricObject* object_ptr) {
+	objects.push_back(object_ptr);
+}
 
+void World::add_light(Light* light_ptr){
+	lights.push_back(light_ptr);
+}
+
+void World::set_ambient_light(Light* light_ptr){
+	ambient_ptr = light_ptr;
+}

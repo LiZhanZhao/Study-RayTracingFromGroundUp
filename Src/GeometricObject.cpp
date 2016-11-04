@@ -13,14 +13,14 @@
 // ---------------------------------------------------------------------- default constructor
 
 GeometricObject::GeometricObject(void)
-	: 	color(black)
+: color(black), material_ptr(NULL)
 {}
 
 
 // ---------------------------------------------------------------------- copy constructor
 
-GeometricObject::GeometricObject (const GeometricObject& object)
-	: 	color(object.color)
+GeometricObject::GeometricObject(const GeometricObject& object)
+: color(object.color), material_ptr(object.material_ptr)
 {
 }	
 
@@ -28,7 +28,16 @@ GeometricObject::GeometricObject (const GeometricObject& object)
 // ---------------------------------------------------------------------- destructor
 
 GeometricObject::~GeometricObject (void) {	
-	
+	if (material_ptr != NULL){
+		delete material_ptr;
+		material_ptr = NULL;
+	}
 }
-									
+void GeometricObject::set_material(Material* mPtr){
+	material_ptr = mPtr;
+}
+
+Material* GeometricObject::get_material(void){
+	return material_ptr;
+}
 

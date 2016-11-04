@@ -12,6 +12,7 @@
 
 //-------------------------------------------------------------------------------- class Sphere
 
+
 class Sphere: public GeometricObject {	
 								  	
 	public:

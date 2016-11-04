@@ -22,11 +22,11 @@
 #include "Ray.h"
 #include "SingleSphere.h"
 #include "Camera.h"
+
 #include "Light.h"
 #include "Ambient.h"
 
 using namespace std;
-
 
 class World {	
 	public:
@@ -34,8 +34,7 @@ class World {
 		ViewPlane					vp;
 		RGBColor					background_color;
 		Tracer*						tracer_ptr;
-			
-		Sphere 						sphere;		// for Chapter 3 only
+		Sphere sphere;
 		vector<GeometricObject*>	objects;		
 
 		RGBColor*					imageBuffer;
@@ -55,8 +54,7 @@ class World {
 		
 		~World();
 								
-		void 
-		add_object(GeometricObject* object_ptr);	
+		void add_object(GeometricObject* object_ptr);	
 
 		void build(void);
 						
@@ -77,6 +75,8 @@ class World {
 		void set_camera(Camera* cam_ptr);
 
 		void add_light(Light* light_ptr);
+
+		void set_ambient_light(Light* light_ptr);
 						
 	private:
 		
@@ -87,13 +87,7 @@ class World {
 
 // ------------------------------------------------------------------ add_object
 
-inline void 
-World::add_object(GeometricObject* object_ptr) {  
-	objects.push_back(object_ptr);	
-}
 
-inline void World::add_light(Light* light_ptr){
-	lights.push_back(light_ptr);
-}
+
 
 #endif

@@ -21,7 +21,7 @@ class RayCast: public Tracer {
 		~RayCast(void);		
 
 		virtual RGBColor	
-		trace_ray(const Ray ray, const int depth) const;
+		trace_ray(const Ray ray) const;
 };
 
 #endif

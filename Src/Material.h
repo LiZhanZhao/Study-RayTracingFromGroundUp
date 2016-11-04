@@ -25,8 +25,7 @@ class Material {
 		virtual 								
 		~Material(void);
 				
-		virtual RGBColor
-		shade(ShadeRec& sr);	
+		virtual RGBColor shade(ShadeRec& sr);	
 		
 	protected:
 	

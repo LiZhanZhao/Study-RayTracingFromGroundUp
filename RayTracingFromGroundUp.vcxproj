@@ -73,11 +73,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Src\Ambient.cpp" />
+    <ClCompile Include="Src\BRDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
+    <ClCompile Include="Src\Directional.cpp" />
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
+    <ClCompile Include="Src\Lambertian.cpp" />
+    <ClCompile Include="Src\Light.cpp" />
+    <ClCompile Include="Src\Material.cpp" />
     <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
+    <ClCompile Include="Src\Matte.cpp" />
     <ClCompile Include="Src\MultiJittered.cpp" />
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
@@ -86,6 +93,7 @@
     <ClCompile Include="Src\Point2D.cpp" />
     <ClCompile Include="Src\Point3D.cpp" />
     <ClCompile Include="Src\Ray.cpp" />
+    <ClCompile Include="Src\RayCast.cpp" />
     <ClCompile Include="Src\Regular.cpp" />
     <ClCompile Include="Src\RGBColor.cpp" />
     <ClCompile Include="Src\Sampler.cpp" />
@@ -101,12 +109,19 @@
     <ClCompile Include="Src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Ambient.h" />
+    <ClInclude Include="Src\BRDF.h" />
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\Constants.h" />
+    <ClInclude Include="Src\Directional.h" />
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\GeometricObject.h" />
+    <ClInclude Include="Src\Lambertian.h" />
+    <ClInclude Include="Src\Light.h" />
+    <ClInclude Include="Src\Material.h" />
     <ClInclude Include="Src\Maths.h" />
     <ClInclude Include="Src\Matrix.h" />
+    <ClInclude Include="Src\Matte.h" />
     <ClInclude Include="Src\MultiJittered.h" />
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
@@ -115,6 +130,7 @@
     <ClInclude Include="Src\Point2D.h" />
     <ClInclude Include="Src\Point3D.h" />
     <ClInclude Include="Src\Ray.h" />
+    <ClInclude Include="Src\RayCast.h" />
     <ClInclude Include="Src\Regular.h" />
     <ClInclude Include="Src\RGBColor.h" />
     <ClInclude Include="Src\Sampler.h" />

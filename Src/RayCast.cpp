@@ -32,7 +32,7 @@ RayCast::~RayCast(void) {}
 // this ignores the depth argument
 
 RGBColor	
-RayCast::trace_ray(const Ray ray) const {
+RayCast::trace_ray(const Ray& ray) const {
 	ShadeRec sr(world_ptr->hit_objects(ray));
 		
 	if (sr.hit_an_object) {

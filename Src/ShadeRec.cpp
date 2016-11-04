@@ -19,6 +19,7 @@
 
 ShadeRec::ShadeRec(World& wr)
 	: 	hit_an_object(false),
+		material_ptr(NULL),
 		hit_point(),
 		local_hit_point(),
 		normal(),
@@ -36,6 +37,7 @@ ShadeRec::ShadeRec(World& wr)
 
 ShadeRec::ShadeRec(const ShadeRec& sr)
 	: 	hit_an_object(sr.hit_an_object),
+		material_ptr(sr.material_ptr),
 		hit_point(sr.hit_point),
 		local_hit_point(sr.local_hit_point),
 		normal(sr.normal),
@@ -52,6 +54,10 @@ ShadeRec::ShadeRec(const ShadeRec& sr)
 // ------------------------------------------------------------------ destructor
 
 ShadeRec::~ShadeRec(void) {
+	if (material_ptr) {
+		delete material_ptr;
+		material_ptr = NULL;
+	}
 }
 		
 		

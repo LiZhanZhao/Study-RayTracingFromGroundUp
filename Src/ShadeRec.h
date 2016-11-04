@@ -10,6 +10,7 @@
 
 // We can use forward references for Material and World because they are a pointer and a reference
 
+class Material;
 class World;
 
 // We need the following as #includes instead of forward class declarations,
@@ -24,6 +25,7 @@ class ShadeRec {
 	public:
 	
 		bool				hit_an_object;		// did the ray hit an object?
+		Material* 			material_ptr;		// pointer to the nearest object's material
 		Point3D 			hit_point;			// world coordinates of intersection
 		Point3D				local_hit_point;	// world coordinates of hit point on untransformed object (used for texture transformations)
 		Normal				normal;				// normal at hit point

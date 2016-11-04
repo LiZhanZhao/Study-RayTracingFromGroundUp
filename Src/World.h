@@ -25,6 +25,7 @@
 
 #include "Light.h"
 #include "Ambient.h"
+#include "Directional.h"
 
 using namespace std;
 

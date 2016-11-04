@@ -40,6 +40,11 @@ void World::build(void) {
 	light_ptr2->scale_radiance(3.0);
 	add_light(light_ptr2);*/
 
+	Directional* light_ptr2 = new Directional();
+	light_ptr2->set_direction(100, 50, 150);
+	light_ptr2->scale_radiance(3.0);
+	add_light(light_ptr2);
+
 	Matte* matte_ptr1 = new Matte();
 	matte_ptr1->set_ka(0.25);
 	matte_ptr1->set_kd(0.65);

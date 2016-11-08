@@ -50,11 +50,11 @@ class Directional: public Light {
 		void
 		set_direction(float dx, float dy, float dz);
 		
-		virtual Vector3D								
-		get_direction(ShadeRec& sr);
+		virtual Vector3D get_direction(ShadeRec& sr);
 				
-		virtual RGBColor		
-		L(ShadeRec& sr);	
+		virtual RGBColor L(ShadeRec& sr);	
+
+		virtual bool in_shadow(const Ray& ray, const ShadeRec& sr) const;
 		
 	private:
 

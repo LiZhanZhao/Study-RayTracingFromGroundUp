@@ -83,7 +83,5 @@ bool PointLight::in_shadow(const Ray& ray, const ShadeRec& sr) const{
 		if (sr.w.objects[j]->shadow_hit(ray, t) && t < d)
 			return (true);
 	}
-	
-
 	return (false);
 }

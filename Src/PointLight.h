@@ -42,7 +42,7 @@ class PointLight: public Light {
 		void
 		set_color(const float r, const float g, const float b); 		
 			
-		void set_location(Vector3D pos);
+		void set_location(Point3D pos);
 		
 		void set_location(float px, float py, float pz);
 		
@@ -94,7 +94,7 @@ PointLight::set_color(const float r, const float g, const float b) {
 	color.r = r; color.g = g; color.b = b;
 }
 
-inline void PointLight::set_location(Vector3D pos){
+inline void PointLight::set_location(Point3D pos){
 	location = pos;
 }
 

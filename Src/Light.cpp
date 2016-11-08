@@ -10,11 +10,14 @@
 
 // ---------------------------------------------------------------------- default constructor
 
-Light::Light(void) {}
+Light::Light(void) {
+	shadows = true;
+}
 
 // ---------------------------------------------------------------------- copy constructor
 
-Light::Light(const Light& ls) {}
+Light::Light(const Light& ls) : shadows(ls.shadows)
+{}
 
 
 // ---------------------------------------------------------------------- assignment operator

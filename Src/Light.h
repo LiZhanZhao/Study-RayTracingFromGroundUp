@@ -36,8 +36,17 @@ class Light {
 		virtual Vector3D								
 		get_direction(ShadeRec& sr) = 0;				
 																
-		virtual RGBColor														
-		L(ShadeRec& sr);								
+		virtual RGBColor L(ShadeRec& sr);
+
+		void set_shadows(bool isOpen);
+
+	protected:
+		bool shadows;
+
 };
+
+inline void Light::set_shadows(bool isOpen){
+	shadows = isOpen;
+}
 
 #endif

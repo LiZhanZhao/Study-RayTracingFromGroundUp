@@ -80,6 +80,7 @@ void World::build(void) {
 	phong_ptr2->set_cd(0.71, 0.40, 0.16);
 	phong_ptr2->set_ks(0.25);
 	phong_ptr2->set_exp(50);
+	//phong_ptr2->set_shadows(false);
 
 	Sphere*	sphere_ptr2 = new Sphere(Point3D(-25, 10, -35), 27);
 	sphere_ptr2->set_material(phong_ptr2);
@@ -89,9 +90,13 @@ void World::build(void) {
 	matte_ptr3->set_ka(0.15);
 	matte_ptr3->set_kd(0.5);
 	matte_ptr3->set_cd(0, 0.4, 0.2);				// dark green
+	matte_ptr3->set_shadows(false);
+
 	Plane* plane_ptr = new Plane(Point3D(0, 0, -50), Normal(0, 0, 1));
 	plane_ptr->set_material(matte_ptr3);
 	add_object(plane_ptr);
+
+	//plane_ptr->set_shadows(false);
 
 	/*
 	// test Phong material and lights

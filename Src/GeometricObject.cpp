@@ -14,7 +14,9 @@
 
 GeometricObject::GeometricObject(void)
 : color(black), material_ptr(NULL)
-{}
+{
+	//shadows = true;
+}
 
 
 // ---------------------------------------------------------------------- copy constructor
@@ -22,6 +24,7 @@ GeometricObject::GeometricObject(void)
 GeometricObject::GeometricObject(const GeometricObject& object)
 : color(object.color), material_ptr(object.material_ptr)
 {
+	//shadows = object.shadows;
 }	
 
 

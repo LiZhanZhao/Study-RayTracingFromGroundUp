@@ -26,11 +26,14 @@ class Material {
 		~Material(void);
 				
 		virtual RGBColor shade(ShadeRec& sr);	
+
+		void set_shadows(bool isOpen);
 		
 	protected:
 	
 		Material& 								
 		operator= (const Material& rhs);						
+		bool shadows;
 };
 
 #endif

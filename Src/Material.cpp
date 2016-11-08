@@ -8,12 +8,16 @@
 
 // ---------------------------------------------------------------- default constructor
 
-Material::Material(void) {}
+Material::Material(void)
+:shadows(true)
+{}
 
 
 // ---------------------------------------------------------------- copy constructor
 
-Material::Material(const Material& m) {}
+Material::Material(const Material& m)
+: shadows(m.shadows)
+{}
 
 
 
@@ -41,6 +45,9 @@ Material::shade(ShadeRec& sr) {
 	return (black);
 }
 
+void Material::set_shadows(bool isOpen){
+	shadows = isOpen;
+}
 
 
 

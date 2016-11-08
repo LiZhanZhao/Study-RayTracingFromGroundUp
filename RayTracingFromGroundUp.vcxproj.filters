@@ -123,6 +123,12 @@
     <ClCompile Include="Src\PointLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\GlossySpecular.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Phong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Constants.h">
@@ -231,6 +237,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\PointLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GlossySpecular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Phong.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

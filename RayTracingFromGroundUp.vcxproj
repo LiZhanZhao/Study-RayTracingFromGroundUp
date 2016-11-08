@@ -79,6 +79,7 @@
     <ClCompile Include="Src\Directional.cpp" />
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
+    <ClCompile Include="Src\GlossySpecular.cpp" />
     <ClCompile Include="Src\Lambertian.cpp" />
     <ClCompile Include="Src\Light.cpp" />
     <ClCompile Include="Src\Material.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="Src\MultiJittered.cpp" />
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
+    <ClCompile Include="Src\Phong.cpp" />
     <ClCompile Include="Src\Pinhole.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
     <ClCompile Include="Src\Point2D.cpp" />
@@ -117,6 +119,7 @@
     <ClInclude Include="Src\Directional.h" />
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\GeometricObject.h" />
+    <ClInclude Include="Src\GlossySpecular.h" />
     <ClInclude Include="Src\Lambertian.h" />
     <ClInclude Include="Src\Light.h" />
     <ClInclude Include="Src\Material.h" />
@@ -126,6 +129,7 @@
     <ClInclude Include="Src\MultiJittered.h" />
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
+    <ClInclude Include="Src\Phong.h" />
     <ClInclude Include="Src\Pinhole.h" />
     <ClInclude Include="Src\Plane.h" />
     <ClInclude Include="Src\Point2D.h" />

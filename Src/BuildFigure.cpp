@@ -53,21 +53,36 @@ void World::build(void) {
 	light_ptr1->set_shadows(true);
 	add_light(light_ptr1);
 	
+	//Matte* matte_ptr1 = new Matte;
+	//matte_ptr1->set_ka(0.25);
+	//matte_ptr1->set_kd(0.65);
+	//matte_ptr1->set_cd(1, 1, 0);	  				// yellow	
 
-	Matte* matte_ptr1 = new Matte;
-	matte_ptr1->set_ka(0.25);
-	matte_ptr1->set_kd(0.65);
-	matte_ptr1->set_cd(1, 1, 0);	  				// yellow	
+	Phong* phong_ptr1 = new Phong();
+	phong_ptr1->set_ka(0.25);
+	phong_ptr1->set_kd(0.65);
+	phong_ptr1->set_cd(1, 1, 0);	
+	phong_ptr1->set_ks(0.25);
+	phong_ptr1->set_exp(50);
+
 	Sphere*	sphere_ptr1 = new Sphere(Point3D(10, -5, 0), 27);
-	sphere_ptr1->set_material(matte_ptr1);
+	sphere_ptr1->set_material(phong_ptr1);
 	add_object(sphere_ptr1);
 
-	Matte* matte_ptr2 = new Matte;
-	matte_ptr2->set_ka(0.15);
-	matte_ptr2->set_kd(0.85);
-	matte_ptr2->set_cd(0.71, 0.40, 0.16);   		// brown
+	//Matte* matte_ptr2 = new Matte;
+	//matte_ptr2->set_ka(0.15);
+	//matte_ptr2->set_kd(0.85);
+	//matte_ptr2->set_cd(0.71, 0.40, 0.16);   		// brown
+
+	Phong* phong_ptr2 = new Phong();
+	phong_ptr2->set_ka(0.15);
+	phong_ptr2->set_kd(0.85);
+	phong_ptr2->set_cd(0.71, 0.40, 0.16);
+	phong_ptr2->set_ks(0.25);
+	phong_ptr2->set_exp(50);
+
 	Sphere*	sphere_ptr2 = new Sphere(Point3D(-25, 10, -35), 27);
-	sphere_ptr2->set_material(matte_ptr2);
+	sphere_ptr2->set_material(phong_ptr2);
 	add_object(sphere_ptr2);
 
 	Matte* matte_ptr3 = new Matte;

@@ -62,6 +62,7 @@ Directional::~Directional(void) {}
 
 Vector3D								
 Directional::get_direction(ShadeRec& sr) {
+	dir.normalize();
 	return (dir);
 }	
 

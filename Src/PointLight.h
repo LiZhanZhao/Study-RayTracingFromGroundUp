@@ -49,14 +49,15 @@ class PointLight: public Light {
 		virtual Vector3D								
 		get_direction(ShadeRec& sr);
 				
-		virtual RGBColor		
-		L(ShadeRec& sr);	
+		virtual RGBColor L(ShadeRec& sr);
+
+		virtual bool in_shadow(const Ray& ray, const ShadeRec& sr) const;
 		
 	private:
 
 		float		ls;			
 		RGBColor	color;
-		Vector3D 	location;
+		Point3D 	location;
 };
 
 

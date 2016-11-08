@@ -93,7 +93,7 @@ RGBColor Phong::shade(ShadeRec& sr) {
 				in_shadows = sr.w.lights[j]->in_shadow(shadowRay, sr);
 			}
 
-			if (in_shadows){
+			if (!in_shadows){
 				L += (diffuse_brdf->f(sr, wo, wi) + specular_brdf->f(sr, wo, wi))
 					* sr.w.lights[j]->L(sr) * ndotwi;
 			}

@@ -41,8 +41,9 @@ class Sphere: public GeometricObject {
 		void
 		set_radius(const double r);
 						
-		virtual bool 												 
-		hit(const Ray& ray, double& t, ShadeRec& s) const;	
+		virtual bool hit(const Ray& ray, double& t, ShadeRec& s) const;	
+
+		virtual bool shadow_hit(const Ray& ray, float& t) const;
 		
 	private:
 	

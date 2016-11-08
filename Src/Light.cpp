@@ -40,9 +40,12 @@ Light::~Light(void) {}
 // ---------------------------------------------------------------------- L
 // returns the radiance
 
-RGBColor								
-Light::L(ShadeRec& s) {
+RGBColor Light::L(ShadeRec& s) {
 	return (black);
+}
+
+bool Light::in_shadow(const Ray& ray, const ShadeRec& sr) const{
+	return false;
 }
 
 

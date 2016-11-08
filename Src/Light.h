@@ -40,6 +40,10 @@ class Light {
 
 		void set_shadows(bool isOpen);
 
+		bool casts_shadows();
+
+		virtual bool in_shadow(const Ray& ray, const ShadeRec& sr) const;
+
 	protected:
 		bool shadows;
 
@@ -47,6 +51,10 @@ class Light {
 
 inline void Light::set_shadows(bool isOpen){
 	shadows = isOpen;
+}
+
+inline bool Light::casts_shadows(){
+	return shadows;
 }
 
 #endif

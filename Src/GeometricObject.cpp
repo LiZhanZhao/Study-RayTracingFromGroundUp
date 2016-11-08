@@ -41,3 +41,6 @@ Material* GeometricObject::get_material(void){
 	return material_ptr;
 }
 
+bool GeometricObject::shadow_hit(const Ray& ray, float& t) const{
+	return false;
+}

@@ -88,6 +88,8 @@ Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	
 		if (t > kEpsilon) {
 			tmin = t;
+			// (ray.o - center + t * ray.d) / radius  =>  (ray.o + t * ray.d - center ) / radius
+			// => (hitPoint - center) / radius
 			sr.normal 	 = (temp + t * ray.d) / radius;
 			sr.local_hit_point = ray.o + t * ray.d;
 			return (true);

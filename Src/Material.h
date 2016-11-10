@@ -28,6 +28,10 @@ class Material {
 		virtual RGBColor shade(ShadeRec& sr);	
 
 		void set_shadows(bool isOpen);
+
+		virtual RGBColor get_Le(ShadeRec& sr) const;
+
+		virtual RGBColor area_light_shade(ShadeRec& sr);
 		
 	protected:
 	

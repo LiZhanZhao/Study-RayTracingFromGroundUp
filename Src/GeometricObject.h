@@ -57,6 +57,8 @@ class GeometricObject {
 
 		/*void set_shadows(bool isOpen);*/
 
+		virtual Normal get_normal(const Point3D& p);
+
 	protected:
 		RGBColor color;				// only used for Bare Bones ray tracing
 		Material* material_ptr;

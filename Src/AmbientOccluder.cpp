@@ -79,6 +79,7 @@ RGBColor AmbientOccluder::L(ShadeRec& sr){
 
 	Ray shadow_ray;
 	shadow_ray.o = sr.hit_point;
+	// use sampler to determine sahdow ray 's direction
 	shadow_ray.d = get_direction(sr);
 
 	if (in_shadow(shadow_ray, sr))

@@ -27,6 +27,7 @@
 #include "Ambient.h"
 #include "Directional.h"
 #include "PointLight.h"
+#include "AmbientOccluder.h"
 
 using namespace std;
 

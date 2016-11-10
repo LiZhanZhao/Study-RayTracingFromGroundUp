@@ -29,6 +29,16 @@ class AmbientOccluder : public Light {
 
 		virtual RGBColor L(ShadeRec& sr);
 
+		void scale_radiance(const float b);
+
+		void set_color(const float c);
+
+		void set_color(const RGBColor& c);
+
+		void set_color(const float r, const float g, const float b);
+
+		void set_min_amount(const float amount);
+
 	private:
 
 		float		ls;
@@ -38,5 +48,36 @@ class AmbientOccluder : public Light {
 		Sampler*	sampler_ptr;
 };
 
+inline void
+AmbientOccluder::scale_radiance(const float b) {
+	ls = b;
+}
+
+// ------------------------------------------------------------------------------- set_color
+
+inline void
+AmbientOccluder::set_color(const float c) {
+	color.r = c; color.g = c; color.b = c;
+}
+
+
+// ------------------------------------------------------------------------------- set_color
+
+inline void
+AmbientOccluder::set_color(const RGBColor& c) {
+	color = c;
+}
+
+
+// ------------------------------------------------------------------------------- set_color
+
+inline void
+AmbientOccluder::set_color(const float r, const float g, const float b) {
+	color.r = r; color.g = g; color.b = b;
+}
+
+inline void AmbientOccluder::set_min_amount(const float amount){
+	min_amount = amount;
+}
 
 #endif

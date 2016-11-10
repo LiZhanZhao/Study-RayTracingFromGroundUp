@@ -11,14 +11,14 @@
 
 void World::build(void) {
 
-
-	int num_samples = 1;
 	int vpWidth = 400;
 	int vpHeight = 400;
 
+	//int num_samples = 1;
+	int num_samples = 64;
+
 	vp.set_hres(vpWidth);
 	vp.set_vres(vpHeight);
-	vp.set_pixel_size(0.5);
 	vp.set_samples(num_samples);
 
 	imageWidth = vpWidth;
@@ -26,156 +26,135 @@ void World::build(void) {
 	imageBuffer = new RGBColor[imageWidth * imageHeight];
 
 	tracer_ptr = new RayCast(this);
+
+	MultiJittered* sampler_ptr = new MultiJittered(num_samples);
+
 
 	Ambient* ambient_ptr = new Ambient;
 	ambient_ptr->scale_radiance(1.0);
-	set_ambient_light(ambient_ptr);
+	//set_ambient_light(ambient_ptr);
+
+	AmbientOccluder* occluder_ptr = new AmbientOccluder;
+	occluder_ptr->scale_radiance(1.0);
+	occluder_ptr->set_min_amount(0.0);
+	occluder_ptr->set_sampler(sampler_ptr);
+	set_ambient_light(occluder_ptr);
+
 
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(0, 0, 500);
-	pinhole_ptr->set_lookat(-15, -10, 0);
-	pinhole_ptr->set_view_distance(850.0);
-	pinhole_ptr->compute_uvw();
-	set_camera(pinhole_ptr);
-	
-	/*
-	PointLight* light_ptr2 = new PointLight;
-	light_ptr2->set_location(100, 50, 150);
-	light_ptr2->scale_radiance(3.0);
-	light_ptr2->set_shadows(true);
-	add_light(light_ptr2);
-	*/
-
-	
-	Directional* light_ptr1 = new Directional;
-	light_ptr1->set_direction(100, 50, 150);
-	light_ptr1->scale_radiance(3.0);
-	light_ptr1->set_shadows(true);
-	add_light(light_ptr1);
-	
-	//Matte* matte_ptr1 = new Matte;
-	//matte_ptr1->set_ka(0.25);
-	//matte_ptr1->set_kd(0.65);
-	//matte_ptr1->set_cd(1, 1, 0);	  				// yellow	
-
-	Phong* phong_ptr1 = new Phong();
-	phong_ptr1->set_ka(0.25);
-	phong_ptr1->set_kd(0.65);
-	phong_ptr1->set_cd(1, 1, 0);	
-	phong_ptr1->set_ks(0.25);
-	phong_ptr1->set_exp(50);
-
-	Sphere*	sphere_ptr1 = new Sphere(Point3D(10, -5, 0), 27);
-	sphere_ptr1->set_material(phong_ptr1);
-	add_object(sphere_ptr1);
-
-	//Matte* matte_ptr2 = new Matte;
-	//matte_ptr2->set_ka(0.15);
-	//matte_ptr2->set_kd(0.85);
-	//matte_ptr2->set_cd(0.71, 0.40, 0.16);   		// brown
-
-	Phong* phong_ptr2 = new Phong();
-	phong_ptr2->set_ka(0.15);
-	phong_ptr2->set_kd(0.85);
-	phong_ptr2->set_cd(0.71, 0.40, 0.16);
-	phong_ptr2->set_ks(0.25);
-	phong_ptr2->set_exp(50);
-	//phong_ptr2->set_shadows(false);
-
-	Sphere*	sphere_ptr2 = new Sphere(Point3D(-25, 10, -35), 27);
-	sphere_ptr2->set_material(phong_ptr2);
-	add_object(sphere_ptr2);
-
-	Matte* matte_ptr3 = new Matte;
-	matte_ptr3->set_ka(0.15);
-	matte_ptr3->set_kd(0.5);
-	matte_ptr3->set_cd(0, 0.4, 0.2);				// dark green
-	matte_ptr3->set_shadows(false);
-
-	Plane* plane_ptr = new Plane(Point3D(0, 0, -50), Normal(0, 0, 1));
-	plane_ptr->set_material(matte_ptr3);
-	add_object(plane_ptr);
-
-	//plane_ptr->set_shadows(false);
-
-	/*
-	// test Phong material and lights
-	int num_samples = 16;
-
-	int vpWidth = 600;
-	int vpHeight = 400;
-
-	vp.set_hres(vpWidth);
-	vp.set_vres(vpHeight);
-	vp.set_samples(num_samples);
-
-	imageWidth = vpWidth;
-	imageHeight = vpHeight;
-	imageBuffer = new RGBColor[imageWidth * imageHeight];
-
-	tracer_ptr = new RayCast(this);
-
-	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->scale_radiance(0.5);
-	set_ambient_light(ambient_ptr);
-
-	float a = 0.75;
-	background_color = RGBColor(0.0, 0.3 * a, 0.25 * a);  // torquise
-
-	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(7.5, 4, 10);
-	pinhole_ptr->set_lookat(-1, 3.7, 0);
-	pinhole_ptr->set_view_distance(340);
+	pinhole_ptr->set_eye(25, 20, 45);
+	pinhole_ptr->set_lookat(0, 1, 0);
+	pinhole_ptr->set_view_distance(5000);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-	Directional* light_ptr1 = new Directional;	// for Figure 15.8(a)
-	light_ptr1->set_direction(15, 15, 2.5);
-	light_ptr1->scale_radiance(2.0);
-	//add_light(light_ptr1);
+	// sphere
 
-	PointLight* light_ptr2 = new PointLight;	// for Figure 15.8(b)
-	light_ptr2->set_location(15, 15, 2.5);
-	light_ptr2->scale_radiance(2.0);
-	add_light(light_ptr2);
+	Matte* matte_ptr1 = new Matte;
+	matte_ptr1->set_ka(0.75);
+	matte_ptr1->set_kd(0);
+	matte_ptr1->set_cd(1, 1, 0);   // yellow
 
-	
-	Phong* phong_ptr1 = new Phong;
-	phong_ptr1->set_ka(0.25);
-	phong_ptr1->set_kd(0.75);
-	phong_ptr1->set_cd(0.75, 0.75, 0);  	// dark yellow
-	phong_ptr1->set_ks(0.25);
-	phong_ptr1->set_exp(50);
-
-	Phong* phong_ptr2 = new Phong;
-	phong_ptr2->set_ka(0.45);
-	phong_ptr2->set_kd(0.75);
-	phong_ptr2->set_cd(0.75, 0.25, 0);   	// orange
-	phong_ptr2->set_ks(0.25);
-	phong_ptr2->set_exp(500);
-	
-	Matte* matte_ptr5 = new Matte;
-	matte_ptr5->set_ka(0.20);
-	matte_ptr5->set_kd(0.97);
-	matte_ptr5->set_cd(white);
-
-	// spheres
-
-	Sphere* sphere_ptr1 = new Sphere(Point3D(3.85, 2.3, -2.55), 2.3);
-	sphere_ptr1->set_material(phong_ptr1);
-	add_object(sphere_ptr1);
-
-	Sphere* sphere_ptr2 = new Sphere(Point3D(-0.7, 1, 4.2), 2);
-	sphere_ptr2->set_material(phong_ptr2);
-	add_object(sphere_ptr2);
+	Sphere* sphere_ptr = new Sphere(Point3D(0, 1, 0), 1);
+	sphere_ptr->set_material(matte_ptr1);
+	add_object(sphere_ptr);
 
 	// ground plane
 
-	Plane* plane_ptr = new Plane(Point3D(0), Normal(0, 1, 0));
-	plane_ptr->set_material(matte_ptr5);
-	add_object(plane_ptr);
-	*/
+	Matte* matte_ptr2 = new Matte;
+	matte_ptr2->set_ka(0.75);
+	matte_ptr2->set_kd(0);
+	matte_ptr2->set_cd(white);
 
+	Plane* plane_ptr = new Plane(Point3D(0), Normal(0, 1, 0));
+	plane_ptr->set_material(matte_ptr2);
+	add_object(plane_ptr);
+
+	//int num_samples = 1;
+	//int vpWidth = 400;
+	//int vpHeight = 400;
+
+	//vp.set_hres(vpWidth);
+	//vp.set_vres(vpHeight);
+	//vp.set_pixel_size(0.5);
+	//vp.set_samples(num_samples);
+
+	//imageWidth = vpWidth;
+	//imageHeight = vpHeight;
+	//imageBuffer = new RGBColor[imageWidth * imageHeight];
+
+	//tracer_ptr = new RayCast(this);
+
+	//Ambient* ambient_ptr = new Ambient;
+	//ambient_ptr->scale_radiance(1.0);
+	//set_ambient_light(ambient_ptr);
+
+	//Pinhole* pinhole_ptr = new Pinhole;
+	//pinhole_ptr->set_eye(0, 0, 500);
+	//pinhole_ptr->set_lookat(-15, -10, 0);
+	//pinhole_ptr->set_view_distance(850.0);
+	//pinhole_ptr->compute_uvw();
+	//set_camera(pinhole_ptr);
+	//
+	///*
+	//PointLight* light_ptr2 = new PointLight;
+	//light_ptr2->set_location(100, 50, 150);
+	//light_ptr2->scale_radiance(3.0);
+	//light_ptr2->set_shadows(true);
+	//add_light(light_ptr2);
+	//*/
+
+	//
+	//Directional* light_ptr1 = new Directional;
+	//light_ptr1->set_direction(100, 50, 150);
+	//light_ptr1->scale_radiance(3.0);
+	//light_ptr1->set_shadows(true);
+	//add_light(light_ptr1);
+	//
+	////Matte* matte_ptr1 = new Matte;
+	////matte_ptr1->set_ka(0.25);
+	////matte_ptr1->set_kd(0.65);
+	////matte_ptr1->set_cd(1, 1, 0);	  				// yellow	
+
+	//Phong* phong_ptr1 = new Phong();
+	//phong_ptr1->set_ka(0.25);
+	//phong_ptr1->set_kd(0.65);
+	//phong_ptr1->set_cd(1, 1, 0);	
+	//phong_ptr1->set_ks(0.25);
+	//phong_ptr1->set_exp(50);
+
+	//Sphere*	sphere_ptr1 = new Sphere(Point3D(10, -5, 0), 27);
+	//sphere_ptr1->set_material(phong_ptr1);
+	//add_object(sphere_ptr1);
+
+	////Matte* matte_ptr2 = new Matte;
+	////matte_ptr2->set_ka(0.15);
+	////matte_ptr2->set_kd(0.85);
+	////matte_ptr2->set_cd(0.71, 0.40, 0.16);   		// brown
+
+	//Phong* phong_ptr2 = new Phong();
+	//phong_ptr2->set_ka(0.15);
+	//phong_ptr2->set_kd(0.85);
+	//phong_ptr2->set_cd(0.71, 0.40, 0.16);
+	//phong_ptr2->set_ks(0.25);
+	//phong_ptr2->set_exp(50);
+	////phong_ptr2->set_shadows(false);
+
+	//Sphere*	sphere_ptr2 = new Sphere(Point3D(-25, 10, -35), 27);
+	//sphere_ptr2->set_material(phong_ptr2);
+	//add_object(sphere_ptr2);
+
+	//Matte* matte_ptr3 = new Matte;
+	//matte_ptr3->set_ka(0.15);
+	//matte_ptr3->set_kd(0.5);
+	//matte_ptr3->set_cd(0, 0.4, 0.2);				// dark green
+	//matte_ptr3->set_shadows(false);
+
+	//Plane* plane_ptr = new Plane(Point3D(0, 0, -50), Normal(0, 0, 1));
+	//plane_ptr->set_material(matte_ptr3);
+	//add_object(plane_ptr);
+
+	////plane_ptr->set_shadows(false);
 }
 
 

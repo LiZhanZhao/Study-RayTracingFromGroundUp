@@ -43,8 +43,9 @@ class Matte: public Material {
 		void																						
 		set_cd(const float c);
 				
-		virtual RGBColor										
-		shade(ShadeRec& sr);
+		virtual RGBColor shade(ShadeRec& sr);
+
+		virtual RGBColor area_light_shade(ShadeRec& sr);
 		
 	private:
 		

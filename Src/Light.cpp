@@ -49,5 +49,11 @@ bool Light::in_shadow(const Ray& ray, const ShadeRec& sr) const{
 }
 
 
+float Light::G(const ShadeRec& sr) const{
+	return 1.0f;
+}
 
+float Light::pdf(const ShadeRec& sr) const{
+	return 1.0f
+}
 

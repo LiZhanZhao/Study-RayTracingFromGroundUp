@@ -16,6 +16,7 @@
 #include "Normal.h"
 #include "Ray.h"
 #include "ShadeRec.h"
+#include "Sampler.h"
 
 class Material;	
 
@@ -69,6 +70,8 @@ class GeometricObject {
 		RGBColor color;				// only used for Bare Bones ray tracing
 		Material* material_ptr;
 		//bool shadows;
+
+		//Sampler* sampler_ptr;
 };
 
 

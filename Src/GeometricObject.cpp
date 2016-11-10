@@ -47,3 +47,23 @@ Material* GeometricObject::get_material(void){
 bool GeometricObject::shadow_hit(const Ray& ray, float& t) const{
 	return false;
 }
+
+float GeometricObject::pdf(const ShadeRec& sr){
+	return 1.0f;
+}
+
+Normal GeometricObject::get_normal(const Point3D& p){
+	return Normal(0, 1, 0);
+}
+
+Point3D GeometricObject::sample(void){
+	return Point3D(0.0f);
+}
+
+void GeometricObject::set_sampler(Sampler* sampler){
+	/*if (sampler_ptr != NULL){
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
+	sampler_ptr = sampler;*/
+}

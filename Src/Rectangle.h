@@ -7,7 +7,7 @@
 //	See the file COPYING.txt for the full license.
 
 
-#include "Sampler.h"
+//#include "Sampler.h"
 #include "GeometricObject.h"
 
 class Rectangle: public GeometricObject {	

@@ -49,5 +49,12 @@ void Material::set_shadows(bool isOpen){
 	shadows = isOpen;
 }
 
+RGBColor Material::get_Le(ShadeRec& sr) const{
+	return (black);
+}
+
+RGBColor Material::area_light_shade(ShadeRec& sr){
+	return (black);
+}
 
 

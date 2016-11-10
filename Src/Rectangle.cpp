@@ -202,7 +202,7 @@ Rectangle::get_normal(const Point3D& p) {
 // ---------------------------------------------------------------- pdf
 
 float
-Rectangle::pdf(ShadeRec& sr) {	
+Rectangle::pdf(const ShadeRec& sr) {	
 	return (inv_area);
 } 
 

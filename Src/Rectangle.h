@@ -39,16 +39,13 @@ class Rectangle: public GeometricObject {
 		
 		// the following functions are used when the rectangle is a light source
 		
-		virtual void 								
-		set_sampler(Sampler* sampler); 
+		virtual void set_sampler(Sampler* sampler); 
 				
-		virtual Point3D 											
-		sample(void);
+		virtual Point3D sample(void);
 		
 		virtual Normal get_normal(const Point3D& p);
 		
-		virtual float												
-		pdf(ShadeRec& sr);
+		virtual float pdf(const ShadeRec& sr);
 		
 	private:
 	

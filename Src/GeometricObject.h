@@ -57,7 +57,13 @@ class GeometricObject {
 
 		/*void set_shadows(bool isOpen);*/
 
+		virtual void set_sampler(Sampler* sampler);
+
+		virtual Point3D sample(void);
+
 		virtual Normal get_normal(const Point3D& p);
+
+		virtual float pdf(const ShadeRec& sr);
 
 	protected:
 		RGBColor color;				// only used for Bare Bones ray tracing

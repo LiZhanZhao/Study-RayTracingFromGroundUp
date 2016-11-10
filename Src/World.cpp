@@ -3,24 +3,6 @@
 #include "World.h"
 #include "Constants.h"
 
-// geometric objects
-
-#include "Plane.h"
-#include "Sphere.h"
-
-// tracers
-
-//#include "SingleSphere.h"
-//#include "MultipleObjects.h"
-#include "RayCast.h"
-
-// cameras
-#include "Pinhole.h"
-#include "ThinLens.h"
-#include "Fisheye.h"
-#include "Spherical.h"
-#include "StereoCamera.h"
-
 // utilities
 
 #include "Vector3D.h"

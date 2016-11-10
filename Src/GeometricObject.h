@@ -56,7 +56,7 @@ class GeometricObject {
 
 		virtual bool shadow_hit(const Ray& ray, float& t) const;
 
-		/*void set_shadows(bool isOpen);*/
+		void set_shadows(bool isOpen);
 
 		virtual void set_sampler(Sampler* sampler);
 
@@ -69,7 +69,7 @@ class GeometricObject {
 	protected:
 		RGBColor color;				// only used for Bare Bones ray tracing
 		Material* material_ptr;
-		//bool shadows;
+		bool shadows;
 
 		//Sampler* sampler_ptr;
 };
@@ -97,9 +97,9 @@ inline RGBColor GeometricObject::get_color(void) {
 	return (color);
 }
 
-//inline void GeometricObject::set_shadows(bool isOpen){
-//	shadows = isOpen;
-//}
+inline void GeometricObject::set_shadows(bool isOpen){
+	shadows = isOpen;
+}
 
 
 #endif

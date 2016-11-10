@@ -24,10 +24,7 @@
 #include "Camera.h"
 
 #include "Light.h"
-#include "Ambient.h"
-#include "Directional.h"
-#include "PointLight.h"
-#include "AmbientOccluder.h"
+
 
 using namespace std;
 

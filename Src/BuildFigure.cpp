@@ -50,7 +50,7 @@ void World::build(void) {
 	vp.set_sampler(sampler_ptr);
 
 	imageWidth = vpWidth;
-	imageHeight = vpHeight;
+	imageHeight = vpHeight; 
 	imageBuffer = new RGBColor[imageWidth * imageHeight];
 
 	background_color = RGBColor(0.5);
@@ -90,6 +90,7 @@ void World::build(void) {
 
 
 	AreaLight* area_light_ptr = new AreaLight;
+	// set object to area light
 	area_light_ptr->set_object(rectangle_ptr);
 	area_light_ptr->set_shadows(true);
 	add_light(area_light_ptr);

@@ -146,6 +146,7 @@ RGBColor Matte::area_light_shade(ShadeRec& sr) {
 	int 		num_lights = sr.w.lights.size();
 
 	for (int j = 0; j < num_lights; j++) {
+		// wi is sr.hit_point point to area light's sample_point
 		Vector3D 	wi = sr.w.lights[j]->get_direction(sr);
 		float 		ndotwi = sr.normal * wi;
 

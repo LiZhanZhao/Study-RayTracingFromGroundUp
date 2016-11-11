@@ -121,6 +121,7 @@ AreaLight::in_shadow(const Ray& ray, const ShadeRec& sr) const {
 
 float
 AreaLight::G(const ShadeRec& sr) const {
+	// wi is sr.hit_point point to area light's sample_point
 	float ndotd = -light_normal * wi;
 	float d2 	= sample_point.d_squared(sr.hit_point);
 		

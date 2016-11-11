@@ -40,8 +40,8 @@ void World::build(void) {
 	int vpWidth = 400;
 	int vpHeight = 400;
 
-	int num_samples = 1;   		// for Figure 18.4(a)
-	//	int num_samples = 100;   	// for Figure 18.4(b) & (c)
+	//int num_samples = 1;   		// for Figure 18.4(a)
+	int num_samples = 100;   	// for Figure 18.4(b) & (c)
 
 	Sampler* sampler_ptr = new MultiJittered(num_samples);
 
@@ -74,8 +74,8 @@ void World::build(void) {
 
 	float width = 4.0;				// for Figure 18.4(a) & (b)
 	float height = 4.0;
-	//	float width = 2.0;				// for Figure 18.4(c)
-	//	float height = 2.0;
+	//float width = 2.0;				// for Figure 18.4(c)
+	//float height = 2.0;
 	Point3D center(0.0, 7.0, -7.0);	// center of each area light (rectangular, disk, and spherical)
 	Point3D p0(-0.5 * width, center.y - 0.5 * height, center.z);
 	Vector3D a(width, 0.0, 0.0);

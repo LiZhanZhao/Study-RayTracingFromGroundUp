@@ -50,8 +50,8 @@ World::~World(void) {
 		delete buffer;
 	}*/
 
-	delete_objects();				
-	delete_lights();
+	//delete_objects();				
+	//delete_lights();
 }
 
 // ------------------------------------------------------------------ clamp
@@ -193,8 +193,11 @@ World::delete_objects(void) {
 	int num_objects = objects.size();
 	
 	for (int j = 0; j < num_objects; j++) {
-		delete objects[j];
-		objects[j] = NULL;
+		if (objects[j] != NULL)
+		{
+			delete objects[j];
+			objects[j] = NULL;
+		}
 	}	
 	
 	objects.erase (objects.begin(), objects.end());

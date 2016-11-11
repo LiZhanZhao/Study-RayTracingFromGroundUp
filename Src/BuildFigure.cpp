@@ -45,8 +45,8 @@ void World::build(void) {
 
 	Sampler* sampler_ptr = new MultiJittered(num_samples);
 
-	vp.set_hres(600);
-	vp.set_vres(600);
+	vp.set_hres(vpWidth);
+	vp.set_vres(vpHeight);
 	vp.set_sampler(sampler_ptr);
 
 	imageWidth = vpWidth;
@@ -144,10 +144,10 @@ void World::build(void) {
 	box_ptr3->set_material(matte_ptr1);
 	add_object(box_ptr3);*/
 
-	Sphere* box_ptr3 = new Sphere(
+	Sphere* sphere_ptr3 = new Sphere(
 		Point3D(1.5 * gap + box_width, 0.0, -0.5 * box_depth), 2.0f);
-	box_ptr3->set_material(matte_ptr1);
-	add_object(box_ptr3);
+	sphere_ptr3->set_material(matte_ptr1);
+	add_object(sphere_ptr3);
 
 
 	// ground plane

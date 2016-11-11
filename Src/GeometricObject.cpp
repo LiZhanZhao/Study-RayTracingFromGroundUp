@@ -31,6 +31,7 @@ GeometricObject::GeometricObject(const GeometricObject& object)
 // ---------------------------------------------------------------------- destructor
 
 GeometricObject::~GeometricObject (void) {	
+
 	if (material_ptr != NULL){
 		delete material_ptr;
 		material_ptr = NULL;

@@ -81,6 +81,7 @@
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
     <ClCompile Include="Src\Emissive.cpp" />
+    <ClCompile Include="Src\EnvironmentLight.cpp" />
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\GlossySpecular.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="Src\Constants.h" />
     <ClInclude Include="Src\Directional.h" />
     <ClInclude Include="Src\Emissive.h" />
+    <ClInclude Include="Src\EnvironmentLight.h" />
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\GlossySpecular.h" />

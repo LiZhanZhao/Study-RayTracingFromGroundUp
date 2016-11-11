@@ -144,6 +144,9 @@
     <ClCompile Include="Src\AreaLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\EnvironmentLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Constants.h">
@@ -273,6 +276,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\AreaLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\EnvironmentLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

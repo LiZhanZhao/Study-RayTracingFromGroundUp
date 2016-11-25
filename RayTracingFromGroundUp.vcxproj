@@ -77,6 +77,7 @@
     <ClCompile Include="Src\AmbientOccluder.cpp" />
     <ClCompile Include="Src\AreaLight.cpp" />
     <ClCompile Include="Src\AreaLighting.cpp" />
+    <ClCompile Include="Src\BBox.cpp" />
     <ClCompile Include="Src\BRDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
@@ -85,6 +86,7 @@
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\GlossySpecular.cpp" />
+    <ClCompile Include="Src\Instance.cpp" />
     <ClCompile Include="Src\Lambertian.cpp" />
     <ClCompile Include="Src\Light.cpp" />
     <ClCompile Include="Src\Material.cpp" />
@@ -122,6 +124,7 @@
     <ClInclude Include="Src\AmbientOccluder.h" />
     <ClInclude Include="Src\AreaLight.h" />
     <ClInclude Include="Src\AreaLighting.h" />
+    <ClInclude Include="Src\BBox.h" />
     <ClInclude Include="Src\BRDF.h" />
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\Constants.h" />
@@ -131,6 +134,7 @@
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\GlossySpecular.h" />
+    <ClInclude Include="Src\Instance.h" />
     <ClInclude Include="Src\Lambertian.h" />
     <ClInclude Include="Src\Light.h" />
     <ClInclude Include="Src\Material.h" />

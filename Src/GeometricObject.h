@@ -17,7 +17,7 @@
 #include "Ray.h"
 #include "ShadeRec.h"
 #include "Sampler.h"
-
+#include "BBox.h"
 class Material;	
 
 
@@ -66,9 +66,14 @@ class GeometricObject {
 
 		virtual float pdf(const ShadeRec& sr);
 
+		virtual void set_bounding_box(void);
+
+		virtual BBox get_bounding_box(void);
+
 	protected:
 		RGBColor color;				// only used for Bare Bones ray tracing
-		Material* material_ptr;
+		//Material* material_ptr;
+		mutable Material*  material_ptr;   	// mutable allows the const functions Compound::hit, Instance::hit, and RegularGrid::hit to assign to material_ptr
 		bool shadows;
 
 		//Sampler* sampler_ptr;

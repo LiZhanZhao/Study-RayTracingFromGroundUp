@@ -68,3 +68,10 @@ void GeometricObject::set_sampler(Sampler* sampler){
 	}
 	sampler_ptr = sampler;*/
 }
+
+void GeometricObject::set_bounding_box(void) {
+}
+
+BBox GeometricObject::get_bounding_box(void) {
+	return BBox();
+}

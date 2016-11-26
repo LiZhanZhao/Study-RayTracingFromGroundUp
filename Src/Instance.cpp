@@ -236,11 +236,13 @@ Instance::set_material(Material* m_ptr) {
 
 bool 												 
 Instance::hit(const Ray& ray, double& t, ShadeRec& sr) const {
+	// todo : ray : from world to object
 	Ray inv_ray(ray);  
 	inv_ray.o = inv_matrix * inv_ray.o;   
 	inv_ray.d = inv_matrix * inv_ray.d;
 				
 	if (object_ptr->hit(inv_ray, t, sr)) {
+		// todo: normal : from object to world 
 		sr.normal = inv_matrix * sr.normal;
 		sr.normal.normalize();				
 						

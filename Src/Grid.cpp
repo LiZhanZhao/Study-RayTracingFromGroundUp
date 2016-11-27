@@ -812,6 +812,7 @@ Grid::hit(const Ray& ray, double& t, ShadeRec& sr) const {
 		tz_max = (z0 - oz) * c;
 	}
 	
+	// todo : t0 is minTime, t1 is maxTime, if minTime > maxTime,so ray miss bbox
 	double t0, t1;
 	
 	if (tx_min > ty_min)
@@ -844,6 +845,7 @@ Grid::hit(const Ray& ray, double& t, ShadeRec& sr) const {
 		iz = clamp((oz - z0) * nz / (z1 - z0), 0, nz - 1);
 	}
 	else {
+		// calculate the hit point (p)
 		Point3D p = ray.o + t0 * ray.d;  // initial hit point with grid's bounding box
 		ix = clamp((p.x - x0) * nx / (x1 - x0), 0, nx - 1);
 		iy = clamp((p.y - y0) * ny / (y1 - y0), 0, ny - 1);
@@ -913,7 +915,9 @@ Grid::hit(const Ray& ray, double& t, ShadeRec& sr) const {
 	}
 	
 		
-	// traverse the grid
+	// traverse the grid 
+	// (compare tx_next,ty_next, tz_next, find the min next,because the min next is neatest
+	// the cell whose the hit point)
 	
 	while (true) {	
 		GeometricObject* object_ptr = cells[ix + nx * iy + nx * ny * iz];

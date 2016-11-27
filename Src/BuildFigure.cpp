@@ -37,48 +37,112 @@
 #include "Sphere.h"
 #include "Rectangle.h"
 #include "Instance.h"
+#include "Grid.h"
 
 void World::build(void) {
+
 	int vpWidth = 400;
 	int vpHeight = 400;
-	int num_samples = 16;
+
+	int num_samples = 1;
 
 	imageWidth = vpWidth;
 	imageHeight = vpHeight; 
 	imageBuffer = new RGBColor[imageWidth * imageHeight];
 
-	vp.set_hres(imageWidth);
-	vp.set_vres(imageHeight);
+	vp.set_hres(vpWidth);
+	vp.set_vres(vpHeight);
 	vp.set_samples(num_samples);
 
 	tracer_ptr = new RayCast(this);
 
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(100, 0, 100);
-	pinhole_ptr->set_lookat(0, 1, 0);
-	pinhole_ptr->set_view_distance(8000);
+	pinhole_ptr->set_eye(0, 0, 20);
+	pinhole_ptr->set_lookat(0, 0, 0);
+	pinhole_ptr->set_view_distance(3600);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-	PointLight* light_ptr = new PointLight;
-	light_ptr->set_location(50, 50, 1);
+	Directional* light_ptr = new Directional;
+	light_ptr->set_direction(-10, 20, 20);
 	light_ptr->scale_radiance(3.0);
+	light_ptr->set_shadows(false);
 	add_light(light_ptr);
 
-	Phong* phong_ptr = new Phong;
-	phong_ptr->set_cd(0.75);
-	phong_ptr->set_ka(0.25);
-	phong_ptr->set_kd(0.8);
-	phong_ptr->set_ks(0.15);
-	phong_ptr->set_exp(50.0);
+	int num_spheres = 1000;			// for Figure 22.11(a)
+	//	int num_spheres = 10000;		// for Figure 22.11(b)
+	//	int num_spheres = 100000;		// for Figure 22.11(c)
+	//	int num_spheres = 1000000;		// for Figure 22.11(d)			
 
-	// node: this is have a sphere
-	Instance* ellipsoid_ptr = new Instance(new Sphere);
-	ellipsoid_ptr->set_material(phong_ptr);
-	ellipsoid_ptr->scale(2, 3, 1);
-	ellipsoid_ptr->rotate_x(-45);
-	ellipsoid_ptr->translate(0, 1, 0);
-	add_object(ellipsoid_ptr);
+	float volume = 0.1 / num_spheres;
+	float radius = pow(0.75 * volume / 3.14159, 0.333333);
+
+	set_rand_seed(15);
+
+	Grid* grid_ptr = new Grid;
+
+	for (int j = 0; j < num_spheres; j++) {
+		Matte* matte_ptr = new Matte;
+		matte_ptr->set_ka(0.25);
+		matte_ptr->set_kd(0.75);
+		matte_ptr->set_cd(rand_float(), rand_float(), rand_float());
+
+		Sphere*	sphere_ptr = new Sphere;
+		sphere_ptr->set_radius(radius);
+		sphere_ptr->set_center(1.0 - 2.0 * rand_float(),
+			1.0 - 2.0 * rand_float(),
+			1.0 - 2.0 * rand_float());
+		sphere_ptr->set_material(matte_ptr);
+		grid_ptr->add_object(sphere_ptr);
+	}
+
+	grid_ptr->setup_cells();
+	add_object(grid_ptr);
+
+
+	//int vpWidth = 400;
+	//int vpHeight = 400;
+	//int num_samples = 16;
+
+	//imageWidth = vpWidth;
+	//imageHeight = vpHeight; 
+	//imageBuffer = new RGBColor[imageWidth * imageHeight];
+
+	//vp.set_hres(imageWidth);
+	//vp.set_vres(imageHeight);
+	//vp.set_samples(num_samples);
+
+	//tracer_ptr = new RayCast(this);
+
+	//Pinhole* pinhole_ptr = new Pinhole;
+	//pinhole_ptr->set_eye(100, 0, 100);
+	//pinhole_ptr->set_lookat(0, 1, 0);
+	//pinhole_ptr->set_view_distance(8000);
+	//pinhole_ptr->compute_uvw();
+	//set_camera(pinhole_ptr);
+
+	//PointLight* light_ptr = new PointLight;
+	//light_ptr->set_location(50, 50, 1);
+	//light_ptr->scale_radiance(3.0);
+	//add_light(light_ptr);
+
+	//Phong* phong_ptr = new Phong;
+	//phong_ptr->set_cd(0.75);
+	//phong_ptr->set_ka(0.25);
+	//phong_ptr->set_kd(0.8);
+	//phong_ptr->set_ks(0.15);
+	//phong_ptr->set_exp(50.0);
+
+	//// node: this is have a sphere
+	//Instance* ellipsoid_ptr = new Instance(new Sphere);
+	//ellipsoid_ptr->set_material(phong_ptr);
+	//ellipsoid_ptr->scale(2, 3, 1);
+	//ellipsoid_ptr->rotate_x(-45);
+	//ellipsoid_ptr->translate(0, 1, 0);
+	//add_object(ellipsoid_ptr);
+
+
+
 
 	//int vpWidth = 600;
 	//int vpHeight = 400;

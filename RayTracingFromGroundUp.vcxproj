@@ -112,6 +112,7 @@
     <ClCompile Include="Src\Sampler.cpp" />
     <ClCompile Include="Src\ShadeRec.cpp" />
     <ClCompile Include="Src\SingleSphere.cpp" />
+    <ClCompile Include="Src\SmoothTriangle.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
     <ClCompile Include="Src\Spherical.cpp" />
     <ClCompile Include="Src\StereoCamera.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Src\Sampler.h" />
     <ClInclude Include="Src\ShadeRec.h" />
     <ClInclude Include="Src\SingleSphere.h" />
+    <ClInclude Include="Src\SmoothTriangle.h" />
     <ClInclude Include="Src\Sphere.h" />
     <ClInclude Include="Src\Spherical.h" />
     <ClInclude Include="Src\StereoCamera.h" />

@@ -21,8 +21,8 @@
 //#include "FlatUVMeshTriangle.h"
 //#include "SmoothUVMeshTriangle.h"
 //
-//#include "Triangle.h"
-//#include "SmoothTriangle.h"
+#include "Triangle.h"
+#include "SmoothTriangle.h"
 //
 //#include "ply.h"
 
@@ -648,7 +648,7 @@ Grid::tessellate_flat_sphere(const int horizontal_steps, const int vertical_step
 
 // ------------------------------------------------------------------------------------------------  tesselate_smooth_sphere
 // tesselate a unit sphere into smooth triangles that are stored directly in the grid
-/*
+
 void												
 Grid::tessellate_smooth_sphere(const int horizontal_steps, const int vertical_steps) {
 	double pi = 3.1415926535897932384;
@@ -671,6 +671,7 @@ Grid::tessellate_smooth_sphere(const int horizontal_steps, const int vertical_st
 					cos(2.0 * pi * (j + 1) / horizontal_steps) * sin(pi * k / vertical_steps)	);
 	
 		SmoothTriangle* triangle_ptr = new SmoothTriangle(v0, v1, v2);
+		// todo : set the normal
 		triangle_ptr->n0 = v0;
 		triangle_ptr->n1 = v1;
 		triangle_ptr->n2 = v2;
@@ -754,7 +755,7 @@ Grid::tessellate_smooth_sphere(const int horizontal_steps, const int vertical_st
 		}
 	}	
 }
-*/
+
 
 // ---------------------------------------------------------------- hit
 

@@ -21,7 +21,7 @@
 
 #include "Compound.h"
 #include "ShadeRec.h"
-#include "Triangle.h"
+
 //#include "Mesh.h"
 
 
@@ -54,7 +54,7 @@ class Grid: public Compound {
 
 		void tessellate_flat_sphere(const int horizontal_steps, const int vertical_steps);
 
-		//void tessellate_smooth_sphere(const int horizontal_steps, const int vertical_steps);
+		void tessellate_smooth_sphere(const int horizontal_steps, const int vertical_steps);
 
 		virtual bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;		 					 
 

@@ -143,6 +143,11 @@ bool Sphere::shadow_hit(const Ray& ray, float& tmin) const{
 	return (false);
 }
 
+BBox Sphere::get_bounding_box(void){
+	double delta = 0.0001;
+	return BBox(Point3D(center.x - radius - delta, center.y - radius - delta, center.z - radius - delta),
+		Point3D(center.x + radius + delta, center.y + radius + delta, center.z + radius + delta));
+}
 
 
 

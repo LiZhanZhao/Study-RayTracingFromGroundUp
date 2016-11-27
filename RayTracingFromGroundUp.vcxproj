@@ -87,6 +87,7 @@
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\GlossySpecular.cpp" />
+    <ClCompile Include="Src\Grid.cpp" />
     <ClCompile Include="Src\Instance.cpp" />
     <ClCompile Include="Src\Lambertian.cpp" />
     <ClCompile Include="Src\Light.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\GlossySpecular.h" />
+    <ClInclude Include="Src\Grid.h" />
     <ClInclude Include="Src\Instance.h" />
     <ClInclude Include="Src\Lambertian.h" />
     <ClInclude Include="Src\Light.h" />

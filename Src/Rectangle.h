@@ -30,8 +30,7 @@ class Rectangle: public GeometricObject {
 		Rectangle& 												
 		operator= (const Rectangle& rhs);
 		
-		/*BBox
-		get_bounding_box(void);		*/		
+		BBox get_bounding_box(void);
 	
 		virtual bool 												 
 		hit(const Ray& ray, double& t, ShadeRec& s) const;	

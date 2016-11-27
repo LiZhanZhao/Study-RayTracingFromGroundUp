@@ -270,6 +270,7 @@ Instance::scale(const Vector3D& s) {
 	inv_scaling_matrix.m[1][1] = 1.0 / s.y;
 	inv_scaling_matrix.m[2][2] = 1.0 / s.z;
 
+	// inv_matrix is on left
 	inv_matrix = inv_matrix * inv_scaling_matrix;			
 
 	Matrix	scaling_matrix;				// temporary scaling matrix
@@ -278,6 +279,7 @@ Instance::scale(const Vector3D& s) {
 	scaling_matrix.m[1][1] = s.y;
 	scaling_matrix.m[2][2] = s.z;
 	
+	// forward_matrix is on right
 	forward_matrix = scaling_matrix * forward_matrix; 		
 }
 

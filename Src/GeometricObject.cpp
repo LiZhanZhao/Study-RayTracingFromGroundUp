@@ -75,3 +75,7 @@ void GeometricObject::set_bounding_box(void) {
 BBox GeometricObject::get_bounding_box(void) {
 	return BBox();
 }
+
+void GeometricObject::add_object(GeometricObject* object_ptr){
+
+}

@@ -70,6 +70,8 @@ class GeometricObject {
 
 		virtual BBox get_bounding_box(void);
 
+		virtual void add_object(GeometricObject* object_ptr);
+
 	protected:
 		RGBColor color;				// only used for Bare Bones ray tracing
 		//Material* material_ptr;

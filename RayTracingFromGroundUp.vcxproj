@@ -80,6 +80,7 @@
     <ClCompile Include="Src\BBox.cpp" />
     <ClCompile Include="Src\BRDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
+    <ClCompile Include="Src\Compound.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
     <ClCompile Include="Src\Emissive.cpp" />
     <ClCompile Include="Src\EnvironmentLight.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="Src\BBox.h" />
     <ClInclude Include="Src\BRDF.h" />
     <ClInclude Include="Src\Camera.h" />
+    <ClInclude Include="Src\Compound.h" />
     <ClInclude Include="Src\Constants.h" />
     <ClInclude Include="Src\Directional.h" />
     <ClInclude Include="Src\Emissive.h" />

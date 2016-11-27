@@ -110,7 +110,7 @@ void World::build(void) {
 
 	Grid* grid_ptr = new Grid;
 
-	int num_spheres = 4;
+	int num_spheres = 2;
 	float volume = 0.1 / num_spheres;
 	float radius = 2.5 * pow(0.75 * volume / 3.14159, 0.333333);
 

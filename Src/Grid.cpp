@@ -549,7 +549,7 @@ Grid::compute_mesh_normals(void) {
 
 // ------------------------------------------------------------------------------------------------  tesselate_flat_sphere
 // tesselate a unit sphere into flat triangles that are stored directly in the grid
-/*
+
 void												
 Grid::tessellate_flat_sphere(const int horizontal_steps, const int vertical_steps) {
 	double pi = 3.1415926535897932384;
@@ -644,7 +644,7 @@ Grid::tessellate_flat_sphere(const int horizontal_steps, const int vertical_step
 		}
 	}	
 }
-*/
+
 
 // ------------------------------------------------------------------------------------------------  tesselate_smooth_sphere
 // tesselate a unit sphere into smooth triangles that are stored directly in the grid

@@ -21,6 +21,7 @@
 
 #include "Compound.h"
 #include "ShadeRec.h"
+#include "Triangle.h"
 //#include "Mesh.h"
 
 
@@ -51,7 +52,7 @@ class Grid: public Compound {
 
 		//void read_smooth_triangles(char* file_name);
 
-		//void tessellate_flat_sphere(const int horizontal_steps, const int vertical_steps);
+		void tessellate_flat_sphere(const int horizontal_steps, const int vertical_steps);
 
 		//void tessellate_smooth_sphere(const int horizontal_steps, const int vertical_steps);
 

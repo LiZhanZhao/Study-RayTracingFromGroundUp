@@ -117,6 +117,7 @@
     <ClCompile Include="Src\StereoCamera.cpp" />
     <ClCompile Include="Src\ThinLens.cpp" />
     <ClCompile Include="Src\Tracer.cpp" />
+    <ClCompile Include="Src\Triangle.cpp" />
     <ClCompile Include="Src\Vector3D.cpp" />
     <ClCompile Include="Src\ViewPlane.cpp" />
     <ClCompile Include="Src\World.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Src\StereoCamera.h" />
     <ClInclude Include="Src\ThinLens.h" />
     <ClInclude Include="Src\Tracer.h" />
+    <ClInclude Include="Src\Triangle.h" />
     <ClInclude Include="Src\Vector3D.h" />
     <ClInclude Include="Src\ViewPlane.h" />
     <ClInclude Include="Src\World.h" />

@@ -105,7 +105,7 @@ Instance::set_object(GeometricObject* obj_ptr) {
 }
 
 
-//---------------------------------------------------------------- set_bounding_box
+//---------------------------------------------------------------- compute_bounding_box
 // This function is only called when the instance is to be placed in a grid
 // It will always be called from a build function
 

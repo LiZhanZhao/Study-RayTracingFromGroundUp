@@ -19,10 +19,11 @@
 // a separate class called TriangleMesh that inherits from Grid.
 
 
+
 #include "Compound.h"
 #include "ShadeRec.h"
 
-//#include "Mesh.h"
+#include "Mesh.h"
 
 
 //---------------------------------------------------------------------- class Grid
@@ -32,7 +33,7 @@ class Grid: public Compound {
 
 		Grid(void); 
 
-		//Grid(Mesh* _mesh_ptr);    										
+		Grid(Mesh* _mesh_ptr);    										
 
 		virtual Grid* 										
 		clone(void) const;
@@ -69,8 +70,8 @@ class Grid: public Compound {
 		vector<GeometricObject*>	cells;			// grid of cells
 		int							nx, ny, nz;    	// number of cells in the x, y, and z directions
 		BBox						bbox;			// bounding box
-		//Mesh*						mesh_ptr;		// holds triangle data
-		//bool						reverse_normal;	// some PLY files have normals that point inwards
+		Mesh*						mesh_ptr;		// holds triangle data
+		bool						reverse_normal;	// some PLY files have normals that point inwards
 
 		Point3D
 		find_min_bounds(void);

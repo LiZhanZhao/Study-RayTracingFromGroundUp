@@ -16,15 +16,15 @@
 #include "Grid.h"
 
 //#include "MeshTriangle.h"
-//#include "FlatMeshTriangle.h"
-//#include "SmoothMeshTriangle.h"
+#include "FlatMeshTriangle.h"
+#include "SmoothMeshTriangle.h"
 //#include "FlatUVMeshTriangle.h"
 //#include "SmoothUVMeshTriangle.h"
 //
 #include "Triangle.h"
 #include "SmoothTriangle.h"
 //
-//#include "ply.h"
+#include "ply.h"
 
 typedef enum {
 	flat, 
@@ -38,9 +38,9 @@ Grid::Grid(void)
 	: 	Compound(),
 		nx(0),
 		ny(0),
-		nz(0)
-		//mesh_ptr(new Mesh),
-		//reverse_normal(false)
+		nz(0),
+		mesh_ptr(new Mesh),
+		reverse_normal(false)
 {
 	// The cells array will be empty
 }
@@ -48,7 +48,7 @@ Grid::Grid(void)
 
 // ----------------------------------------------------------------  constructor
 // for rendering triangle meshes
-/*
+
 Grid::Grid(Mesh* _mesh_ptr)	
 	: 	Compound(),
 		nx(0),
@@ -59,7 +59,7 @@ Grid::Grid(Mesh* _mesh_ptr)
 {
 	// The cells array will be empty
 }
-*/
+
 // ---------------------------------------------------------------- clone
 
 Grid* 
@@ -293,10 +293,9 @@ Grid::find_max_bounds(void) {
 
 // ----------------------------------------------------------------------------- read_flat_triangles
 
-//void												
-//Grid::read_flat_triangles(char* file_name) {
+//void Grid::read_flat_triangles(char* file_name) {
 //  	read_ply_file(file_name, flat);
-// }
+//}
 
 
 // ----------------------------------------------------------------------------- read_smooth_triangles

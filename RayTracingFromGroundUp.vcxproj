@@ -85,6 +85,7 @@
     <ClCompile Include="Src\Emissive.cpp" />
     <ClCompile Include="Src\EnvironmentLight.cpp" />
     <ClCompile Include="Src\FishEye.cpp" />
+    <ClCompile Include="Src\FlatMeshTriangle.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\GlossySpecular.cpp" />
     <ClCompile Include="Src\Grid.cpp" />
@@ -95,12 +96,15 @@
     <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
     <ClCompile Include="Src\Matte.cpp" />
+    <ClCompile Include="Src\Mesh.cpp" />
+    <ClCompile Include="Src\MeshTriangle.cpp" />
     <ClCompile Include="Src\MultiJittered.cpp" />
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
     <ClCompile Include="Src\Phong.cpp" />
     <ClCompile Include="Src\Pinhole.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
+    <ClCompile Include="Src\ply.cpp" />
     <ClCompile Include="Src\Point2D.cpp" />
     <ClCompile Include="Src\Point3D.cpp" />
     <ClCompile Include="Src\PointLight.cpp" />
@@ -112,6 +116,7 @@
     <ClCompile Include="Src\Sampler.cpp" />
     <ClCompile Include="Src\ShadeRec.cpp" />
     <ClCompile Include="Src\SingleSphere.cpp" />
+    <ClCompile Include="Src\SmoothMeshTriangle.cpp" />
     <ClCompile Include="Src\SmoothTriangle.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
     <ClCompile Include="Src\Spherical.cpp" />
@@ -137,6 +142,7 @@
     <ClInclude Include="Src\Emissive.h" />
     <ClInclude Include="Src\EnvironmentLight.h" />
     <ClInclude Include="Src\FishEye.h" />
+    <ClInclude Include="Src\FlatMeshTriangle.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\GlossySpecular.h" />
     <ClInclude Include="Src\Grid.h" />
@@ -147,12 +153,15 @@
     <ClInclude Include="Src\Maths.h" />
     <ClInclude Include="Src\Matrix.h" />
     <ClInclude Include="Src\Matte.h" />
+    <ClInclude Include="Src\Mesh.h" />
+    <ClInclude Include="Src\MeshTriangle.h" />
     <ClInclude Include="Src\MultiJittered.h" />
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
     <ClInclude Include="Src\Phong.h" />
     <ClInclude Include="Src\Pinhole.h" />
     <ClInclude Include="Src\Plane.h" />
+    <ClInclude Include="Src\ply.h" />
     <ClInclude Include="Src\Point2D.h" />
     <ClInclude Include="Src\Point3D.h" />
     <ClInclude Include="Src\PointLight.h" />
@@ -164,6 +173,7 @@
     <ClInclude Include="Src\Sampler.h" />
     <ClInclude Include="Src\ShadeRec.h" />
     <ClInclude Include="Src\SingleSphere.h" />
+    <ClInclude Include="Src\SmoothMeshTriangle.h" />
     <ClInclude Include="Src\SmoothTriangle.h" />
     <ClInclude Include="Src\Sphere.h" />
     <ClInclude Include="Src\Spherical.h" />

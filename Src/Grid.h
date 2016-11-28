@@ -49,7 +49,7 @@ class Grid: public Compound {
 		virtual BBox 
 		get_bounding_box(void);
 
-		//void read_flat_triangles(char* file_name);
+		void read_flat_triangles(char* file_name);
 
 		//void read_smooth_triangles(char* file_name);
 
@@ -79,7 +79,7 @@ class Grid: public Compound {
 		Point3D
 		find_max_bounds(void);
 
-		//void read_ply_file(char* file_name, const int triangle_type);
+		void read_ply_file(char* file_name, const int triangle_type);
 
 		//void compute_mesh_normals(void);	
 };

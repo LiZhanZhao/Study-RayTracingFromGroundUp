@@ -293,9 +293,9 @@ Grid::find_max_bounds(void) {
 
 // ----------------------------------------------------------------------------- read_flat_triangles
 
-//void Grid::read_flat_triangles(char* file_name) {
-//  	read_ply_file(file_name, flat);
-//}
+void Grid::read_flat_triangles(char* file_name) {
+  	read_ply_file(file_name, flat);
+}
 
 
 // ----------------------------------------------------------------------------- read_smooth_triangles
@@ -320,7 +320,7 @@ Grid::find_max_bounds(void) {
 // Using the one function construct to flat and smooth triangles saves a lot of repeated code
 // The ply file is the same for flat and smooth triangles
 
-/*
+
 void
 Grid::read_ply_file(char* file_name, const int triangle_type) {
 	// Vertex definition 
@@ -505,7 +505,7 @@ Grid::read_ply_file(char* file_name, const int triangle_type) {
 	  
 	ply_close (ply);
 }
-*/
+
 
 
 // ----------------------------------------------------------------------------- compute_mesh_normals

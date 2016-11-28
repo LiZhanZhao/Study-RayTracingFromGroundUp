@@ -135,4 +135,11 @@ Compound::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	return (hit);
 }
 
-
+bool Compound::shadow_hit(const Ray& ray, float& t) const{
+	int num_objects = objects.size();
+	for (int j = 0; j < num_objects; j++){
+		if (objects[j]->shadow_hit(ray, t))
+			return (true);
+	}
+	return (false);
+}

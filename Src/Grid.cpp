@@ -192,7 +192,7 @@ Grid::setup_cells(void) {
 	
 	// erase the Compound::vector that stores the object pointers, but don't delete the objects
 	
-	objects.erase (objects.begin(), objects.end());
+	//objects.erase (objects.begin(), objects.end());
 
 	
 // display some statistics on counts

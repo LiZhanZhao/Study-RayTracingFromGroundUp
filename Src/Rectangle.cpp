@@ -207,6 +207,6 @@ Rectangle::pdf(const ShadeRec& sr) {
 } 
 
 
-
+//shadow_hit
 
 

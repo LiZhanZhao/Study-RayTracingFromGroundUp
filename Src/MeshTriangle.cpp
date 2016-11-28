@@ -113,8 +113,8 @@ MeshTriangle::get_bounding_box(void) {
 // this function is independent of the derived triangle type:
 // flat, smooth, flat uv, smooth uv
 
-bool 															 
-MeshTriangle::shadow_hit(const Ray& ray, double& tmin) const {	
+//bool MeshTriangle::shadow_hit(const Ray& ray, double& tmin) const {	
+bool MeshTriangle::shadow_hit(const Ray& ray, float& tmin) const{
 	Point3D v0(mesh_ptr->vertices[index0]);
 	Point3D v1(mesh_ptr->vertices[index1]);
 	Point3D v2(mesh_ptr->vertices[index2]);

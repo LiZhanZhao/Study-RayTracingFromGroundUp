@@ -52,8 +52,9 @@ class MeshTriangle: public GeometricObject {
 		virtual bool 												 
 		hit(const Ray& ray, double& tmin, ShadeRec& sr) const = 0;
 		
-		virtual	bool 																	
-		shadow_hit(const Ray& ray, double& tmin) const;
+		//virtual	bool 																	
+		//shadow_hit(const Ray& ray, double& tmin) const;
+		virtual bool shadow_hit(const Ray& ray, float& t) const;
 		
 		void 
 		compute_normal(const bool reverse_normal);

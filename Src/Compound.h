@@ -40,6 +40,8 @@ class Compound: public GeometricObject {
 		virtual bool 															 
 		hit(const Ray& ray, double& tmin, ShadeRec& s) const;
 			
+		virtual bool shadow_hit(const Ray& ray, float& t) const;
+
 	protected:		
 		
 		vector<GeometricObject*> objects;

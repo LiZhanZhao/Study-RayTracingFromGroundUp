@@ -531,6 +531,7 @@ Grid::compute_mesh_normals(void) {
 		else 
 			normal.normalize();     
 		
+		// node : SmoothMeshTriangle's construction need mesh_ptr, use mesh_ptr to adress normals
 		mesh_ptr->normals.push_back(normal);
 	}
 	

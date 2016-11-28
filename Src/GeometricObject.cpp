@@ -79,3 +79,7 @@ BBox GeometricObject::get_bounding_box(void) {
 void GeometricObject::add_object(GeometricObject* object_ptr){
 
 }
+
+Normal GeometricObject::get_normal(void) const{
+	return (Normal());
+}

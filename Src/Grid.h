@@ -51,7 +51,7 @@ class Grid: public Compound {
 
 		void read_flat_triangles(char* file_name);
 
-		//void read_smooth_triangles(char* file_name);
+		void read_smooth_triangles(char* file_name);
 
 		void tessellate_flat_sphere(const int horizontal_steps, const int vertical_steps);
 
@@ -81,7 +81,7 @@ class Grid: public Compound {
 
 		void read_ply_file(char* file_name, const int triangle_type);
 
-		//void compute_mesh_normals(void);	
+		void compute_mesh_normals(void);	
 };
 
 

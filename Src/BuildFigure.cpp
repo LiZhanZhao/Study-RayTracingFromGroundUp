@@ -76,8 +76,8 @@ void World::build(void) {
 
 	char* file_name = "Ply/TwoTriangles.ply";
 	Grid* grid_ptr = new Grid(new Mesh);
-	grid_ptr->read_flat_triangles(file_name);		// for Figure 23.7(a)
-	//	grid_ptr->read_smooth_triangles(file_name);		// for Figure 23.7(b)
+	//grid_ptr->read_flat_triangles(file_name);		// for Figure 23.7(a)
+	grid_ptr->read_smooth_triangles(file_name);		// for Figure 23.7(b)
 	grid_ptr->set_material(matte_ptr1);
 	grid_ptr->setup_cells();
 	add_object(grid_ptr);

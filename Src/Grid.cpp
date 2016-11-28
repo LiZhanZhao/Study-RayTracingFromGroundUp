@@ -300,11 +300,11 @@ void Grid::read_flat_triangles(char* file_name) {
 
 // ----------------------------------------------------------------------------- read_smooth_triangles
 
-//void												
-//Grid::read_smooth_triangles(char* file_name) {
-//  	read_ply_file(file_name, smooth);
-//  	compute_mesh_normals();
-//}
+void												
+Grid::read_smooth_triangles(char* file_name) {
+  	read_ply_file(file_name, smooth);
+  	compute_mesh_normals();
+}
 
 
 // ----------------------------------------------------------------------------- read_ply_file
@@ -320,7 +320,7 @@ void Grid::read_flat_triangles(char* file_name) {
 // Using the one function construct to flat and smooth triangles saves a lot of repeated code
 // The ply file is the same for flat and smooth triangles
 
-
+// todo : fill data to mesh_ptr
 void
 Grid::read_ply_file(char* file_name, const int triangle_type) {
 	// Vertex definition 
@@ -434,7 +434,8 @@ Grid::read_ply_file(char* file_name, const int triangle_type) {
 		  	objects.reserve(num_elems);  // triangles will be stored in Compound::objects
 		
 			// the following code stores the face numbers that are shared by each vertex
-		  	
+
+		  	// vertex stores face index list
 		  	mesh_ptr->vertex_faces.reserve(mesh_ptr->num_vertices);
 		  	vector<int> faceList;
 		  			  	
@@ -512,7 +513,7 @@ Grid::read_ply_file(char* file_name, const int triangle_type) {
 // this computes the average normal at each vertex
 // the calculation is of order(num_vertices)
 // some triangles in ply files are not defined properly
-/*
+
 void
 Grid::compute_mesh_normals(void) {
 	mesh_ptr->normals.reserve(mesh_ptr->num_vertices);
@@ -543,7 +544,7 @@ Grid::compute_mesh_normals(void) {
 
 	cout << "finished constructing normals" << endl;
 }
-*/
+
 
 
 // ------------------------------------------------------------------------------------------------  tesselate_flat_sphere

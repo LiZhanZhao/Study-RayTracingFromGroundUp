@@ -42,7 +42,7 @@
 void World::build(void) {
 	int vpWidth = 400;
 	int vpHeight = 400;
-	int num_samples = 16;
+	int num_samples = 1;
 
 	imageWidth = vpWidth;
 	imageHeight = vpHeight; 
@@ -74,7 +74,7 @@ void World::build(void) {
 	matte_ptr1->set_kd(0.75);
 	matte_ptr1->set_cd(0.1, 0.5, 1.0);
 
-	char* file_name = "Ply/TwoTriangles.ply";
+	char* file_name = "Ply/Horse2K.ply";
 	Grid* grid_ptr = new Grid(new Mesh);
 	//grid_ptr->read_flat_triangles(file_name);		// for Figure 23.7(a)
 	grid_ptr->read_smooth_triangles(file_name);		// for Figure 23.7(b)

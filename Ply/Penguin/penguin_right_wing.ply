@@ -8,7 +8,6 @@ element vertex 75
 property float x
 property float y
 property float z
-property float w
 element face 146
 property list int int vertex_indices
 end_header

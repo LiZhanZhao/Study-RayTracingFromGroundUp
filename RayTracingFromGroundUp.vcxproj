@@ -112,6 +112,7 @@
     <ClCompile Include="Src\Ray.cpp" />
     <ClCompile Include="Src\RayCast.cpp" />
     <ClCompile Include="Src\Rectangle.cpp" />
+    <ClCompile Include="Src\Reflective.cpp" />
     <ClCompile Include="Src\Regular.cpp" />
     <ClCompile Include="Src\RGBColor.cpp" />
     <ClCompile Include="Src\Sampler.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Src\Ray.h" />
     <ClInclude Include="Src\RayCast.h" />
     <ClInclude Include="Src\Rectangle.h" />
+    <ClInclude Include="Src\Reflective.h" />
     <ClInclude Include="Src\Regular.h" />
     <ClInclude Include="Src\RGBColor.h" />
     <ClInclude Include="Src\Sampler.h" />

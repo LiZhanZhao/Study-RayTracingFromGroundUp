@@ -126,6 +126,7 @@
     <ClCompile Include="Src\Triangle.cpp" />
     <ClCompile Include="Src\Vector3D.cpp" />
     <ClCompile Include="Src\ViewPlane.cpp" />
+    <ClCompile Include="Src\Whitted.cpp" />
     <ClCompile Include="Src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,7 @@
     <ClInclude Include="Src\Triangle.h" />
     <ClInclude Include="Src\Vector3D.h" />
     <ClInclude Include="Src\ViewPlane.h" />
+    <ClInclude Include="Src\Whitted.h" />
     <ClInclude Include="Src\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

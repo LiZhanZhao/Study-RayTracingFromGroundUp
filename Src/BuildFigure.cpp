@@ -53,7 +53,8 @@ void World::build(void) {
 	vp.set_vres(vpHeight);
 	vp.set_samples(num_samples);
 	//	vp.set_max_depth(0);			// for Figure 24.6(a)
-	vp.set_max_depth(1);			// for Figure 24.6(b)
+	//vp.set_max_depth(1);			// for Figure 24.6(b)
+	vp.set_max_depth(10);
 
 	tracer_ptr = new Whitted(this);
 	background_color = RGBColor(0.15);

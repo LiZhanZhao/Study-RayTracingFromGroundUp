@@ -43,7 +43,10 @@ PerfectSpecular::f(const ShadeRec& sr, const Vector3D& wo, const Vector3D& wi) c
 RGBColor
 PerfectSpecular::sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& wi) const {
 	float ndotwo = sr.normal * wo;
+	// calculate wi
 	wi = -wo + 2.0 * sr.normal * ndotwo; 
+	// why need / dot(sr.normal,wi),
+	// because this is cancel the ndotwi outside.
 	return (kr * cr / fabs(sr.normal * wi)); // why is this fabs? // kr would be a Fresnel term in a Fresnel reflector
 }											 // for transparency when ray hits inside surface?, if so it should go in Chapter 24
 

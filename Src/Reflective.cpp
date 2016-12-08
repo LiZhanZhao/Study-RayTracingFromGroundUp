@@ -72,11 +72,14 @@ Reflective::shade(ShadeRec& sr) {
 	RGBColor L(Phong::shade(sr));  // direct illumination
 	
 	Vector3D wo = -sr.ray.d;
-	Vector3D wi;	
+	Vector3D wi;
+	// sample_f calculate wi 
 	RGBColor fr = reflective_brdf->sample_f(sr, wo, wi); 
 	Ray reflected_ray(sr.hit_point, wi); 
 	//reflected_ray.depth = sr.depth + 1;
-	
+
+	// because fr = (kr * cr / fabs(sr.normal * wi)), so this is equal 
+	// L += kr * cr * sr.w.tracer_ptr->trace_ray(reflected_ray, sr.depth + 1)
 	L += fr * sr.w.tracer_ptr->trace_ray(reflected_ray, sr.depth + 1) * (sr.normal * wi);
 					
 	return (L);

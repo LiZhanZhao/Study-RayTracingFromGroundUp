@@ -95,7 +95,12 @@ Pinhole::render_scene(const World& w) {
 				pp.x = vp.s * (c - 0.5 * vp.hres + sp.x);
 				pp.y = vp.s * (r - 0.5 * vp.vres + sp.y);
 				ray.d = get_direction(pp);
-				L += w.tracer_ptr->trace_ray(ray);
+				//L += w.tracer_ptr->trace_ray(ray);
+
+				// todo : all the tracer need use trace_ray(ray, depth)
+				// if image is black,so check current tracer is 
+				// using trace_ray(ray, depth)?
+				L += w.tracer_ptr->trace_ray(ray, depth);
 			}
 											
 			L /= vp.num_samples;
@@ -126,8 +131,8 @@ void Pinhole::render_stereo(const World& w, float x, int pixel_offset){
 				pp.x = vp.s * (c - 0.5 * vp.hres + sp.x) + x; 	// asymmetric view frustum
 				pp.y = vp.s * (r - 0.5 * vp.vres + sp.y);
 				ray.d = get_direction(pp);
-				//L += w.tracer_ptr->trace_ray(ray, depth);
-				L += w.tracer_ptr->trace_ray(ray);
+				L += w.tracer_ptr->trace_ray(ray, depth);
+				//L += w.tracer_ptr->trace_ray(ray);
 			}
 
 			L /= vp.num_samples;

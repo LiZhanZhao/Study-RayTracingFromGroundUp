@@ -45,7 +45,7 @@ AreaLighting::trace_ray(const Ray& ray) const {
 
 // The statement sr.ray = ray; is required for specular shading, computing the reflected and 
 // transmitted ray directions, and for rendering single sided emissive materials with area lights
-/*
+
 RGBColor	
 AreaLighting::trace_ray(const Ray ray, const int depth) const {
 	if (depth > world_ptr->vp.max_depth)
@@ -63,5 +63,5 @@ AreaLighting::trace_ray(const Ray ray, const int depth) const {
 			return (world_ptr->background_color);
 	}																																			
 }
-*/
+
 

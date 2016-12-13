@@ -41,3 +41,16 @@ RGBColor Emissive::shade(ShadeRec& sr){
 RGBColor Emissive::get_Le(ShadeRec& sr) const{
 	return ls * ce;
 }
+
+RGBColor Emissive::path_shade(ShadeRec& sr){
+	/*
+	// when the incoming ray is on the same side of the object surface as the normal
+	if (-sr.normal * sr.ray.d > 0.0)
+		return (ls * ce);
+	else
+		return (black);
+	*/
+
+	// As long as hit emissive object then return
+	return (ls * ce);
+}

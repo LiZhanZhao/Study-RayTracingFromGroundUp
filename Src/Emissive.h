@@ -35,6 +35,8 @@ public:
 	virtual RGBColor shade(ShadeRec& sr);
 
 	virtual RGBColor area_light_shade(ShadeRec& sr);
+
+	virtual RGBColor path_shade(ShadeRec& sr);
 };
 
 inline void Emissive::scale_radiance(const float _ls){

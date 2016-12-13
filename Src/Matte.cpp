@@ -176,3 +176,7 @@ RGBColor Matte::path_shade(ShadeRec& sr){
 
 	return (f * sr.w.tracer_ptr->trace_ray(reflected_ray, sr.depth + 1) * ndotwi / pdf);
 }
+
+void Matte::set_sampler(Sampler* sPtr){
+	diffuse_brdf->set_sampler(sPtr);
+}

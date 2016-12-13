@@ -61,3 +61,6 @@ RGBColor Material::path_shade(ShadeRec& sr){
 	return (black);
 }
 
+void Material::set_sampler(Sampler* sPtr){
+
+}

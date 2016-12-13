@@ -24,6 +24,8 @@ public:
 
 	void set_cr(const RGBColor& c);
 
+	void set_cr(const float r, const float g, const float b);
+
 	void set_exponent(const float exp);
 
 	virtual RGBColor area_light_shade(ShadeRec& sr);
@@ -52,5 +54,8 @@ GlossyReflector::set_exponent(const float exp) {
 	glossy_specular_brdf->set_exp(exp);
 }
 
+inline void GlossyReflector::set_cr(const float r, const float g, const float b){
+	glossy_specular_brdf->set_cs(r, g, b);
+}
 
 #endif

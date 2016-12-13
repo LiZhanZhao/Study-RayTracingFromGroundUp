@@ -87,6 +87,7 @@
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\FlatMeshTriangle.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
+    <ClCompile Include="Src\GlossyReflector.cpp" />
     <ClCompile Include="Src\GlossySpecular.cpp" />
     <ClCompile Include="Src\Grid.cpp" />
     <ClCompile Include="Src\Instance.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\FlatMeshTriangle.h" />
     <ClInclude Include="Src\GeometricObject.h" />
+    <ClInclude Include="Src\GlossyReflector.h" />
     <ClInclude Include="Src\GlossySpecular.h" />
     <ClInclude Include="Src\Grid.h" />
     <ClInclude Include="Src\Instance.h" />

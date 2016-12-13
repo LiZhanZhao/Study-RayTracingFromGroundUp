@@ -102,6 +102,7 @@
     <ClCompile Include="Src\MultiJittered.cpp" />
     <ClCompile Include="Src\MultipleObjects.cpp" />
     <ClCompile Include="Src\Normal.cpp" />
+    <ClCompile Include="Src\PathTrace.cpp" />
     <ClCompile Include="Src\PerfectSpecular.cpp" />
     <ClCompile Include="Src\Phong.cpp" />
     <ClCompile Include="Src\Pinhole.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Src\MultiJittered.h" />
     <ClInclude Include="Src\MultipleObjects.h" />
     <ClInclude Include="Src\Normal.h" />
+    <ClInclude Include="Src\PathTrace.h" />
     <ClInclude Include="Src\PerfectSpecular.h" />
     <ClInclude Include="Src\Phong.h" />
     <ClInclude Include="Src\Pinhole.h" />

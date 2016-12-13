@@ -46,6 +46,8 @@ class Matte: public Material {
 		virtual RGBColor shade(ShadeRec& sr);
 
 		virtual RGBColor area_light_shade(ShadeRec& sr);
+
+		virtual RGBColor path_shade(ShadeRec& sr);
 		
 	private:
 		

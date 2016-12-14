@@ -184,6 +184,7 @@ void Matte::set_sampler(Sampler* sPtr){
 RGBColor Matte::global_shade(ShadeRec& sr){
 	RGBColor L;
 
+	// add direct illuminatin
 	if (sr.depth == 0)
 		L = area_light_shade(sr);
 

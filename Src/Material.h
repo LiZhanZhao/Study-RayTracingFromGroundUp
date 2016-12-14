@@ -36,6 +36,8 @@ class Material {
 		virtual RGBColor path_shade(ShadeRec& sr);
 
 		virtual void set_sampler(Sampler* sPtr);
+
+		virtual RGBColor global_shade(ShadeRec& sr);
 		
 	protected:
 	

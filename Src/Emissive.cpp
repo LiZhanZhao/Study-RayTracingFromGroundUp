@@ -57,6 +57,8 @@ RGBColor Emissive::path_shade(ShadeRec& sr){
 
 
 RGBColor Emissive::global_shade(ShadeRec& sr){
+	// because shadow ray have been shade hit point, 
+	// so emissive object do not need shade hit point again.
 	if (sr.depth == 1)
 		return (black);
 

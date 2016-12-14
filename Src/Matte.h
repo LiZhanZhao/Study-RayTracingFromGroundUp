@@ -51,6 +51,8 @@ class Matte: public Material {
 
 		virtual void set_sampler(Sampler* sPtr);
 		
+		virtual RGBColor global_shade(ShadeRec& sr);
+
 	private:
 		
 		Lambertian*		ambient_brdf;

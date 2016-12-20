@@ -79,6 +79,7 @@
     <ClCompile Include="Src\AreaLighting.cpp" />
     <ClCompile Include="Src\BBox.cpp" />
     <ClCompile Include="Src\BRDF.cpp" />
+    <ClCompile Include="Src\BTDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\Compound.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="Src\Normal.cpp" />
     <ClCompile Include="Src\PathTrace.cpp" />
     <ClCompile Include="Src\PerfectSpecular.cpp" />
+    <ClCompile Include="Src\PerfectTransmitter.cpp" />
     <ClCompile Include="Src\Phong.cpp" />
     <ClCompile Include="Src\Pinhole.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
@@ -141,6 +143,7 @@
     <ClInclude Include="Src\AreaLighting.h" />
     <ClInclude Include="Src\BBox.h" />
     <ClInclude Include="Src\BRDF.h" />
+    <ClInclude Include="Src\BTDF.h" />
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\Compound.h" />
     <ClInclude Include="Src\Constants.h" />
@@ -168,6 +171,7 @@
     <ClInclude Include="Src\Normal.h" />
     <ClInclude Include="Src\PathTrace.h" />
     <ClInclude Include="Src\PerfectSpecular.h" />
+    <ClInclude Include="Src\PerfectTransmitter.h" />
     <ClInclude Include="Src\Phong.h" />
     <ClInclude Include="Src\Pinhole.h" />
     <ClInclude Include="Src\Plane.h" />

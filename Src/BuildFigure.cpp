@@ -112,8 +112,8 @@ void World::build(void) {
 	glass_ptr->set_ks(0.2);
 	glass_ptr->set_exp(2000.0);
 	//glass_ptr->set_ior(1.0);
-	glass_ptr->set_ior(1.5);
-	//glass_ptr->set_ior(0.75);
+	//glass_ptr->set_ior(1.5);
+	glass_ptr->set_ior(0.75);
 	glass_ptr->set_kr(0.1);
 	//glass_ptr->set_kr(1);
 	glass_ptr->set_kt(0.9);

@@ -98,6 +98,7 @@ PerfectTransmitter::sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& w
 	float cos_theta2 = sqrt(temp);
 	wt = -wo / eta - (cos_theta2 - cos_thetai / eta) * n;   
 	
+	// P570  Formula 27.9
 	return (kt / (eta * eta) * white / fabs(sr.normal * wt));
 }
 

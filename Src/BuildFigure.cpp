@@ -82,6 +82,7 @@ void World::build(void) {
 	light_ptr1->set_location(40, 50, 0);
 	light_ptr1->scale_radiance(4.5);
 	light_ptr1->set_shadows(true);
+	//light_ptr1->set_shadows(false);
 	add_light(light_ptr1);
 
 
@@ -91,6 +92,7 @@ void World::build(void) {
 	light_ptr2->set_location(-10, 20, 10);
 	light_ptr2->scale_radiance(4.5);
 	light_ptr2->set_shadows(true);
+	//light_ptr2->set_shadows(false);
 	add_light(light_ptr2);
 
 
@@ -100,6 +102,7 @@ void World::build(void) {
 	light_ptr3->set_direction(-1, 0, 0);
 	light_ptr3->scale_radiance(4.5);
 	light_ptr3->set_shadows(true);
+	//light_ptr3->set_shadows(false);
 	add_light(light_ptr3);
 
 
@@ -110,7 +113,9 @@ void World::build(void) {
 	glass_ptr->set_exp(2000.0);
 	glass_ptr->set_ior(1.0);
 	//glass_ptr->set_ior(1.1);
+	//glass_ptr->set_ior(0.75);
 	glass_ptr->set_kr(0.1);
+	//glass_ptr->set_kr(1);
 	glass_ptr->set_kt(0.9);
 
 	Sphere* sphere_ptr1 = new Sphere(Point3D(0.0, 4.5, 0.0), 3.0);

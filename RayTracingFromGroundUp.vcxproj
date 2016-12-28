@@ -82,6 +82,7 @@
     <ClCompile Include="Src\BTDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\Compound.cpp" />
+    <ClCompile Include="Src\Dielectric.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
     <ClCompile Include="Src\Emissive.cpp" />
     <ClCompile Include="Src\EnvironmentLight.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\Compound.h" />
     <ClInclude Include="Src\Constants.h" />
+    <ClInclude Include="Src\Dielectric.h" />
     <ClInclude Include="Src\Directional.h" />
     <ClInclude Include="Src\Emissive.h" />
     <ClInclude Include="Src\EnvironmentLight.h" />

@@ -88,6 +88,7 @@
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\FlatMeshTriangle.cpp" />
     <ClCompile Include="Src\FresnelReflector.cpp" />
+    <ClCompile Include="Src\FresnelTransmitter.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
     <ClCompile Include="Src\GlobalTrace.cpp" />
     <ClCompile Include="Src\GlossyReflector.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\FlatMeshTriangle.h" />
     <ClInclude Include="Src\FresnelReflector.h" />
+    <ClInclude Include="Src\FresnelTransmitter.h" />
     <ClInclude Include="Src\GeometricObject.h" />
     <ClInclude Include="Src\GlobalTrace.h" />
     <ClInclude Include="Src\GlossyReflector.h" />

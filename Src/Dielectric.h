@@ -27,6 +27,10 @@ class Dielectric : public Phong {
 
 		void set_eta_out(float value);
 
+		void set_cf_in(RGBColor color);
+
+		void set_cf_out(RGBColor color);
+
 	private:
 
 		RGBColor 			cf_in;			// interior filter color 
@@ -40,6 +44,13 @@ inline void Dielectric::set_ior(const float eta){
 	fresnel_transmitter_btdf->set_ior(eta);
 }
 
+inline void Dielectric::set_cf_in(RGBColor color){
+	cf_in = color;
+}
+
+inline void Dielectric::set_cf_out(RGBColor color){
+	cf_out = color;
+}
 
 
 

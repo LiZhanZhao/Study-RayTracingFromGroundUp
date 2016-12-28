@@ -136,3 +136,14 @@ Dielectric::shade(ShadeRec& sr) {
 
 	return (L);
 }
+
+
+void Dielectric::set_eta_in(float value){
+	fresnel_reflector_brdf->set_eta_in(value);
+	fresnel_transmitter_btdf->set_eta_in(value);
+}
+
+void Dielectric::set_eta_out(float value){
+	fresnel_reflector_brdf->set_eta_out(value);
+	fresnel_transmitter_btdf->set_eta_out(value);
+}

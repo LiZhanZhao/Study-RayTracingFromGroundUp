@@ -18,8 +18,6 @@ public:
 	FresnelTransmitter&
 		operator= (const FresnelTransmitter& rhs);
 
-	void set_ior(const float eta);
-
 	bool tir(const ShadeRec& sr) const;
 
 	virtual RGBColor f(const ShadeRec& sr, const Vector3D& wo, const Vector3D& wi) const;
@@ -35,16 +33,9 @@ public:
 	void set_eta_out(float value);
 
 private:
-	float	ior;		// index of refraction
 	float eta_in;
 	float eta_out;
 };
-
-
-inline void
-FresnelTransmitter::set_ior(const float eta) {
-	ior = eta;
-}
 
 inline void FresnelTransmitter::set_eta_in(float value){
 	eta_in = value;

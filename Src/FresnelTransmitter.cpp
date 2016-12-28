@@ -2,7 +2,6 @@
 
 FresnelTransmitter::FresnelTransmitter(void)
 : BTDF(),
-ior(1.0),
 eta_in(1.0f),
 eta_out(1.0f)
 {}
@@ -12,7 +11,6 @@ eta_out(1.0f)
 
 FresnelTransmitter::FresnelTransmitter(const FresnelTransmitter& pt)
 : BTDF(pt),
-ior(pt.ior),
 eta_in(pt.eta_in),
 eta_out(pt.eta_out)
 
@@ -39,7 +37,6 @@ FresnelTransmitter&
 FresnelTransmitter::operator= (const FresnelTransmitter& rhs) {
 	if (this == &rhs)
 		return (*this);
-	ior = rhs.ior;
 	eta_in = rhs.eta_in;
 	eta_out = rhs.eta_out;
 	return (*this);
@@ -50,7 +47,8 @@ bool
 FresnelTransmitter::tir(const ShadeRec& sr) const {
 	Vector3D wo(-sr.ray.d);
 	float cos_thetai = sr.normal * wo;
-	float eta = ior;
+	//float eta = ior;
+	float eta = eta_in / eta_out;
 
 	if (cos_thetai < 0.0)
 		eta = 1.0 / eta;
@@ -69,7 +67,8 @@ FresnelTransmitter::sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& w
 
 	Normal n(sr.normal);
 	float cos_thetai = n * wo;
-	float eta = ior;
+	//float eta = ior;
+	float eta = eta_in / eta_out;
 
 	if (cos_thetai < 0.0) {			// transmitted ray is outside     
 		cos_thetai = -cos_thetai;

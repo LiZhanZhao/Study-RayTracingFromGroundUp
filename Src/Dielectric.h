@@ -40,10 +40,6 @@ class Dielectric : public Phong {
 		FresnelTransmitter*	fresnel_transmitter_btdf;
 };
 
-inline void Dielectric::set_ior(const float eta){
-	fresnel_transmitter_btdf->set_ior(eta);
-}
-
 inline void Dielectric::set_cf_in(RGBColor color){
 	cf_in = color;
 }

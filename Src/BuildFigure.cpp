@@ -49,7 +49,7 @@
 void World::build(void) {
 	int vpWidth = 600;
 	int vpHeight = 600;
-	int num_samples = 16;
+	int num_samples = 1;
 
 	imageWidth = vpWidth;
 	imageHeight = vpHeight;
@@ -108,8 +108,8 @@ void World::build(void) {
 	Dielectric* dielectic_ptr = new Dielectric;
 	dielectic_ptr->set_ks(0.2);
 	dielectic_ptr->set_exp(2000.0);
-	dielectic_ptr->set_eta_in(1.5);		// for Figure 28.5(a)
-	//	dielectic_ptr->set_eta_in(0.75);	// for Figure 28.5(b)
+	//dielectic_ptr->set_eta_in(1.5);		// for Figure 28.5(a)
+	dielectic_ptr->set_eta_in(0.75);	// for Figure 28.5(b)
 	dielectic_ptr->set_eta_out(1.0);
 	dielectic_ptr->set_cf_in(white);
 	dielectic_ptr->set_cf_out(white);

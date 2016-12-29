@@ -29,7 +29,11 @@ class Dielectric : public Phong {
 
 		void set_cf_in(RGBColor color);
 
+		void set_cf_in(float r, float g, float b);
+
 		void set_cf_out(RGBColor color);
+
+		void set_cf_out(float r, float g, float b);
 
 	private:
 
@@ -46,6 +50,18 @@ inline void Dielectric::set_cf_in(RGBColor color){
 
 inline void Dielectric::set_cf_out(RGBColor color){
 	cf_out = color;
+}
+
+inline void Dielectric::set_cf_in(float r, float g, float b){
+	cf_in.r = r;
+	cf_in.g = g;
+	cf_in.b = b;
+}
+
+inline void Dielectric::set_cf_out(float r, float g, float b){
+	cf_out.r = r;
+	cf_out.g = g;
+	cf_out.b = b;
 }
 
 

@@ -78,6 +78,7 @@
     <ClCompile Include="Src\AreaLight.cpp" />
     <ClCompile Include="Src\AreaLighting.cpp" />
     <ClCompile Include="Src\BBox.cpp" />
+    <ClCompile Include="Src\Box.cpp" />
     <ClCompile Include="Src\BRDF.cpp" />
     <ClCompile Include="Src\BTDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Src\AreaLight.h" />
     <ClInclude Include="Src\AreaLighting.h" />
     <ClInclude Include="Src\BBox.h" />
+    <ClInclude Include="Src\Box.h" />
     <ClInclude Include="Src\BRDF.h" />
     <ClInclude Include="Src\BTDF.h" />
     <ClInclude Include="Src\Camera.h" />

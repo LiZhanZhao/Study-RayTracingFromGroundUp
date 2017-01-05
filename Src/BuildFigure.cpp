@@ -48,91 +48,171 @@
 #include "Box.h"
 
 void World::build(void) {
-
 	int vpWidth = 600;
-	int vpHeight = 600;
-
-	//int num_samples = 25;
-	int num_samples = 1;
+	int vpHeight = 400;
+	int num_samples = 9;
 	imageWidth = vpWidth;
 	imageHeight = vpHeight;
 	imageBuffer = new RGBColor[imageWidth * imageHeight];
 
-
 	vp.set_hres(vpWidth);
 	vp.set_vres(vpHeight);
 	vp.set_samples(num_samples);
-	vp.set_max_depth(5);
-
-	background_color = RGBColor(0.9, 0.9, 1);  // pale blue
+	//vp.set_max_depth(15);
+	vp.set_max_depth(11);
 
 	tracer_ptr = new Whitted(this);
 
+	background_color = RGBColor(0.75);
+
 	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->scale_radiance(0.5);
+	ambient_ptr->scale_radiance(1.0);
 	set_ambient_light(ambient_ptr);
 
 
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(0, 1.5, 4);
-	pinhole_ptr->set_lookat(0.0);
-	pinhole_ptr->set_view_distance(675.0);
+	pinhole_ptr->set_eye(10, 12, 20);
+	pinhole_ptr->set_lookat(-3.75, 3, 0);
+	pinhole_ptr->set_view_distance(1500.0);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-
-	PointLight* light_ptr = new PointLight;
-	light_ptr->set_location(10, 20, 20);
-	light_ptr->scale_radiance(7.5);
-	light_ptr->set_shadows(false);
-	add_light(light_ptr);
-
-
-	// matte sphere inside cube
-
-	Matte* matte_ptr = new Matte;
-	matte_ptr->set_ka(0.5);
-	matte_ptr->set_kd(0.5);
-	matte_ptr->set_cd(0.0, 0.25, 1.0);
-
-	Sphere*	sphere_ptr = new Sphere(Point3D(0.0, -0.25, -1.0), 0.5);
-	sphere_ptr->set_material(matte_ptr);
-	add_object(sphere_ptr);
+	PointLight* light_ptr1 = new PointLight;
+	light_ptr1->set_location(20, 25, -20);
+	light_ptr1->scale_radiance(3.0);
+	light_ptr1->set_shadows(true);
+	add_light(light_ptr1);
 
 
-	// transparent cube
+	float c = 1.75;  // this allows us to adjust the filter color without changing the hue
+	RGBColor glass_color(0.27*c, 0.49*c, 0.42*c);
 
-	RGBColor glass_color(0.64, 0.98, 0.88);	// light cyan
 
 	Dielectric* glass_ptr = new Dielectric;
-	glass_ptr->set_exp(2000.0);
-	glass_ptr->set_eta_in(1.5);					// glass
-	glass_ptr->set_eta_out(1.33);				// water
+	glass_ptr->set_eta_in(1.50);		// glass
+	glass_ptr->set_eta_out(1.0);		// air
 	glass_ptr->set_cf_in(glass_color);
 	glass_ptr->set_cf_out(white);
-	glass_ptr->set_shadows(false);
 
-	Box* box_ptr = new Box(Point3D(-1.0), Point3D(1.0));
-	box_ptr->set_material(glass_ptr);
-	add_object(box_ptr);
+	double 	thickness = 0.25;
+	double 	height = 4.0;
+	double 	delta = 1.0;			// length change of each box
+
+	int 	num_boxes = 10;
+	double 	x_min = -10.0;		// where the boxes start in the x direction
+	double 	gap = 0.5;   		// gap between the boxes
+
+	for (int j = 0; j < num_boxes; j++) {
+		double length = thickness + j * delta;
+		Point3D p0(x_min + j * (thickness + gap), 0.0, -length);
+		Point3D p1(x_min + j * (thickness + gap) + thickness, height, 0.0);
+
+		Box* box_ptr = new Box(p0, p1);
+		box_ptr->set_material(glass_ptr);
+		add_object(box_ptr);
+	}
 
 
 	// plane
 
-	//Checker3D* checker_ptr = new Checker3D;
-	//checker_ptr->set_size(4.0);
-	//checker_ptr->set_color1(1, 1, 0.4);    		// yellow
-	//checker_ptr->set_color2(1, 0.5, 0);   		// orange
+	Matte* matte_ptr = new Matte;
+	matte_ptr->set_ka(0.5);
+	matte_ptr->set_kd(0.65);
+	matte_ptr->set_cd(0.75);
 
-	Matte* sv_matte_ptr = new Matte;
-	sv_matte_ptr->set_ka(0.5);
-	sv_matte_ptr->set_kd(0.2);
-	sv_matte_ptr->set_cd(0.37, 0.59, 0.2);
-	//sv_matte_ptr->set_cd(checker_ptr);
-
-	Plane* plane_ptr = new Plane(Point3D(0, -10.1, 0), Normal(0, 1, 0));
-	plane_ptr->set_material(sv_matte_ptr);
+	Plane* plane_ptr = new Plane(Point3D(0.0), Normal(0, 1, 0));
+	plane_ptr->set_material(matte_ptr);
 	add_object(plane_ptr);
+
+
+
+
+
+
+	//int vpWidth = 600;
+	//int vpHeight = 600;
+
+	////int num_samples = 25;
+	//int num_samples = 1;
+	//imageWidth = vpWidth;
+	//imageHeight = vpHeight;
+	//imageBuffer = new RGBColor[imageWidth * imageHeight];
+
+
+	//vp.set_hres(vpWidth);
+	//vp.set_vres(vpHeight);
+	//vp.set_samples(num_samples);
+	//vp.set_max_depth(5);
+
+	//background_color = RGBColor(0.9, 0.9, 1);  // pale blue
+
+	//tracer_ptr = new Whitted(this);
+
+	//Ambient* ambient_ptr = new Ambient;
+	//ambient_ptr->scale_radiance(0.5);
+	//set_ambient_light(ambient_ptr);
+
+
+	//Pinhole* pinhole_ptr = new Pinhole;
+	//pinhole_ptr->set_eye(0, 1.5, 4);
+	//pinhole_ptr->set_lookat(0.0);
+	//pinhole_ptr->set_view_distance(675.0);
+	//pinhole_ptr->compute_uvw();
+	//set_camera(pinhole_ptr);
+
+
+	//PointLight* light_ptr = new PointLight;
+	//light_ptr->set_location(10, 20, 20);
+	//light_ptr->scale_radiance(7.5);
+	//light_ptr->set_shadows(false);
+	//add_light(light_ptr);
+
+
+	//// matte sphere inside cube
+
+	//Matte* matte_ptr = new Matte;
+	//matte_ptr->set_ka(0.5);
+	//matte_ptr->set_kd(0.5);
+	//matte_ptr->set_cd(0.0, 0.25, 1.0);
+
+	//Sphere*	sphere_ptr = new Sphere(Point3D(0.0, -0.25, -1.0), 0.5);
+	//sphere_ptr->set_material(matte_ptr);
+	//add_object(sphere_ptr);
+
+
+	//// transparent cube
+
+	//RGBColor glass_color(0.64, 0.98, 0.88);	// light cyan
+
+	//Dielectric* glass_ptr = new Dielectric;
+	//glass_ptr->set_exp(2000.0);
+	//glass_ptr->set_eta_in(1.5);					// glass
+	//glass_ptr->set_eta_out(1.33);				// water
+	//glass_ptr->set_cf_in(glass_color);
+	//glass_ptr->set_cf_out(white);
+	//glass_ptr->set_shadows(false);
+
+	//Box* box_ptr = new Box(Point3D(-1.0), Point3D(1.0));
+	//box_ptr->set_material(glass_ptr);
+	//add_object(box_ptr);
+
+
+	//// plane
+
+	////Checker3D* checker_ptr = new Checker3D;
+	////checker_ptr->set_size(4.0);
+	////checker_ptr->set_color1(1, 1, 0.4);    		// yellow
+	////checker_ptr->set_color2(1, 0.5, 0);   		// orange
+
+	//Matte* sv_matte_ptr = new Matte;
+	//sv_matte_ptr->set_ka(0.5);
+	//sv_matte_ptr->set_kd(0.2);
+	//sv_matte_ptr->set_cd(0.37, 0.59, 0.2);
+	////sv_matte_ptr->set_cd(checker_ptr);
+
+	//Plane* plane_ptr = new Plane(Point3D(0, -10.1, 0), Normal(0, 1, 0));
+	//plane_ptr->set_material(sv_matte_ptr);
+	//add_object(plane_ptr);
 
 
 

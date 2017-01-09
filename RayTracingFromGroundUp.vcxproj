@@ -132,6 +132,8 @@
     <ClCompile Include="Src\Sphere.cpp" />
     <ClCompile Include="Src\Spherical.cpp" />
     <ClCompile Include="Src\StereoCamera.cpp" />
+    <ClCompile Include="Src\SV_Lambertian.cpp" />
+    <ClCompile Include="Src\Texture.cpp" />
     <ClCompile Include="Src\ThinLens.cpp" />
     <ClCompile Include="Src\Tracer.cpp" />
     <ClCompile Include="Src\Transparent.cpp" />
@@ -202,6 +204,8 @@
     <ClInclude Include="Src\Sphere.h" />
     <ClInclude Include="Src\Spherical.h" />
     <ClInclude Include="Src\StereoCamera.h" />
+    <ClInclude Include="Src\SV_Lambertian.h" />
+    <ClInclude Include="Src\Texture.h" />
     <ClInclude Include="Src\ThinLens.h" />
     <ClInclude Include="Src\Tracer.h" />
     <ClInclude Include="Src\Transparent.h" />

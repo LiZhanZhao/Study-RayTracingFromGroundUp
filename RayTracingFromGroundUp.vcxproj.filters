@@ -219,6 +219,12 @@
     <ClCompile Include="Src\Box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\SV_Lambertian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Constants.h">
@@ -423,6 +429,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\SV_Lambertian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

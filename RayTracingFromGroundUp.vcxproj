@@ -96,9 +96,12 @@
     <ClCompile Include="Src\GlossyReflector.cpp" />
     <ClCompile Include="Src\GlossySpecular.cpp" />
     <ClCompile Include="Src\Grid.cpp" />
+    <ClCompile Include="Src\Image.cpp" />
+    <ClCompile Include="Src\ImageTexture.cpp" />
     <ClCompile Include="Src\Instance.cpp" />
     <ClCompile Include="Src\Lambertian.cpp" />
     <ClCompile Include="Src\Light.cpp" />
+    <ClCompile Include="Src\Mapping.cpp" />
     <ClCompile Include="Src\Material.cpp" />
     <ClCompile Include="Src\Maths.cpp" />
     <ClCompile Include="Src\Matrix.cpp" />
@@ -169,9 +172,12 @@
     <ClInclude Include="Src\GlossyReflector.h" />
     <ClInclude Include="Src\GlossySpecular.h" />
     <ClInclude Include="Src\Grid.h" />
+    <ClInclude Include="Src\Image.h" />
+    <ClInclude Include="Src\ImageTexture.h" />
     <ClInclude Include="Src\Instance.h" />
     <ClInclude Include="Src\Lambertian.h" />
     <ClInclude Include="Src\Light.h" />
+    <ClInclude Include="Src\Mapping.h" />
     <ClInclude Include="Src\Material.h" />
     <ClInclude Include="Src\Maths.h" />
     <ClInclude Include="Src\Matrix.h" />

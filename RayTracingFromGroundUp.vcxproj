@@ -133,6 +133,7 @@
     <ClCompile Include="Src\Spherical.cpp" />
     <ClCompile Include="Src\StereoCamera.cpp" />
     <ClCompile Include="Src\SV_Lambertian.cpp" />
+    <ClCompile Include="Src\SV_Matte.cpp" />
     <ClCompile Include="Src\Texture.cpp" />
     <ClCompile Include="Src\ThinLens.cpp" />
     <ClCompile Include="Src\Tracer.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Src\Spherical.h" />
     <ClInclude Include="Src\StereoCamera.h" />
     <ClInclude Include="Src\SV_Lambertian.h" />
+    <ClInclude Include="Src\SV_Matte.h" />
     <ClInclude Include="Src\Texture.h" />
     <ClInclude Include="Src\ThinLens.h" />
     <ClInclude Include="Src\Tracer.h" />

@@ -14,6 +14,8 @@ public:
 
 	SV_Lambertian& operator= (const SV_Lambertian& rhs);
 
+	void set_cd(Texture* tex);
+
 	virtual ~SV_Lambertian(void);
 
 	virtual SV_Lambertian* clone(void) const;
@@ -30,8 +32,10 @@ public:
 private:
 
 	float		kd;
-	Texture* 	cd;
+	Texture*    cd;
 };
+
+
 
 
 #endif

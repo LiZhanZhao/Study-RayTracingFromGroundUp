@@ -35,6 +35,10 @@ SV_Lambertian* SV_Lambertian::clone(void) const {
 }
 
 
+void SV_Lambertian::set_cd(Texture* tex){
+	cd = tex;
+}
+
 RGBColor
 SV_Lambertian::rho(const ShadeRec& sr, const Vector3D& wo) const {
 	return (kd * cd->get_color(sr));

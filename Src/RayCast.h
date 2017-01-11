@@ -23,7 +23,6 @@ class RayCast: public Tracer {
 		virtual RGBColor	
 		trace_ray(const Ray& ray) const;
 
-		// ***** need to implement 
 		virtual RGBColor trace_ray(const Ray ray, const int depth) const;
 };
 

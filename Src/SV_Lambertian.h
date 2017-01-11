@@ -16,6 +16,8 @@ public:
 
 	void set_cd(Texture* tex);
 
+	void set_kd(const float value);
+
 	virtual ~SV_Lambertian(void);
 
 	virtual SV_Lambertian* clone(void) const;
@@ -35,6 +37,9 @@ private:
 	Texture*    cd;
 };
 
+void SV_Lambertian::set_kd(const float value){
+	kd = value;
+}
 
 
 

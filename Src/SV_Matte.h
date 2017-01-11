@@ -19,8 +19,11 @@ public:
 
 	~SV_Matte(void);
 
-	void
-		set_cd(Texture* t_ptr);
+	void set_cd(Texture* t_ptr);
+
+	void set_ka(const float k);
+
+	void set_kd(const float k);
 
 	virtual RGBColor
 		shade(ShadeRec& s);
@@ -38,6 +41,12 @@ SV_Matte::set_cd(Texture* t_ptr) {
 	diffuse_brdf->set_cd(t_ptr);
 }
 
+inline void SV_Matte::set_ka(const float ka) {
+	ambient_brdf->set_kd(ka);
+}
 
+inline void SV_Matte::set_kd(const float k){
+	diffuse_brdf->set_kd(k);
+}
 
 #endif

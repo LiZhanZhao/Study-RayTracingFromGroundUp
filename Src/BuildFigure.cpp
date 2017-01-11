@@ -90,7 +90,7 @@ void World::build(void) {
 
 	Image* image_ptr = new Image;
 	//	image_ptr->read_ppm_file("EarthLowRes.ppm");
-	image_ptr->read_ppm_file("EarthHighRes.ppm");
+	image_ptr->read_ppm_file("Texture/EarthHighRes.ppm");
 
 
 	// mapping:

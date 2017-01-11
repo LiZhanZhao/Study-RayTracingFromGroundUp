@@ -134,6 +134,7 @@
     <ClCompile Include="Src\SmoothTriangle.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
     <ClCompile Include="Src\Spherical.cpp" />
+    <ClCompile Include="Src\SphericalMap.cpp" />
     <ClCompile Include="Src\StereoCamera.cpp" />
     <ClCompile Include="Src\SV_Lambertian.cpp" />
     <ClCompile Include="Src\SV_Matte.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Src\SmoothTriangle.h" />
     <ClInclude Include="Src\Sphere.h" />
     <ClInclude Include="Src\Spherical.h" />
+    <ClInclude Include="Src\SphericalMap.h" />
     <ClInclude Include="Src\StereoCamera.h" />
     <ClInclude Include="Src\SV_Lambertian.h" />
     <ClInclude Include="Src\SV_Matte.h" />

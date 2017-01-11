@@ -37,7 +37,7 @@ private:
 	Texture*    cd;
 };
 
-void SV_Lambertian::set_kd(const float value){
+inline void SV_Lambertian::set_kd(const float value){
 	kd = value;
 }
 

@@ -53,11 +53,11 @@
 
 // Mapping
 #include "SphericalMap.h"
+#include "SquareMap.h"
 
 void World::build(void) {
-
-	int vpWidth = 700;
-	int vpHeight = 700;
+	int vpWidth = 400;
+	int vpHeight = 400;
 	int num_samples = 16;
 
 	imageWidth = vpWidth;
@@ -67,63 +67,143 @@ void World::build(void) {
 	vp.set_hres(vpWidth);
 	vp.set_vres(vpHeight);
 	vp.set_samples(num_samples);
+	vp.set_max_depth(0);
 
-	background_color = black;
+	background_color = RGBColor(0.0);
 
 	tracer_ptr = new RayCast(this);
 
-	Pinhole* camera_ptr = new Pinhole;
-	camera_ptr->set_eye(0, 0, 65);
-	camera_ptr->set_lookat(0.0);
-	camera_ptr->set_view_distance(21000.0);
-	camera_ptr->compute_uvw();
-	set_camera(camera_ptr);
-
+	Pinhole* pinhole_ptr = new Pinhole;
+	pinhole_ptr->set_eye(5, 1.5, 8);
+	pinhole_ptr->set_lookat(0.25, 0.0, 0.0);
+	pinhole_ptr->set_view_distance(1000.0);
+	pinhole_ptr->compute_uvw();
+	set_camera(pinhole_ptr);
 
 	Directional* light_ptr = new Directional;
-	light_ptr->set_direction(-0.25, 0.4, 1);
+	light_ptr->set_direction(-15, 20, 25);
 	light_ptr->scale_radiance(2.5);
+	light_ptr->set_shadows(true);
 	add_light(light_ptr);
 
-
-	// image:					
+	// image:
 
 	Image* image_ptr = new Image;
-	//	image_ptr->read_ppm_file("EarthLowRes.ppm");
-	image_ptr->read_ppm_file("Texture/EarthHighRes.ppm");
-
+	image_ptr->read_ppm_file("Texture/Lightlace.ppm");
 
 	// mapping:
 
-	SphericalMap* map_ptr = new SphericalMap;
+	SquareMap* map_ptr = new SquareMap;
 
+	// image texture:
 
-	// image based texture:  
-
-	ImageTexture* texture_ptr = new ImageTexture;
-	texture_ptr->set_image(image_ptr);
+	ImageTexture* texture_ptr = new ImageTexture(image_ptr);
 	texture_ptr->set_mapping(map_ptr);
 
-
-	// textured material:
+	// spatially varying material:
 
 	SV_Matte* sv_matte_ptr = new SV_Matte;
-	sv_matte_ptr->set_ka(0.2);
-	sv_matte_ptr->set_kd(0.8);
+	sv_matte_ptr->set_ka(0.40);
+	sv_matte_ptr->set_kd(0.95);
 	sv_matte_ptr->set_cd(texture_ptr);
 
+	// generic rectangle:
 
-	// generic sphere:
+	Rectangle* rectangle_ptr = new Rectangle;
+	rectangle_ptr->set_material(sv_matte_ptr);
 
-	Sphere*	sphere_ptr = new Sphere;
-	sphere_ptr->set_material(sv_matte_ptr);
+	// transformed rectangle:
+
+	Instance* lightlace_ptr = new Instance(rectangle_ptr);
+	lightlace_ptr->scale(1.0, 1.0, 1.5);
+	lightlace_ptr->rotate_z(90);
+	lightlace_ptr->rotate_y(90);
+	add_object(lightlace_ptr);
+
+	// ground plane
+
+	Matte* matte_ptr1 = new Matte;
+	matte_ptr1->set_ka(0.25);
+	matte_ptr1->set_kd(0.5);
+	matte_ptr1->set_cd(1.0);
+
+	Plane* plane_ptr = new Plane(Point3D(0.0, -1.0, 0.0), Normal(0.0, 1.0, 0.0));
+	plane_ptr->set_material(matte_ptr1);
+	add_object(plane_ptr);
 
 
-	// rotated sphere
 
-	Instance* earth_ptr = new Instance(sphere_ptr);
-	earth_ptr->rotate_y(60);
-	add_object(earth_ptr);
+
+
+
+	//int vpWidth = 700;
+	//int vpHeight = 700;
+	//int num_samples = 16;
+
+	//imageWidth = vpWidth;
+	//imageHeight = vpHeight;
+	//imageBuffer = new RGBColor[imageWidth * imageHeight];
+
+	//vp.set_hres(vpWidth);
+	//vp.set_vres(vpHeight);
+	//vp.set_samples(num_samples);
+
+	//background_color = black;
+
+	//tracer_ptr = new RayCast(this);
+
+	//Pinhole* camera_ptr = new Pinhole;
+	//camera_ptr->set_eye(0, 0, 65);
+	//camera_ptr->set_lookat(0.0);
+	//camera_ptr->set_view_distance(21000.0);
+	//camera_ptr->compute_uvw();
+	//set_camera(camera_ptr);
+
+
+	//Directional* light_ptr = new Directional;
+	//light_ptr->set_direction(-0.25, 0.4, 1);
+	//light_ptr->scale_radiance(2.5);
+	//add_light(light_ptr);
+
+
+	//// image:					
+
+	//Image* image_ptr = new Image;
+	////	image_ptr->read_ppm_file("EarthLowRes.ppm");
+	//image_ptr->read_ppm_file("Texture/EarthHighRes.ppm");
+
+
+	//// mapping:
+
+	//SphericalMap* map_ptr = new SphericalMap;
+
+
+	//// image based texture:  
+
+	//ImageTexture* texture_ptr = new ImageTexture;
+	//texture_ptr->set_image(image_ptr);
+	//texture_ptr->set_mapping(map_ptr);
+
+
+	//// textured material:
+
+	//SV_Matte* sv_matte_ptr = new SV_Matte;
+	//sv_matte_ptr->set_ka(0.2);
+	//sv_matte_ptr->set_kd(0.8);
+	//sv_matte_ptr->set_cd(texture_ptr);
+
+
+	//// generic sphere:
+
+	//Sphere*	sphere_ptr = new Sphere;
+	//sphere_ptr->set_material(sv_matte_ptr);
+
+
+	//// rotated sphere
+
+	//Instance* earth_ptr = new Instance(sphere_ptr);
+	//earth_ptr->rotate_y(60);
+	//add_object(earth_ptr);
 
 
 

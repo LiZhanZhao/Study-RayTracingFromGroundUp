@@ -243,6 +243,12 @@
     <ClCompile Include="Src\SquareMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\SmoothUVMeshTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\FlatUVMeshTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Constants.h">
@@ -471,6 +477,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\SquareMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\SmoothUVMeshTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FlatUVMeshTriangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

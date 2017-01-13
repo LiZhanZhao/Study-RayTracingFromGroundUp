@@ -89,6 +89,7 @@
     <ClCompile Include="Src\EnvironmentLight.cpp" />
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\FlatMeshTriangle.cpp" />
+    <ClCompile Include="Src\FlatUVMeshTriangle.cpp" />
     <ClCompile Include="Src\FresnelReflector.cpp" />
     <ClCompile Include="Src\FresnelTransmitter.cpp" />
     <ClCompile Include="Src\GeometricObject.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="Src\SingleSphere.cpp" />
     <ClCompile Include="Src\SmoothMeshTriangle.cpp" />
     <ClCompile Include="Src\SmoothTriangle.cpp" />
+    <ClCompile Include="Src\SmoothUVMeshTriangle.cpp" />
     <ClCompile Include="Src\Sphere.cpp" />
     <ClCompile Include="Src\Spherical.cpp" />
     <ClCompile Include="Src\SphericalMap.cpp" />
@@ -167,6 +169,7 @@
     <ClInclude Include="Src\EnvironmentLight.h" />
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\FlatMeshTriangle.h" />
+    <ClInclude Include="Src\FlatUVMeshTriangle.h" />
     <ClInclude Include="Src\FresnelReflector.h" />
     <ClInclude Include="Src\FresnelTransmitter.h" />
     <ClInclude Include="Src\GeometricObject.h" />
@@ -210,6 +213,7 @@
     <ClInclude Include="Src\SingleSphere.h" />
     <ClInclude Include="Src\SmoothMeshTriangle.h" />
     <ClInclude Include="Src\SmoothTriangle.h" />
+    <ClInclude Include="Src\SmoothUVMeshTriangle.h" />
     <ClInclude Include="Src\Sphere.h" />
     <ClInclude Include="Src\Spherical.h" />
     <ClInclude Include="Src\SphericalMap.h" />

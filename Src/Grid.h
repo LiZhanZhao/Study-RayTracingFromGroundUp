@@ -63,7 +63,13 @@ class Grid: public Compound {
 
 		//void reverse_mesh_normals(void);
 
-		void store_material(Material* material, const int index); 							
+		void store_material(Material* material, const int index); 		
+
+		void read_flat_uv_triangles(char* file_name);
+
+		void read_smooth_uv_triangles(char* file_name);
+
+		void read_uv_ply_file(char* file_name, const int triangle_type);
 
 	private: 
 

@@ -59,7 +59,6 @@ void World::build(void) {
 	int vpWidth = 400;
 	int vpHeight = 400;
 	int num_samples = 16;
-
 	imageWidth = vpWidth;
 	imageHeight = vpHeight;
 	imageBuffer = new RGBColor[imageWidth * imageHeight];
@@ -67,69 +66,134 @@ void World::build(void) {
 	vp.set_hres(vpWidth);
 	vp.set_vres(vpHeight);
 	vp.set_samples(num_samples);
-	vp.set_max_depth(0);
-
-	background_color = RGBColor(0.0);
 
 	tracer_ptr = new RayCast(this);
 
+	background_color = black;
+
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(5, 1.5, 8);
-	pinhole_ptr->set_lookat(0.25, 0.0, 0.0);
-	pinhole_ptr->set_view_distance(1000.0);
+	pinhole_ptr->set_eye(11, 5, 9);
+	pinhole_ptr->set_view_distance(1600.0);
+	pinhole_ptr->set_lookat(0, -0.5, 0);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-	Directional* light_ptr = new Directional;
-	light_ptr->set_direction(-15, 20, 25);
-	light_ptr->scale_radiance(2.5);
-	light_ptr->set_shadows(true);
-	add_light(light_ptr);
 
-	// image:
+	Directional* directional_ptr = new Directional;
+	directional_ptr->set_direction(0.75, 1, -0.15);
+	directional_ptr->scale_radiance(4.5);
+	directional_ptr->set_shadows(true);
+	add_light(directional_ptr);
 
 	Image* image_ptr = new Image;
-	image_ptr->read_ppm_file("Texture/Lightlace.ppm");
+	image_ptr->read_ppm_file("Texture/BlueGlass.ppm");
 
-	// mapping:
-
-	SquareMap* map_ptr = new SquareMap;
-
-	// image texture:
-
-	ImageTexture* texture_ptr = new ImageTexture(image_ptr);
-	texture_ptr->set_mapping(map_ptr);
-
-	// spatially varying material:
+	ImageTexture* texture_ptr = new ImageTexture;
+	texture_ptr->set_image(image_ptr);
 
 	SV_Matte* sv_matte_ptr = new SV_Matte;
-	sv_matte_ptr->set_ka(0.40);
-	sv_matte_ptr->set_kd(0.95);
+	sv_matte_ptr->set_ka(0.1);
+	sv_matte_ptr->set_kd(0.75);
 	sv_matte_ptr->set_cd(texture_ptr);
 
-	// generic rectangle:
+	char* file_name = "Ply/TwoUVTriangles.ply";
+	Grid* grid_ptr = new Grid(new Mesh);
+	grid_ptr->read_flat_uv_triangles(file_name);		// for Figure 29.22(a)
+	//grid_ptr->read_smooth_uv_triangles(file_name);		// for Figure 29.22(b)
+	grid_ptr->set_material(sv_matte_ptr);
+	grid_ptr->setup_cells();
+	add_object(grid_ptr);
 
-	Rectangle* rectangle_ptr = new Rectangle;
-	rectangle_ptr->set_material(sv_matte_ptr);
 
-	// transformed rectangle:
+	Matte* matte_ptr = new Matte;
+	matte_ptr->set_cd(1, 0.9, 0.6);
+	matte_ptr->set_ka(0.25);
+	matte_ptr->set_kd(0.4);
 
-	Instance* lightlace_ptr = new Instance(rectangle_ptr);
-	lightlace_ptr->scale(1.0, 1.0, 1.5);
-	lightlace_ptr->rotate_z(90);
-	lightlace_ptr->rotate_y(90);
-	add_object(lightlace_ptr);
+	Plane* plane_ptr1 = new Plane(Point3D(0, -2.0, 0), Normal(0, 1, 0));
+	plane_ptr1->set_material(matte_ptr);
+	add_object(plane_ptr1);
 
-	// ground plane
 
-	Matte* matte_ptr1 = new Matte;
-	matte_ptr1->set_ka(0.25);
-	matte_ptr1->set_kd(0.5);
-	matte_ptr1->set_cd(1.0);
 
-	Plane* plane_ptr = new Plane(Point3D(0.0, -1.0, 0.0), Normal(0.0, 1.0, 0.0));
-	plane_ptr->set_material(matte_ptr1);
-	add_object(plane_ptr);
+
+
+
+
+	//int vpWidth = 400;
+	//int vpHeight = 400;
+	//int num_samples = 16;
+
+	//imageWidth = vpWidth;
+	//imageHeight = vpHeight;
+	//imageBuffer = new RGBColor[imageWidth * imageHeight];
+
+	//vp.set_hres(vpWidth);
+	//vp.set_vres(vpHeight);
+	//vp.set_samples(num_samples);
+	//vp.set_max_depth(0);
+
+	//background_color = RGBColor(0.0);
+
+	//tracer_ptr = new RayCast(this);
+
+	//Pinhole* pinhole_ptr = new Pinhole;
+	//pinhole_ptr->set_eye(5, 1.5, 8);
+	//pinhole_ptr->set_lookat(0.25, 0.0, 0.0);
+	//pinhole_ptr->set_view_distance(1000.0);
+	//pinhole_ptr->compute_uvw();
+	//set_camera(pinhole_ptr);
+
+	//Directional* light_ptr = new Directional;
+	//light_ptr->set_direction(-15, 20, 25);
+	//light_ptr->scale_radiance(2.5);
+	//light_ptr->set_shadows(true);
+	//add_light(light_ptr);
+
+	//// image:
+
+	//Image* image_ptr = new Image;
+	//image_ptr->read_ppm_file("Texture/Lightlace.ppm");
+
+	//// mapping:
+
+	//SquareMap* map_ptr = new SquareMap;
+
+	//// image texture:
+
+	//ImageTexture* texture_ptr = new ImageTexture(image_ptr);
+	//texture_ptr->set_mapping(map_ptr);
+
+	//// spatially varying material:
+
+	//SV_Matte* sv_matte_ptr = new SV_Matte;
+	//sv_matte_ptr->set_ka(0.40);
+	//sv_matte_ptr->set_kd(0.95);
+	//sv_matte_ptr->set_cd(texture_ptr);
+
+	//// generic rectangle:
+
+	//Rectangle* rectangle_ptr = new Rectangle;
+	//rectangle_ptr->set_material(sv_matte_ptr);
+
+	//// transformed rectangle:
+
+	//Instance* lightlace_ptr = new Instance(rectangle_ptr);
+	//lightlace_ptr->scale(1.0, 1.0, 1.5);
+	//lightlace_ptr->rotate_z(90);
+	//lightlace_ptr->rotate_y(90);
+	//add_object(lightlace_ptr);
+
+	//// ground plane
+
+	//Matte* matte_ptr1 = new Matte;
+	//matte_ptr1->set_ka(0.25);
+	//matte_ptr1->set_kd(0.5);
+	//matte_ptr1->set_cd(1.0);
+
+	//Plane* plane_ptr = new Plane(Point3D(0.0, -1.0, 0.0), Normal(0.0, 1.0, 0.0));
+	//plane_ptr->set_material(matte_ptr1);
+	//add_object(plane_ptr);
 
 
 

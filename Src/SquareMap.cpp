@@ -26,6 +26,7 @@ SquareMap::get_texel_coordinates(const 	Point3D& 	local_hit_point,
 	int& 		row,
 	int& 		column) const {
 
+	// this is only work for Rectangle£¬because Rectangle set p0(-1, 0, -1)£¬a(0, 0, 2), b(2, 0, 0), default
 	float u = (local_hit_point.z + 1) / 2;
 	float v = (local_hit_point.x + 1) / 2;
 

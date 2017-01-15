@@ -145,6 +145,7 @@
     <ClCompile Include="Src\SV_Matte.cpp" />
     <ClCompile Include="Src\Texture.cpp" />
     <ClCompile Include="Src\ThinLens.cpp" />
+    <ClCompile Include="Src\TInstance.cpp" />
     <ClCompile Include="Src\Tracer.cpp" />
     <ClCompile Include="Src\Transparent.cpp" />
     <ClCompile Include="Src\Triangle.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="Src\SV_Matte.h" />
     <ClInclude Include="Src\Texture.h" />
     <ClInclude Include="Src\ThinLens.h" />
+    <ClInclude Include="Src\TInstance.h" />
     <ClInclude Include="Src\Tracer.h" />
     <ClInclude Include="Src\Transparent.h" />
     <ClInclude Include="Src\Triangle.h" />

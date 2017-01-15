@@ -59,8 +59,10 @@
 #include "SquareMap.h"
 
 void World::build(void) {
-	int vpWidth = 904;
-	int vpHeight = 300;
+
+	int vpWidth = 400;
+	int vpHeight = 400;
+
 	int num_samples = 16;
 
 	imageWidth = vpWidth;
@@ -72,143 +74,190 @@ void World::build(void) {
 	vp.set_samples(num_samples);
 
 	tracer_ptr = new RayCast(this);
-	background_color = RGBColor(0.75);
-
-	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->scale_radiance(0.5);
-	set_ambient_light(ambient_ptr);
-
+	background_color = RGBColor(0.5);
 
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(0, 0, 200);
+	pinhole_ptr->set_eye(0, 0, 100);
 	pinhole_ptr->set_lookat(0.0);
-	pinhole_ptr->set_view_distance(9600.0);
+	pinhole_ptr->set_view_distance(7500.0);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-
-	PointLight* light_ptr = new PointLight;
-	light_ptr->set_location(50, 100, 100);
-	light_ptr->scale_radiance(4.0);
-	light_ptr->set_shadows(false);
+	Directional* light_ptr = new Directional;
+	light_ptr->set_direction(0, 0, 1);
+	light_ptr->scale_radiance(3.0);
 	add_light(light_ptr);
 
-
-	// the spheres
-
 	Checker3D* checker_ptr = new Checker3D;
-	checker_ptr->set_size(1.0);
-	checker_ptr->set_color1(black);
-	checker_ptr->set_color2(white);
+	checker_ptr->set_size(0.3);
+	checker_ptr->set_color1(white);
+	checker_ptr->set_color2(black);
+
+	TInstance* scaled_checker_ptr = new TInstance(checker_ptr);
+	scaled_checker_ptr->scale(2, 1, 1);
+
+	SV_Matte* sv_matte_ptr = new SV_Matte;
+	sv_matte_ptr->set_ka(0.8);
+	sv_matte_ptr->set_kd(0.4);
+	sv_matte_ptr->set_cd(scaled_checker_ptr);
+
+	Box* box_ptr = new Box(Point3D(-1.0), Point3D(1.0));
+	box_ptr->set_material(sv_matte_ptr);
+	add_object(box_ptr);
 
 
-	double radius;
-
-	// sphere 1
-
-	TInstance* transformed_checker_ptr1 = new TInstance(checker_ptr);
-	transformed_checker_ptr1->translate(0.5, 0.5, 0.0);
-
-	SV_Matte* sv_matte_ptr1 = new SV_Matte;
-	sv_matte_ptr1->set_ka(0.5);
-	sv_matte_ptr1->set_kd(0.75);
-	sv_matte_ptr1->set_cd(transformed_checker_ptr1);
-
-	radius = 3.0;
-	Instance* sphere_ptr1 = new Instance(new Sphere(Point3D(0.0), radius));
-	sphere_ptr1->set_material(sv_matte_ptr1);
-	sphere_ptr1->translate(-6.25, 0.0, 0.0);
-	add_object(sphere_ptr1);
 
 
-	// sphere 2
+	//int vpWidth = 904;
+	//int vpHeight = 300;
+	//int num_samples = 16;
 
-	TInstance* transformed_checker_ptr2 = new TInstance(checker_ptr);
-	transformed_checker_ptr2->scale(0.75);
-	transformed_checker_ptr2->translate(0.375, 0.375, 0.0);
+	//imageWidth = vpWidth;
+	//imageHeight = vpHeight;
+	//imageBuffer = new RGBColor[imageWidth * imageHeight];
 
-	SV_Matte* sv_matte_ptr2 = new SV_Matte;
-	sv_matte_ptr2->set_ka(0.5);
-	sv_matte_ptr2->set_kd(0.75);
-	sv_matte_ptr2->set_cd(transformed_checker_ptr2);
+	//vp.set_hres(vpWidth);
+	//vp.set_vres(vpHeight);
+	//vp.set_samples(num_samples);
 
-	radius = 2.25;
-	Instance* sphere_ptr2 = new Instance(new Sphere(Point3D(0.0), radius));
-	sphere_ptr2->set_material(sv_matte_ptr2);
-	sphere_ptr2->translate(-1.0, 0.0, 0.0);
-	add_object(sphere_ptr2);
+	//tracer_ptr = new RayCast(this);
+	//background_color = RGBColor(0.75);
 
-
-	// sphere 3
-
-	TInstance* transformed_checker_ptr3 = new TInstance(checker_ptr);
-	transformed_checker_ptr3->scale(0.5833333);
-	transformed_checker_ptr3->translate(0.29166, 0.29166, 0.0);
-
-	SV_Matte* sv_matte_ptr3 = new SV_Matte;
-	sv_matte_ptr3->set_ka(0.5);
-	sv_matte_ptr3->set_kd(0.75);
-	sv_matte_ptr3->set_cd(transformed_checker_ptr3);
-
-	radius = 1.75;
-	Instance* sphere_ptr3 = new Instance(new Sphere(Point3D(0.0), radius));
-	sphere_ptr3->set_material(sv_matte_ptr3);
-	sphere_ptr3->translate(3.0, 0.0, 0.0);
-	add_object(sphere_ptr3);
+	//Ambient* ambient_ptr = new Ambient;
+	//ambient_ptr->scale_radiance(0.5);
+	//set_ambient_light(ambient_ptr);
 
 
-	// sphere 4
-
-	TInstance* transformed_checker_ptr4 = new TInstance(checker_ptr);
-	transformed_checker_ptr4->scale(0.3333333);
-	transformed_checker_ptr4->translate(0.166666, 0.166666, 0.0);
-
-	SV_Matte* sv_matte_ptr4 = new SV_Matte;
-	sv_matte_ptr4->set_ka(0.5);
-	sv_matte_ptr4->set_kd(0.75);
-	sv_matte_ptr4->set_cd(transformed_checker_ptr4);
-
-	radius = 1.0;
-	Instance* sphere_ptr4 = new Instance(new Sphere(Point3D(0.0), radius));
-	sphere_ptr4->set_material(sv_matte_ptr4);
-	sphere_ptr4->translate(5.75, 0.0, 0.0);
-	add_object(sphere_ptr4);
+	//Pinhole* pinhole_ptr = new Pinhole;
+	//pinhole_ptr->set_eye(0, 0, 200);
+	//pinhole_ptr->set_lookat(0.0);
+	//pinhole_ptr->set_view_distance(9600.0);
+	//pinhole_ptr->compute_uvw();
+	//set_camera(pinhole_ptr);
 
 
-	// sphere 5
-
-	TInstance* transformed_checker_ptr5 = new TInstance(checker_ptr);
-	transformed_checker_ptr5->scale(0.25);
-	transformed_checker_ptr5->translate(0.125, 0.125, 0.0);
-
-	SV_Matte* sv_matte_ptr5 = new SV_Matte;
-	sv_matte_ptr5->set_ka(0.5);
-	sv_matte_ptr5->set_kd(0.75);
-	sv_matte_ptr5->set_cd(transformed_checker_ptr5);
-
-	radius = 0.75;
-	Instance* sphere_ptr5 = new Instance(new Sphere(Point3D(0.0), radius));
-	sphere_ptr5->set_material(sv_matte_ptr5);
-	sphere_ptr5->translate(7.5, 0.0, 0.0);
-	add_object(sphere_ptr5);
+	//PointLight* light_ptr = new PointLight;
+	//light_ptr->set_location(50, 100, 100);
+	//light_ptr->scale_radiance(4.0);
+	//light_ptr->set_shadows(false);
+	//add_light(light_ptr);
 
 
-	// sphere 6
+	//// the spheres
 
-	TInstance* transformed_checker_ptr6 = new TInstance(checker_ptr);
-	transformed_checker_ptr6->scale(0.166666);
-	transformed_checker_ptr6->translate(0.083333, 0.083333, 0.0);
+	//Checker3D* checker_ptr = new Checker3D;
+	//checker_ptr->set_size(1.0);
+	//checker_ptr->set_color1(black);
+	//checker_ptr->set_color2(white);
 
-	SV_Matte* sv_matte_ptr6 = new SV_Matte;
-	sv_matte_ptr6->set_ka(0.5);
-	sv_matte_ptr6->set_kd(0.75);
-	sv_matte_ptr6->set_cd(transformed_checker_ptr6);
 
-	radius = 0.5;
-	Instance* sphere_ptr6 = new Instance(new Sphere(Point3D(0.0), radius));
-	sphere_ptr6->set_material(sv_matte_ptr6);
-	sphere_ptr6->translate(8.75, 0.0, 0.0);
-	add_object(sphere_ptr6);
+	//double radius;
+
+	//// sphere 1
+
+	//TInstance* transformed_checker_ptr1 = new TInstance(checker_ptr);
+	//transformed_checker_ptr1->translate(0.5, 0.5, 0.0);
+
+	//SV_Matte* sv_matte_ptr1 = new SV_Matte;
+	//sv_matte_ptr1->set_ka(0.5);
+	//sv_matte_ptr1->set_kd(0.75);
+	//sv_matte_ptr1->set_cd(transformed_checker_ptr1);
+
+	//radius = 3.0;
+	//Instance* sphere_ptr1 = new Instance(new Sphere(Point3D(0.0), radius));
+	//sphere_ptr1->set_material(sv_matte_ptr1);
+	//sphere_ptr1->translate(-6.25, 0.0, 0.0);
+	//add_object(sphere_ptr1);
+
+
+	//// sphere 2
+
+	//TInstance* transformed_checker_ptr2 = new TInstance(checker_ptr);
+	//transformed_checker_ptr2->scale(0.75);
+	//transformed_checker_ptr2->translate(0.375, 0.375, 0.0);
+
+	//SV_Matte* sv_matte_ptr2 = new SV_Matte;
+	//sv_matte_ptr2->set_ka(0.5);
+	//sv_matte_ptr2->set_kd(0.75);
+	//sv_matte_ptr2->set_cd(transformed_checker_ptr2);
+
+	//radius = 2.25;
+	//Instance* sphere_ptr2 = new Instance(new Sphere(Point3D(0.0), radius));
+	//sphere_ptr2->set_material(sv_matte_ptr2);
+	//sphere_ptr2->translate(-1.0, 0.0, 0.0);
+	//add_object(sphere_ptr2);
+
+
+	//// sphere 3
+
+	//TInstance* transformed_checker_ptr3 = new TInstance(checker_ptr);
+	//transformed_checker_ptr3->scale(0.5833333);
+	//transformed_checker_ptr3->translate(0.29166, 0.29166, 0.0);
+
+	//SV_Matte* sv_matte_ptr3 = new SV_Matte;
+	//sv_matte_ptr3->set_ka(0.5);
+	//sv_matte_ptr3->set_kd(0.75);
+	//sv_matte_ptr3->set_cd(transformed_checker_ptr3);
+
+	//radius = 1.75;
+	//Instance* sphere_ptr3 = new Instance(new Sphere(Point3D(0.0), radius));
+	//sphere_ptr3->set_material(sv_matte_ptr3);
+	//sphere_ptr3->translate(3.0, 0.0, 0.0);
+	//add_object(sphere_ptr3);
+
+
+	//// sphere 4
+
+	//TInstance* transformed_checker_ptr4 = new TInstance(checker_ptr);
+	//transformed_checker_ptr4->scale(0.3333333);
+	//transformed_checker_ptr4->translate(0.166666, 0.166666, 0.0);
+
+	//SV_Matte* sv_matte_ptr4 = new SV_Matte;
+	//sv_matte_ptr4->set_ka(0.5);
+	//sv_matte_ptr4->set_kd(0.75);
+	//sv_matte_ptr4->set_cd(transformed_checker_ptr4);
+
+	//radius = 1.0;
+	//Instance* sphere_ptr4 = new Instance(new Sphere(Point3D(0.0), radius));
+	//sphere_ptr4->set_material(sv_matte_ptr4);
+	//sphere_ptr4->translate(5.75, 0.0, 0.0);
+	//add_object(sphere_ptr4);
+
+
+	//// sphere 5
+
+	//TInstance* transformed_checker_ptr5 = new TInstance(checker_ptr);
+	//transformed_checker_ptr5->scale(0.25);
+	//transformed_checker_ptr5->translate(0.125, 0.125, 0.0);
+
+	//SV_Matte* sv_matte_ptr5 = new SV_Matte;
+	//sv_matte_ptr5->set_ka(0.5);
+	//sv_matte_ptr5->set_kd(0.75);
+	//sv_matte_ptr5->set_cd(transformed_checker_ptr5);
+
+	//radius = 0.75;
+	//Instance* sphere_ptr5 = new Instance(new Sphere(Point3D(0.0), radius));
+	//sphere_ptr5->set_material(sv_matte_ptr5);
+	//sphere_ptr5->translate(7.5, 0.0, 0.0);
+	//add_object(sphere_ptr5);
+
+
+	//// sphere 6
+
+	//TInstance* transformed_checker_ptr6 = new TInstance(checker_ptr);
+	//transformed_checker_ptr6->scale(0.166666);
+	//transformed_checker_ptr6->translate(0.083333, 0.083333, 0.0);
+
+	//SV_Matte* sv_matte_ptr6 = new SV_Matte;
+	//sv_matte_ptr6->set_ka(0.5);
+	//sv_matte_ptr6->set_kd(0.75);
+	//sv_matte_ptr6->set_cd(transformed_checker_ptr6);
+
+	//radius = 0.5;
+	//Instance* sphere_ptr6 = new Instance(new Sphere(Point3D(0.0), radius));
+	//sphere_ptr6->set_material(sv_matte_ptr6);
+	//sphere_ptr6->translate(8.75, 0.0, 0.0);
+	//add_object(sphere_ptr6);
 
 
 

@@ -32,7 +32,7 @@ protected:
 };
 
 inline void Checker3D::set_size(const float value){
-
+	size = value;
 }
 
 inline void Checker3D::set_color1(RGBColor color){

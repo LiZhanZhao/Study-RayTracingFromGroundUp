@@ -82,6 +82,7 @@
     <ClCompile Include="Src\BRDF.cpp" />
     <ClCompile Include="Src\BTDF.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
+    <ClCompile Include="Src\Checker3D.cpp" />
     <ClCompile Include="Src\Compound.cpp" />
     <ClCompile Include="Src\Dielectric.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Src\BRDF.h" />
     <ClInclude Include="Src\BTDF.h" />
     <ClInclude Include="Src\Camera.h" />
+    <ClInclude Include="Src\Checker3D.h" />
     <ClInclude Include="Src\Compound.h" />
     <ClInclude Include="Src\Constants.h" />
     <ClInclude Include="Src\Dielectric.h" />

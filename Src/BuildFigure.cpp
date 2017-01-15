@@ -106,6 +106,7 @@ void World::build(void) {
 
 	Instance* transformed_box_ptr = new Instance(box_ptr);
 	transformed_box_ptr->scale(2, 1, 1);
+	transformed_box_ptr->rotate_z(45);
 	add_object(transformed_box_ptr);
 
 

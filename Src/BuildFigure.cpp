@@ -51,6 +51,7 @@
 //Texture
 #include "ImageTexture.h"
 #include "Checker3D.h"
+#include "PlaneChecker.h"
 
 // Mapping
 #include "SphericalMap.h"
@@ -159,18 +160,21 @@ void World::build(void) {
 
 	// ground plane
 
-	Checker3D* checker_ptr5 = new Checker3D;
-	checker_ptr5->set_size(1.5);
-	checker_ptr5->set_color1(0.35);
-	checker_ptr5->set_color2(0.5);
+	PlaneChecker* plane_checker_ptr = new PlaneChecker;
+	plane_checker_ptr->set_size(1.5);
+	plane_checker_ptr->set_outline_width(0.0);
+	plane_checker_ptr->set_color1(0.35);
+	plane_checker_ptr->set_color2(0.5);
+	plane_checker_ptr->set_outline_color(RGBColor(1.0f, 1.0f, 0.0f));
 
-	SV_Matte* sv_matte_ptr5 = new SV_Matte;
-	sv_matte_ptr5->set_ka(0.75);
-	sv_matte_ptr5->set_kd(0.75);
-	sv_matte_ptr5->set_cd(checker_ptr5);
+	SV_Matte* sv_matte_ptr8 = new SV_Matte;
+	sv_matte_ptr8->set_ka(0.75);
+	sv_matte_ptr8->set_kd(0.75);
+	sv_matte_ptr8->set_cd(plane_checker_ptr);
 
-	Plane* plane_ptr = new Plane(Point3D(0, -4.5, 0), Normal(0, 1, 0));
-	plane_ptr->set_material(sv_matte_ptr5);
+	Instance* plane_ptr = new Instance(new Plane); // a generic plane is the (x, z) plane
+	plane_ptr->set_material(sv_matte_ptr8);
+	plane_ptr->translate(0, -4.5, 0);
 	add_object(plane_ptr);
 
 

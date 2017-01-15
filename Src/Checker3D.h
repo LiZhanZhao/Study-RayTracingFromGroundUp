@@ -13,8 +13,9 @@ public:
 	virtual Checker3D*
 		clone(void) const;
 
-	virtual
-		~Checker3D(void);
+	virtual ~Checker3D(void);
+
+	Checker3D& operator= (const Checker3D& rhs);
 
 	virtual RGBColor
 		get_color(const ShadeRec& sr) const;
@@ -25,7 +26,7 @@ public:
 	void set_color2(RGBColor color);
 
 protected:
-	Checker3D& operator= (const Checker3D& rhs);
+	
 	float size;
 	RGBColor color1, color2;
 };

@@ -119,6 +119,7 @@
     <ClCompile Include="Src\Phong.cpp" />
     <ClCompile Include="Src\Pinhole.cpp" />
     <ClCompile Include="Src\Plane.cpp" />
+    <ClCompile Include="Src\PlaneChecker.cpp" />
     <ClCompile Include="Src\ply.cpp" />
     <ClCompile Include="Src\Point2D.cpp" />
     <ClCompile Include="Src\Point3D.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="Src\Phong.h" />
     <ClInclude Include="Src\Pinhole.h" />
     <ClInclude Include="Src\Plane.h" />
+    <ClInclude Include="Src\PlaneChecker.h" />
     <ClInclude Include="Src\ply.h" />
     <ClInclude Include="Src\Point2D.h" />
     <ClInclude Include="Src\Point3D.h" />

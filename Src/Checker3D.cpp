@@ -22,6 +22,11 @@ Checker3D::operator= (const Checker3D& rhs){
 		return (*this);
 
 	Texture::operator= (rhs);
+
+	size = rhs.size;
+	color1 = rhs.color1;
+	color2 = rhs.color2;
+
 	return (*this);
 }
 

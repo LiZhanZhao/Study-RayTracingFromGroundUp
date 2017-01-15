@@ -103,7 +103,10 @@ void World::build(void) {
 
 	Box* box_ptr = new Box(Point3D(-1.0), Point3D(1.0));
 	box_ptr->set_material(sv_matte_ptr);
-	add_object(box_ptr);
+
+	Instance* transformed_box_ptr = new Instance(box_ptr);
+	transformed_box_ptr->scale(2, 1, 1);
+	add_object(transformed_box_ptr);
 
 
 

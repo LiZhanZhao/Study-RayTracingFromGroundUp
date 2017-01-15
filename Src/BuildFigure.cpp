@@ -85,84 +85,12 @@ void World::build(void) {
 	add_light(light_ptr);
 
 
-	// sphere
-
-	Checker3D* checker_pt1 = new Checker3D;
-	checker_pt1->set_size(1.0);
-	checker_pt1->set_color1(black);
-	checker_pt1->set_color2(white);
-
-	SV_Matte* sv_matte_ptr1 = new SV_Matte;
-	sv_matte_ptr1->set_ka(0.75);
-	sv_matte_ptr1->set_kd(0.75);
-	sv_matte_ptr1->set_cd(checker_pt1);
-
-	Sphere* sphere_ptr = new Sphere(Point3D(-9.5, -1, 0), 2.5);
-	sphere_ptr->set_material(sv_matte_ptr1);
-	add_object(sphere_ptr);
-
-
-	// cylinder
-
-	Checker3D* checker_ptr2 = new Checker3D;
-	checker_ptr2->set_size(1.0);
-	checker_ptr2->set_color1(black);
-	checker_ptr2->set_color2(white);
-
-	/*SV_Matte* sv_matte_ptr2 = new SV_Matte;
-	sv_matte_ptr2->set_ka(0.75);
-	sv_matte_ptr2->set_kd(0.75);
-	sv_matte_ptr2->set_cd(checker_ptr2);
-
-	Instance* cylinder_ptr = new Instance(new SolidCylinder(-2.5, 4.0, 1.95));
-	cylinder_ptr->translate(-3.5, 0, 0);
-	cylinder_ptr->transform_texture(false);
-	cylinder_ptr->set_material(sv_matte_ptr2);
-	add_object(cylinder_ptr);*/
-
-
-	// cone
-
-	Checker3D* checker_ptr3 = new Checker3D;
-	checker_ptr3->set_size(1.0);
-	checker_ptr3->set_color1(black);
-	checker_ptr3->set_color2(white);
-
-	/*SV_Matte* sv_matte_ptr3 = new SV_Matte;
-	sv_matte_ptr3->set_ka(0.75);
-	sv_matte_ptr3->set_kd(0.75);
-	sv_matte_ptr3->set_cd(checker_ptr3);
-
-	Instance* cone_ptr = new Instance(new OpenCone);
-	cone_ptr->scale(2.5);
-	cone_ptr->translate(2.35, -1.5, 0);
-	cone_ptr->transform_texture(false);
-	cone_ptr->set_material(sv_matte_ptr3);
-	add_object(cone_ptr);*/
-
-
-	// box
-
-	Checker3D* checker_ptr4 = new Checker3D;
-	checker_ptr4->set_size(1.0);
-	checker_ptr4->set_color1(black);
-	checker_ptr4->set_color2(white);
-
-	SV_Matte* sv_matte_ptr4 = new SV_Matte;
-	sv_matte_ptr4->set_ka(0.75);
-	sv_matte_ptr4->set_kd(0.75);
-	sv_matte_ptr4->set_cd(checker_ptr4);
-
-	Box* box_ptr = new Box(Point3D(7, -1.0, -2), Point3D(11, 3, 2));
-	box_ptr->set_material(sv_matte_ptr4);
-	add_object(box_ptr);
-
-
 	// ground plane
 
 	PlaneChecker* plane_checker_ptr = new PlaneChecker;
 	plane_checker_ptr->set_size(1.5);
-	plane_checker_ptr->set_outline_width(0.0);
+	//plane_checker_ptr->set_outline_width(1.4);
+	plane_checker_ptr->set_outline_width(0.1);
 	plane_checker_ptr->set_color1(0.35);
 	plane_checker_ptr->set_color2(0.5);
 	plane_checker_ptr->set_outline_color(RGBColor(1.0f, 1.0f, 0.0f));
@@ -178,11 +106,7 @@ void World::build(void) {
 	add_object(plane_ptr);
 
 
-
-
-
-
-
+	
 
 	//int vpWidth = 400;
 	//int vpHeight = 400;

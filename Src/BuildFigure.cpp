@@ -94,7 +94,7 @@ void World::build(void) {
 	checker_ptr->set_color2(black);
 
 	TInstance* scaled_checker_ptr = new TInstance(checker_ptr);
-	scaled_checker_ptr->scale(2, 1, 1);
+	//scaled_checker_ptr->scale(2, 1, 1);
 
 	SV_Matte* sv_matte_ptr = new SV_Matte;
 	sv_matte_ptr->set_ka(0.8);

@@ -72,8 +72,8 @@ void World::build(void) {
 	imageHeight = vpHeight;
 	imageBuffer = new RGBColor[imageWidth * imageHeight];
 
-	vp.set_hres(vpWidth);
-	vp.set_vres(vpHeight);
+	vp.set_hres(600);
+	vp.set_vres(600);
 	vp.set_samples(num_samples);
 	vp.set_gamut_display(true);
 
@@ -97,13 +97,12 @@ void World::build(void) {
 
 	CubicNoise* noise_ptr = new CubicNoise;
 	noise_ptr->set_num_octaves(6);
-	//noise_ptr->set_gain(0.0);				// for Figure 31.25(a) cubic noise - identical to Figure 31.21(a)
-	//	noise_ptr->set_gain(0.25);				// for Figure 31.25(b)
-	//	noise_ptr->set_gain(0.5);				// for Figure 31.25(c) fractal sum - similar to Figure 31.21(d)
-		noise_ptr->set_gain(0.75);				// for Figure 31.25(d)
-	//	noise_ptr->set_gain(1.0);				// for Figure 31.25(e)
-		//noise_ptr->set_gain(2.0);				// for Figure 31.25(f) new image - not in book
-	noise_ptr->set_lacunarity(2.0);
+	noise_ptr->set_gain(0.5);
+	//noise_ptr->set_lacunarity(0.5);	   		// for Figure 31.26(a)
+	//	noise_ptr->set_lacunarity(1.0);	   		// for Figure 31.26(b)
+	//	noise_ptr->set_lacunarity(2.0);	   		// for Figure 31.26(c)  fractal sum - identical to Figure 31.25(c)
+		noise_ptr->set_lacunarity(4.0);	   		// for Figure 31.26(d)
+	//	noise_ptr->set_lacunarity(8.0);	   		// for Figure 31.26(e)	
 
 	// texture:
 

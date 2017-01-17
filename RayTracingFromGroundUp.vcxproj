@@ -84,10 +84,12 @@
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\Checker3D.cpp" />
     <ClCompile Include="Src\Compound.cpp" />
+    <ClCompile Include="Src\CubicNoise.cpp" />
     <ClCompile Include="Src\Dielectric.cpp" />
     <ClCompile Include="Src\Directional.cpp" />
     <ClCompile Include="Src\Emissive.cpp" />
     <ClCompile Include="Src\EnvironmentLight.cpp" />
+    <ClCompile Include="Src\FBmTexture.cpp" />
     <ClCompile Include="Src\FishEye.cpp" />
     <ClCompile Include="Src\FlatMeshTriangle.cpp" />
     <ClCompile Include="Src\FlatUVMeshTriangle.cpp" />
@@ -102,6 +104,7 @@
     <ClCompile Include="Src\ImageTexture.cpp" />
     <ClCompile Include="Src\Instance.cpp" />
     <ClCompile Include="Src\Lambertian.cpp" />
+    <ClCompile Include="Src\LatticeNoise.cpp" />
     <ClCompile Include="Src\Light.cpp" />
     <ClCompile Include="Src\Mapping.cpp" />
     <ClCompile Include="Src\Material.cpp" />
@@ -167,10 +170,12 @@
     <ClInclude Include="Src\Checker3D.h" />
     <ClInclude Include="Src\Compound.h" />
     <ClInclude Include="Src\Constants.h" />
+    <ClInclude Include="Src\CubicNoise.h" />
     <ClInclude Include="Src\Dielectric.h" />
     <ClInclude Include="Src\Directional.h" />
     <ClInclude Include="Src\Emissive.h" />
     <ClInclude Include="Src\EnvironmentLight.h" />
+    <ClInclude Include="Src\FBmTexture.h" />
     <ClInclude Include="Src\FishEye.h" />
     <ClInclude Include="Src\FlatMeshTriangle.h" />
     <ClInclude Include="Src\FlatUVMeshTriangle.h" />
@@ -185,6 +190,7 @@
     <ClInclude Include="Src\ImageTexture.h" />
     <ClInclude Include="Src\Instance.h" />
     <ClInclude Include="Src\Lambertian.h" />
+    <ClInclude Include="Src\LatticeNoise.h" />
     <ClInclude Include="Src\Light.h" />
     <ClInclude Include="Src\Mapping.h" />
     <ClInclude Include="Src\Material.h" />

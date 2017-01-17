@@ -54,6 +54,7 @@
 #include "PlaneChecker.h"
 #include "TInstance.h"
 #include "FBmTexture.h"
+#include "TurbulenceTexture.h"
 
 // Mapping
 #include "SphericalMap.h"
@@ -95,16 +96,16 @@ void World::build(void) {
 	// noise:
 
 	CubicNoise* noise_ptr = new CubicNoise;
-	//noise_ptr->set_num_octaves(1);				// for Figure 31.21(a)
-	//	noise_ptr->set_num_octaves(2);				// for Figure 31.21(b)
-	//	noise_ptr->set_num_octaves(3);				// for Figure 31.21(c)
-		noise_ptr->set_num_octaves(8);				// for Figure 31.21(c)
+	//noise_ptr->set_num_octaves(1);				// for Figure 31.23(a)
+	//	noise_ptr->set_num_octaves(2);				// for Figure 31.23(b)
+	//	noise_ptr->set_num_octaves(3);				// for Figure 31.23(c)
+		noise_ptr->set_num_octaves(8);				// for Figure 31.23(c)
 	noise_ptr->set_gain(0.5);
 	noise_ptr->set_lacunarity(2.0);
 
 	// texture:
 
-	FBmTexture* texture_ptr = new FBmTexture(noise_ptr);
+	TurbulenceTexture* texture_ptr = new TurbulenceTexture(noise_ptr);
 	texture_ptr->set_color(1.0f, 1.0f, 1.0f);
 	texture_ptr->set_min_value(0.0);
 	texture_ptr->set_max_value(1.0);

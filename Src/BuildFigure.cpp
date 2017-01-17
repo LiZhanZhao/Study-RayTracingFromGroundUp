@@ -96,16 +96,18 @@ void World::build(void) {
 	// noise:
 
 	CubicNoise* noise_ptr = new CubicNoise;
-	//noise_ptr->set_num_octaves(1);				// for Figure 31.23(a)
-	//	noise_ptr->set_num_octaves(2);				// for Figure 31.23(b)
-	//	noise_ptr->set_num_octaves(3);				// for Figure 31.23(c)
-		noise_ptr->set_num_octaves(8);				// for Figure 31.23(c)
-	noise_ptr->set_gain(0.5);
+	noise_ptr->set_num_octaves(6);
+	//noise_ptr->set_gain(0.0);				// for Figure 31.25(a) cubic noise - identical to Figure 31.21(a)
+	//	noise_ptr->set_gain(0.25);				// for Figure 31.25(b)
+	//	noise_ptr->set_gain(0.5);				// for Figure 31.25(c) fractal sum - similar to Figure 31.21(d)
+		noise_ptr->set_gain(0.75);				// for Figure 31.25(d)
+	//	noise_ptr->set_gain(1.0);				// for Figure 31.25(e)
+		//noise_ptr->set_gain(2.0);				// for Figure 31.25(f) new image - not in book
 	noise_ptr->set_lacunarity(2.0);
 
 	// texture:
 
-	TurbulenceTexture* texture_ptr = new TurbulenceTexture(noise_ptr);
+	FBmTexture* texture_ptr = new FBmTexture(noise_ptr);
 	texture_ptr->set_color(1.0f, 1.0f, 1.0f);
 	texture_ptr->set_min_value(0.0);
 	texture_ptr->set_max_value(1.0);

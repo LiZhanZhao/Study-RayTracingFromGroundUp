@@ -56,6 +56,7 @@
 #include "FBmTexture.h"
 #include "TurbulenceTexture.h"
 #include "WrappedFBmTexture.h"
+#include "RampFBmTexture.h"
 
 // Mapping
 #include "SphericalMap.h"
@@ -67,7 +68,7 @@
 void World::build(void) {
 	int vpWidth = 600;
 	int vpHeight = 600;
-	int num_samples = 1;
+	int num_samples = 16;
 
 	imageWidth = vpWidth;
 	imageHeight = vpHeight;
@@ -77,53 +78,55 @@ void World::build(void) {
 	vp.set_vres(600);
 	vp.set_samples(num_samples);
 
-	background_color = RGBColor(0.5);
+	background_color = black;
 	tracer_ptr = new RayCast(this);
 
 	Pinhole* pinhole_ptr = new Pinhole;
 	pinhole_ptr->set_eye(0, 0, 100);
 	pinhole_ptr->set_lookat(0.0);
-	pinhole_ptr->set_view_distance(9500.0);
+	pinhole_ptr->set_view_distance(5800.0);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
 
-	PointLight* light_ptr1 = new PointLight;
-	light_ptr1->set_location(5, 5, 20);
-	light_ptr1->scale_radiance(3.0);
-	add_light(light_ptr1);
+	PointLight* light_ptr = new PointLight;
+	light_ptr->set_location(20, 20, 40);
+	light_ptr->scale_radiance(2.5);
+	add_light(light_ptr);
 
 
 	// noise:
 
 	CubicNoise* noise_ptr = new CubicNoise;
-	noise_ptr->set_num_octaves(4);
+	noise_ptr->set_num_octaves(6);
 	noise_ptr->set_gain(0.5);
 	noise_ptr->set_lacunarity(2.0);
 
-	// texture:
+	// ramp image:
 
-	WrappedFBmTexture* texture_ptr = new WrappedFBmTexture(noise_ptr);
-	texture_ptr->set_color(1.0, 1.0, 0.0);   	// yellow
-	texture_ptr->set_expansion_number(10.0);
-	texture_ptr->set_min_value(0.0);
-	texture_ptr->set_max_value(1.0);
+	Image* image_ptr = new Image;
+	image_ptr->read_ppm_file("Texture/BlueMarbleRamp.ppm");
 
-	TInstance* scaled_texture_ptr = new TInstance(texture_ptr);
-	scaled_texture_ptr->scale(1.5);
+	// marble texture:	
 
+	RampFBmTexture* marble_ptr = new RampFBmTexture(image_ptr);
+	marble_ptr->set_noise(noise_ptr);
+	//marble_ptr->set_perturbation(4.0);		// for Figure 31.33(a)
+		marble_ptr->set_perturbation(8.0);		// for Figure 31.33(b)
+	//	marble_ptr->set_perturbation(30.0);		// for Figure 31.33(c)
 
 	// material:
 
 	SV_Matte* sv_matte_ptr = new SV_Matte;
 	sv_matte_ptr->set_ka(0.25);
-	sv_matte_ptr->set_kd(0.85);
-	sv_matte_ptr->set_cd(scaled_texture_ptr);
+	sv_matte_ptr->set_kd(0.9);
+	sv_matte_ptr->set_cd(marble_ptr);
 
 
-	Sphere* sphere_ptr = new Sphere(Point3D(0.0), 3.0);
-	sphere_ptr->set_material(sv_matte_ptr);
-	add_object(sphere_ptr);
+	Instance* sphere_ptr1 = new Instance(new Sphere(Point3D(0.0), 5.0));
+	sphere_ptr1->set_material(sv_matte_ptr);
+	sphere_ptr1->rotate_y(180);
+	add_object(sphere_ptr1);
 
 
 

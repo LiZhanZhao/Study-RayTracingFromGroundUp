@@ -127,6 +127,7 @@
     <ClCompile Include="Src\Point2D.cpp" />
     <ClCompile Include="Src\Point3D.cpp" />
     <ClCompile Include="Src\PointLight.cpp" />
+    <ClCompile Include="Src\RampFBmTexture.cpp" />
     <ClCompile Include="Src\Ray.cpp" />
     <ClCompile Include="Src\RayCast.cpp" />
     <ClCompile Include="Src\Rectangle.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Src\Point2D.h" />
     <ClInclude Include="Src\Point3D.h" />
     <ClInclude Include="Src\PointLight.h" />
+    <ClInclude Include="Src\RampFBmTexture.h" />
     <ClInclude Include="Src\Ray.h" />
     <ClInclude Include="Src\RayCast.h" />
     <ClInclude Include="Src\Rectangle.h" />

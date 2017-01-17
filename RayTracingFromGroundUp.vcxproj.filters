@@ -270,6 +270,9 @@
     <ClCompile Include="Src\TurbulenceTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\WrappedFBmTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Constants.h">
@@ -525,6 +528,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\TurbulenceTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\WrappedFBmTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

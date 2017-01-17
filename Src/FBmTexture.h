@@ -9,7 +9,7 @@ class FBmTexture : public Texture {
 public:
 
 	// constructors etc ...
-	FBmTexture(void);
+	FBmTexture(LatticeNoise* texture);
 
 	FBmTexture(const FBmTexture& texture);
 
@@ -23,11 +23,31 @@ public:
 	virtual RGBColor
 		get_color(const ShadeRec& sr) const;
 
+	void set_color(float r, float g, float b);
+
+	void set_min_value(float min);
+
+	void set_max_value(float max);
+
+
 private:
 
 	LatticeNoise*		noise_ptr;
 	RGBColor 	  		color;
 	float		  		min_value, max_value;	// scaling factors
 };
+
+
+inline void FBmTexture::set_color(float r, float g, float b){
+	color = RGBColor(r, g, b);
+}
+
+inline void FBmTexture::set_min_value(float min){
+	min_value = min;
+}
+
+inline void FBmTexture::set_max_value(float max){
+	max_value = max;
+}
 
 #endif

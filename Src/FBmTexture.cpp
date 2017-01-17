@@ -1,7 +1,7 @@
 #include "FBmTexture.h"
 
-FBmTexture::FBmTexture(void)
-: Texture(), noise_ptr(NULL), color(1.0f, 1.0f, 1.0f), min_value(0.0f), max_value(1.0f)
+FBmTexture::FBmTexture(LatticeNoise* texture)
+: Texture(), noise_ptr(texture), color(1.0f, 1.0f, 1.0f), min_value(0.0f), max_value(1.0f)
 {
 
 }
@@ -12,6 +12,7 @@ max_value(texture.max_value)
 {
 
 }
+
 
 FBmTexture* FBmTexture::clone(void) const{
 	return (new FBmTexture(*this));

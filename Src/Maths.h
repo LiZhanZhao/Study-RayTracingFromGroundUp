@@ -91,6 +91,7 @@ rand_float(void) {
 
 // ---------------------------------------------------- set_rand_seed
 
+// if seed is same , so rand() generate num is same
 inline void
 set_rand_seed(const int seed) {
 	srand(seed);
